@@ -113,8 +113,8 @@ class App extends Component {
 
   Admin = (x) => {
     if (this.state.user) {
-      if (x === 1) { return this.state.user.email.includes('bargig') ? <Admin state={this.state} /> : null } else {
-        return this.state.user.email.includes('bargig') ? <li ><Link to="/Admin" >Admin</Link></li> : null
+      if (x === 1) { return this.state.user.email.includes('issacbar') ? <Admin state={this.state} /> : null } else {
+        return this.state.user.email.includes('issacbar') ? <li ><Link to="/Admin" >Admin</Link></li> : null
       }
     } else return null
   }
