@@ -67,5 +67,10 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
 
-"start": "react-scripts start",
  "start": "node server.js",
+   "start": "node scripts/start.js",
+
+
+
+
+"start": "react-scripts start",

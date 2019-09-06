@@ -1,5 +1,5 @@
 // const local ='http://localhost:8000/'
-const heroku = '/'
-const route  = heroku
+// const route  = 'http://localhost:8000/'
+const route = '/'
 
 export default route
