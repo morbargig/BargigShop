@@ -192,11 +192,11 @@ class Home extends Component {
       <button className={"homeButton"} on={this.slecetCatgory}>
         <select class="browser-default" onClick={this.catagorySearch}>
           <option value="Catgory" disabled selected>Search By </option>
-          <option value="name">Item Name</option>
-          <option value="Category">Category</option>
-          <option value="sizes">Size</option>
-          <option value="price">Price</option>
-          <option value="Collection">Collection</option>
+          <option value="name">שם מוצר</option>
+          <option value="Category">קטגוריה</option>
+          <option value="sizes">מידה</option>
+          <option value="price">מיר מתחת ל</option>
+          <option value="Collection">קולקציה</option>
         </select>
 
         <input name="input" type="text" value={this.state.fullName} onChange={this.updateusersText} placeholder="type here" /></button>
