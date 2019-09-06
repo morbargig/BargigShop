@@ -41,12 +41,12 @@ class Filter extends Component {
                                     <div className="flip-card-inner">
                                         <div className="flip-card-front">
                                             <img id="catImg" src={i.image}></img>
-                                            <p> <a> Name :  </a> {i.name} ₪ </p>
+                                            <p> <a> Name :  </a> {i.name}  </p>
                                             <p> <a> Price :  </a> {i.price} ₪ </p>
                                             <p> <a> Categories : </a> {i.Category.map(c => <span> {" "} {c},</span>)} </p>
                                             <p> <a> Sizes : </a> {i.sizes.map(c => <span> {" "} {c},</span>)} </p>
-                                            <p> <a> Collection :  </a> {i.Collection} ₪ </p>
-                                            <p> <a> Discraption :  </a> {i.Discraption} ₪ </p>
+                                            <p> <a> Collection :  </a> {i.Collection}  </p>
+                                            <p> <a> Discraption :  </a> {i.Discraption}  </p>
                                             <Link to={`/Item/${i.name}`}> <button className="waves-effect waves-dark btn" > See Item</button> </Link>
                                             {/* <p id="catDescription"> {i.Discraption}</p> */}
 
