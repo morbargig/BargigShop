@@ -78,9 +78,10 @@ router.get('/getbyfield/:Category', function (req, res) {
     let key = Object.keys(req.params)[0]
     let value = req.params[key]
     Items.find({}).exec(function (err, items) {
-        let item = items.filter(i => i.Category.filter(c => c === value))
-        console.log(item)
-        res.send(item)
+        result = []
+        items.map(i => i.Category.map(c => c === value ? result.push(i) : null))
+        console.log(result)
+        res.send(result)
     })
 })
 

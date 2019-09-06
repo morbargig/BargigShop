@@ -14,10 +14,10 @@ class Filter extends Component {
     }
 
     componentDidMount = async () => {
-        this.getBusinesses()
+        this.getItem()
     }
 
-    getBusinesses = async () => {
+    getItem = async () => {
         console.log(this.props.name)
         let items = await axios.get(`${route}getbyfield/${this.props.name}`)
         console.log(items.data)
