@@ -4,6 +4,7 @@ import axios from 'axios'
 import route from '../config/route'
 import { Link } from 'react-router-dom'
 import { async } from 'q';
+import UpDateItem from './UpDateItem';
 
 
 class Home extends Component {
@@ -12,7 +13,8 @@ class Home extends Component {
     this.state = {
       loggedInUserName: undefined,
       loggedInUserImg: undefined,
-      catagorySearch: undefined
+      catagorySearch: undefined,
+      newItem: false
     }
   }
 
@@ -157,8 +159,33 @@ class Home extends Component {
   }
 
 
+
+
+  editImage = () => {
+
+  }
+
+  editItem = (e) => {
+    let id = e.target.parentElement.id
+    console.log(id)
+    let x = this.state.newItem
+    x = !x
+    console.log(x)
+    let items = this.state.resultByCatgory
+    let itemToUpdate = items.find(u => u._id === id)
+
+    this.setState({
+      itemToUpdateId: id,
+      itemToUpdate: itemToUpdate,
+      newItem: x
+    })
+    // console.log(this.state, this.state.userToUpdate)
+  }
+
+
   resultByCatgory = () => {
     if (this.state.resultByCatgory !== undefined) {
+      // console.log(this.props.state.user)
       return this.state.resultByCatgory.map(c =>
         <div className="category">
 
@@ -172,6 +199,7 @@ class Home extends Component {
             </div>
             <div class="card-action">
               <Link to={`/SmallBizz/${c.name}`}> {c.name} </Link>
+              {this.props.state.user.email.includes('issacbar') ? <div id={c._id}> <button onClick={this.editItem}> ערוך </button>  <br></br> <button onClick={this.editImage}> ערוך תמונה </button> </div> : null}
             </div>
           </div>
         </div>
@@ -185,17 +213,28 @@ class Home extends Component {
     }
   }
 
+  afterUpdateItem = () => {
+    let x = this.state.newItem
+    x = !x
+    this.setState({
+        newItem: x
+    })
+}
+
   render() {
     return <div className="#f1f8e9 light-green lighten-5">
       {/* {this.props.state.user.email.includes('bargig') ? <Admin state={this.props.state} /> : <div> */}
-
+      {
+        this.state.newItem ? <UpDateItem upDateItem={this.upDateItem} item={this.state.itemToUpdate} afterUpdateItem={this.afterUpdateItem} />
+          : null
+      }
       <button className={"homeButton"} on={this.slecetCatgory}>
         <select class="browser-default" onClick={this.catagorySearch}>
-          <option value="Catgory" disabled selected>Search By </option>
+          <option value="Catgory" disabled selected>חפש לפי </option>
           <option value="name">שם מוצר</option>
           <option value="Category">קטגוריה</option>
           <option value="sizes">מידה</option>
-          <option value="price">מיר מתחת ל</option>
+          <option value="price">מחיר מתחת ל</option>
           <option value="Collection">קולקציה</option>
         </select>
 

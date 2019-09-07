@@ -1,4 +1,3 @@
-// const local ='http://localhost:8000/'
 // const route  = 'http://localhost:8000/'
 const route = '/'
 

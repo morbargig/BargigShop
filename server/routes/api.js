@@ -85,6 +85,19 @@ router.get('/getbyfield/:Category', function (req, res) {
     })
 })
 
+router.put('/upDateItem/:id', function (req, res) {
+    let id = req.params.id
+    let updatedData = req.body
+    Items.findOneAndUpdate({ "_id": id }, updatedData, function () {
+        res.end()
+        console.log(updatedData, id)
+
+    })
+
+})
+
+
+
 router.post('/sendEmail', (req, res) => {
     console.log("got To server")
     const helperOptions = req.body

@@ -32,7 +32,22 @@
   }
 }
 
-
+.newItem {
+  position: fixed;
+  height: 500px;
+  width: 500px;
+  display: grid;
+  margin:auto;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: navajowhite;
+  border-style: solid;
+  border-width: 3px;
+  opacity: 0.95;
+  color: #0a1612;
+}
 .categories {
   display: grid;
   grid-template-rows: repeat(2,1fr);
