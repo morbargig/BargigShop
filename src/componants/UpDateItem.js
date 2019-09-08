@@ -188,12 +188,12 @@ class UpDateItem extends Component {
                 <div>  <label>{r}</label><input name={r} type="text" value={this.state[r]} onChange={this.updateusersText} placeholder={`${r} was "${this.props.item[r]}" before`} /></div>
             )}
             <div> Categories : </div>
-            {this.state.itemToUpdate.Category.map(i => <button name="Category" id={i} onClick={this.addToArry}>  היה לפני לחץ כדי לשמר {i}  <i class="material-icons left">add</i> </button>)}
+            {this.state.itemToUpdate.Category.map(i => <button name="Category" id={i} onClick={this.addToArry}>  היה לפני לחץ כדי לשמר "{i}"  <i class="material-icons left">add</i> </button>)}
             <input name='newCategory' onChange={this.updateusersText} type='text' placeholder='New Category' value={this.state.newCategory} />
             <button name='newCategory' onClick={this.AddNewToArry}>הוסף קטגוריה </button>
             <div> Sizes :</div>
 
-            {this.state.itemToUpdate.sizes.map(i => <button name="sizes" id={i} onClick={this.addToArry}> היה לפני לחץ כדי לשמר  {i}  <i class="material-icons left">add</i> </button>)}
+            {this.state.itemToUpdate.sizes.map(i => <button name="sizes" id={i} onClick={this.addToArry}> היה לפני לחץ כדי לשמר  "{i}"  <i class="material-icons left">add</i> </button>)}
             <input name='newsizes' type='text' placeholder='New Size' value={this.state.newsizes} onChange={this.updateusersText} />
             <button name='newsizes' onClick={this.AddNewToArry}>הוסף מידה </button>
             <input type="file" onChange={this.handleImage} />
