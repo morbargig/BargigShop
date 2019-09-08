@@ -45,6 +45,16 @@ router.get('/getItem/:value/:text', (req, res) => {
     // res.send(result)
 })
 
+
+router.delete('/deleteItem/:id', (req, res) => {
+    let id = req.params.id
+    Items.findOneAndDelete({ "_id": id }, function (err, x) {
+        res.send(x)
+    })
+})
+
+
+
 router.get('/getItems', (req, res) => {
     Items.find({}, function (err, Items) {
         res.send(Items)

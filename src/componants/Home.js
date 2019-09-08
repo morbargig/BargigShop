@@ -199,7 +199,7 @@ class Home extends Component {
             </div>
             <div class="card-action">
               <Link to={`/SmallBizz/${c.name}`}> {c.name} </Link>
-              {this.props.state.user.email.includes('issacbar') ? <div id={c._id}> <button onClick={this.editItem}> ערוך </button>  <br></br> <button onClick={this.editImage}> ערוך תמונה </button> </div> : null}
+              {this.props.state.user.email.includes('issacbar') ? <div id={c._id}> <button onClick={this.editItem}> ערוך </button>  <br></br> <button name={c.name} id={c._id} onClick={this.deleteItem}> מחק מוצר </button> </div> : null}
             </div>
           </div>
         </div>
@@ -213,13 +213,24 @@ class Home extends Component {
     }
   }
 
+  deleteItem = async (e) => {
+    let id = e.target.id
+    let name = e.target.name
+    console.log(id, name)
+    let answer = window.confirm(`are you sure you want to delete ${name}?`)
+    if (answer === true) {
+      await axios.delete(`${route}deleteItem/${id}`)
+    }
+  }
+
+
   afterUpdateItem = () => {
     let x = this.state.newItem
     x = !x
     this.setState({
-        newItem: x
+      newItem: x
     })
-}
+  }
 
   render() {
     return <div className="#f1f8e9 light-green lighten-5">
