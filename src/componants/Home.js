@@ -195,10 +195,11 @@ class Home extends Component {
               <span class="card-title">{c.name}</span>
             </div>
             <div class="card-content">
-              <p>{c.description}</p>
+              {/* <p>{c.description}</p> */}
             </div>
             <div class="card-action">
-              <Link to={`/SmallBizz/${c.name}`}> {c.name} </Link>
+              <Link to={`/Filter/${c.name}`}> {c.name} </Link>
+              <br></br>
               {this.props.state.user.email.includes('issacbar') ? <div id={c._id}> <button onClick={this.editItem}> ערוך </button>  <br></br> <button name={c.name} id={c._id} onClick={this.deleteItem}> מחק מוצר </button> </div> : null}
             </div>
           </div>
