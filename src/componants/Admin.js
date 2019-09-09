@@ -112,7 +112,7 @@ class Admin extends Component {
         // console.log(this.props.state.user)
         return <div>  <h5>{this.props.state.user ? 'Hello Admin ' + this.props.state.user.email : null} </h5>
             <br></br>
-            <h5> Add new Item</h5>
+            <h5> הוסף מוצר חדש</h5>
             {this.state.stringInputs.map(i => <label>{i} <input type='text' placeholder={i} name={i} value={this.state.newItem[i]} onChange={this.updeBesniiesText} /> </label>)}
             <br></br>
             {/* <br></br> */}
