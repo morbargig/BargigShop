@@ -9,7 +9,8 @@ const ItemSchema = new Schema({
     sizes: Array,
     Collection: String,
     Discraption: String,
-    image: String
+    image: String,
+    color : Object
 })
 
 const Item = mongoose.model("Item", ItemSchema)

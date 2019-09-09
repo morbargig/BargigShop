@@ -20,7 +20,7 @@ class Home extends Component {
 
   componentDidMount = () => {
     this.returnCatgories()
-    // this.welcomeUser()
+    this.welcomBack()
   }
 
   returnCatgories = async () => {
@@ -233,13 +233,39 @@ class Home extends Component {
     })
   }
 
+  welcomBack = async () => {
+    if (this.props.state.user) {
+      console.log(this.props.state.user)
+      let email = this.props.state.user.email
+      console.log(email)
+      const res = await axios.get(`${route}userByEmail/${email}`)
+      console.log(res)
+      this.setState({ loggedInUser: res.data[0] }, function () { console.log(this.state.loggedInUser) })
+    }
+
+    // if (this.props.state.user !== undefined) {
+    // }
+    // <div className="userDetails">
+    // <h6> {this.props.state.user !== undefined ? this.welcomBack() : null  "Welcome back " + this.state.loggedInUserName : null} </h6>
+    // <img width="100" height="100" className="circle responsive-img" src={this.state.loggedInUserImg} />
+    // </div>
+  }
+
   render() {
     return <div className="#f1f8e9 light-green lighten-5">
       {/* {this.props.state.user.email.includes('bargig') ? <Admin state={this.props.state} /> : <div> */}
+
+
+
+
       {
         this.state.newItem ? <UpDateItem upDateItem={this.upDateItem} item={this.state.itemToUpdate} afterUpdateItem={this.afterUpdateItem} />
-          : null
+        : null
       }
+      {this.state.loggedInUser !== undefined ? <div className="userDetails">  <h6> Welcome back {this.state.loggedInUser.name}   </h6>
+        <img width="100" height="100" className="circle responsive-img" src={this.state.loggedInUser.img} />
+      </div>
+        : null}
       <button className={"homeButton"} on={this.slecetCatgory}>
         <select class="browser-default" onClick={this.catagorySearch}>
           <option value="Catgory" disabled selected>חפש לפי </option>
@@ -252,10 +278,6 @@ class Home extends Component {
 
         <input name="input" type="text" value={this.state.fullName} onChange={this.updateusersText} placeholder="type here" /></button>
       {/* {this.welcomeUser()} */}
-      <div className="userDetails">
-        <h6> {this.state.loggedInUserName !== undefined ? "Welcome back " + this.state.loggedInUserName : null} </h6>
-        <img width="100" height="100" className="circle responsive-img" src={this.state.loggedInUserImg} />
-      </div>
       <div className="categories">
         {this.state.Catgories !== undefined ? this.state.Catgories.map(c =>
           <div className="category">

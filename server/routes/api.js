@@ -45,6 +45,16 @@ router.get('/getItem/:value/:text', (req, res) => {
     // res.send(result)
 })
 
+router.get('/userByEmail/:email', (req, res) => {
+    let key = Object.keys(req.params)[0]
+    let value = req.params[key]
+    console.log(key,value)
+    User.find({ [key]: value }).exec(function (err, user) {
+console.log(user)
+        res.send(user)
+    })
+})
+
 
 router.delete('/deleteItem/:id', (req, res) => {
     let id = req.params.id

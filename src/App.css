@@ -32,6 +32,12 @@
   }
 }
 
+ .userDetails{ 
+  /* position: absolute; */
+  margin-top:0vh;
+  margin-left: 90vw;
+ } 
+
 .newItem {
   position: fixed;
   height: 900px;

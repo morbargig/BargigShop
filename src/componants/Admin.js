@@ -17,7 +17,7 @@ class Admin extends Component {
             stringInputs: ['name', 'id', 'Discraption', 'Collection'],
             numberInputs: ['price'],
             inputsWithFewInputs: ['sizes', 'Category'],
-            newItem: { sizes: [], Category: [] },
+            newItem: { sizes: [], Category: [], color: {} },
             itemArry: {}
         }
 
@@ -27,7 +27,7 @@ class Admin extends Component {
         let newItem = { ...this.state.newItem }
         newItem['image'] = this.state.img
         console.log(this.state)
-        let inputsLength = this.state.stringInputs.length + this.state.numberInputs.length + this.state.inputsWithFewInputs.length
+        let inputsLength = this.state.stringInputs.length + this.state.numberInputs.length + this.state.inputsWithFewInputs.length + 1
         let objLength = Object.keys(this.state.newItem).length
         console.log(inputsLength)
         console.log(newItem, objLength)
@@ -36,7 +36,14 @@ class Admin extends Component {
         } else { alert("not all field are valid") }
     }
 
-    handleUpload = () => {
+    handleUpload = (e) => {
+        let img = "img"
+        let name = e.target.name
+        if (name === "color") {
+            img = "colorImg"
+        }
+        console.log(img, name)
+
         console.log("kjgjyfjukguyv")
         const { uploadedImage } = this.state
         if (this.state.uploadedImage === null) {
@@ -54,9 +61,9 @@ class Admin extends Component {
                 () => {
                     firebase.storage().ref('BargigShopItems').child(uploadedImage.name).getDownloadURL().then(url => {
                         this.setState({
-                            img: url
+                            [img]: url
                         })
-                        console.log(this.state.img)
+                        console.log(this.state[img])
 
                     })
                 }
@@ -103,7 +110,14 @@ class Admin extends Component {
         }
     }
 
-
+    addImageByColor = () => {
+        let color = this.state.color
+        let imageByColor = this.state.colorImg
+        let newItem = { ...this.state.newItem }
+        // newItem["color"] = []
+        newItem.color[color] = imageByColor
+        this.setState({ newItem }, function () { console.log(this.state) })
+    }
 
 
 
@@ -125,7 +139,13 @@ class Admin extends Component {
             <br></br>
             <br></br>
             <input type="file" onChange={this.handleImage} />
-            <button onClick={this.handleUpload}>Upload Image</button>
+            <button onClick={this.handleUpload}>Upload Image</button><br></br>
+
+            <label>color <input id="arry" type='text' placeholder='color' name='color' value={this.state.color} onChange={this.updeBesniiesText} /> </label>
+            <input type="file" onChange={this.handleImage} />
+            <button name="color" onClick={this.handleUpload}>העלה תמונה לפי צבע</button>
+            <button onClick={this.addImageByColor}>
+                הוסף תמונה לפי צבע  </button>
             <br></br>
 
             <br></br>
