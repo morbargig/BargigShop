@@ -183,33 +183,46 @@ class Home extends Component {
   }
 
 
+  colorImage = (e) => {
+    let name = e.target.name
+    let id = e.target.id
+    let value = e.target.value
+    // if (this.state[id]  ){
+    // this.setState({ })
+    // }
+    console.log(name, value)
+    this.setState({ [name]: value }, function () { console.log(this.state[name]) })
+  }
+
   resultByCatgory = () => {
     if (this.state.resultByCatgory !== undefined) {
       // console.log(this.props.state.user)
-      return this.state.resultByCatgory.map(c =>
-        <div className="category">
+      return this.state.resultByCatgory.map(c => <div className="category">
 
-          <div class="card">
-            <div class="card-image">
-              <img src={c.image}></img>
-              <span class="card-title">{c.name}</span>
-            </div>
-            <div class="card-content">
-              {/* <p>{c.description}</p> */}
-            </div>
-            <div class="card-action">
-              <Link to={`/Filter/${c.name}`}> {c.name} </Link>
-              <br></br>
-              {this.props.state.user.email.includes('issacbar') ? <div id={c._id}> <button onClick={this.editItem}> ערוך </button>  <br></br> <button name={c.name} id={c._id} onClick={this.deleteItem}> מחק מוצר </button> </div> : null}
-            </div>
+        <div class="card">
+          <div class="card-image">
+            <img src={this.state[c.name] !== undefined ? this.state[c.name] : c.image}></img>
+            <span class="card-title">{c.name}</span>
+          </div>
+          <div class="card-content">
+            {/* <p>{c.description}</p> */}
+          </div>
+          <div class="card-action">
+            <Link to={`/Filter/${c.name}`}> {c.name} </Link>
+
+            {Object.keys(c.color).map(o =>
+              <button id={c.id} name={c.name} value={c.color[o]} onClick={this.colorImage} style={{
+                backgroundColor: o,
+                width: '15px',
+                height: '15px',
+              }} type="button" class="color-box" data-color-id="267" title="choose color" aria-label="choose color"> </button>
+            )
+            }
+            <br></br>
+            {this.props.state.user.email.includes('issacbar') ? <div id={c._id}> <button onClick={this.editItem}> ערוך </button>  <br></br> <button name={c.name} id={c._id} onClick={this.deleteItem}> מחק מוצר </button> </div> : null}
           </div>
         </div>
-        // {/* <div>  
-        //                  <h2>{r.name}</h2>
-        //                 <img src={r.img}></img>
-        //                 <p>{r.description}</p>
-
-        //                 <a className="waves-effect waves-light btn-small" onClick={this.changeDisplay}>Make an appointment</a></div>) */}
+      </div>
       )
     }
   }
@@ -260,7 +273,7 @@ class Home extends Component {
 
       {
         this.state.newItem ? <UpDateItem upDateItem={this.upDateItem} item={this.state.itemToUpdate} afterUpdateItem={this.afterUpdateItem} />
-        : null
+          : null
       }
       {this.state.loggedInUser !== undefined ? <div className="userDetails">  <h6> Welcome back {this.state.loggedInUser.name}   </h6>
         <img width="100" height="100" className="circle responsive-img" src={this.state.loggedInUser.img} />
