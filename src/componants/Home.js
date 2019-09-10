@@ -210,7 +210,7 @@ class Home extends Component {
           <div class="card-action">
             <Link to={`/Filter/${c.name}`}> {c.name} </Link>
 
-            {c.color ? Object.keys(c.color).map(o =>
+            {c.color !== undefined ? Object.keys(c.color).map(o =>
               <button id={c.id} name={c.name} value={c.color[o]} onClick={this.colorImage} style={{
                 backgroundColor: o,
                 width: '15px',
