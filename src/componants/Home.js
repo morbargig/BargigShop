@@ -210,13 +210,13 @@ class Home extends Component {
           <div class="card-action">
             <Link to={`/Filter/${c.name}`}> {c.name} </Link>
 
-            {Object.keys(c.color).map(o =>
+            {c.color ? Object.keys(c.color).map(o =>
               <button id={c.id} name={c.name} value={c.color[o]} onClick={this.colorImage} style={{
                 backgroundColor: o,
                 width: '15px',
                 height: '15px',
               }} type="button" class="color-box" data-color-id="267" title="choose color" aria-label="choose color"> </button>
-            )
+            ) : null
             }
             <br></br>
             {this.props.state.user.email.includes('issacbar') ? <div id={c._id}> <button onClick={this.editItem}> ערוך </button>  <br></br> <button name={c.name} id={c._id} onClick={this.deleteItem}> מחק מוצר </button> </div> : null}
