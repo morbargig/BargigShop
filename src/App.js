@@ -21,7 +21,8 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      AdminIn: true
+      AdminIn: true,
+      openMenu : true
     }
   }
 
@@ -48,7 +49,7 @@ class App extends Component {
     })
   }
 
- 
+
 
   saveNewUserToDb = async () => {
     // await this.handleUpload()
@@ -114,7 +115,7 @@ class App extends Component {
   Admin = (x) => {
     if (this.state.user) {
       if (x === 1) { return this.state.user.email.includes('issacbar') ? <Admin state={this.state} /> : null } else {
-        return this.state.user.email.includes('issacbar') ? <li ><Link to="/Admin" >Admin</Link></li> : null
+        return this.state.user.email.includes('issacbar') ? <a ><Link to="/Admin" >Admin</Link></a> : null
       }
     } else return null
   }
@@ -122,36 +123,61 @@ class App extends Component {
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value })
 
-}
+  }
+  openMenu = () => {
+    let x = this.state.openMenu
+    this.setState({ openMenu: !x })
+  }
 
   render() {
 
     return (
       <Router>
-        <nav>
-          <div class="nav-wrapper navBar #e53935 black darken-1">
-            <a href="/About" class="brand-logo right"> Bargig Shop</a> {/* also a link but in html syntax */}
-            <ul id="nav-mobile" class="left hide-on-med-and-down">
+        <div className="topnav">
 
-              {/* <li ><Link to="/SingUp">singup  </Link></li> */}
-              <li ><Link to="/" >Home</Link></li>
+          <a onClick={this.openMenu} className="active"><Link >menu</Link></a>
+
+          {this.state.openMenu ?
+            <div id="myLinks">
+              {/* <ul id="nav-mobile" class="left hide-on-med-and-down"> */}
+
+              <a ><Link to="/" >Home</Link></a>
+              <a ><Link to="/About">About </Link></a>
+              {this.Admin()}
+              {this.state.shoppingCart ? <a ><Link to="/shoppingCart">Shopping Cart </Link></a> : null}
+              {this.state.user === undefined ? <a ><Link to="/SingUp">singup  </Link></a> : <a onClick={this.logout} > <Link to='/'> Logout</Link> </a>}
+
+
+            </div>
+            : <a className="right" ><Link to="/" >Bargig Shop</Link> </a>}
+        </div>
+
+        {/* <nav>
+          <div class="nav-wrapper navBar #e53935 black darken-1">
+            <a href="/About" class="brand-logo right">
+              Bargig Shop</a>  */}
+        {/* also a link but in html syntax */}
+        {/* <ul id="nav-mobile" class="left hide-on-med-and-down"> */}
+
+        {/* <li ><Link to="/SingUp">singup  </Link></li> */}
+        {/* <li ><Link to="/" >Home</Link></li>
               <li ><Link to="/About">About </Link></li>
-              {/* {this.state.AdminIn ? <li ><Link to="/Admin" >Admin</Link></li> : null} */}
               {this.Admin()}
               <li onClick={this.logout} > <Link to='/'> Logout</Link> </li>
             </ul>
           </div>
-        </nav>
+        </nav> */}
+
         {console.log(this.state.user)}
-        <Route path="/" exact render={() => this.state.user ? <Home  state={this.state}   /> : <Login handle={this.handleChange} email={this.state.email} password={this.state.password} />} />
+        <Route path="/" exact render={() => this.state.user ? <Home state={this.state} /> : <Login handle={this.handleChange} email={this.state.email} password={this.state.password} />} />
         {/* <Route path="/Home" render={() => <Home returnCatgories={this.returnCatgories} reaseCatgories={this.reaseCatgories} state={this.state} Catgories={this.state.Catgories} userEmail={this.state.userEmail} />} /> */}
         {/* <Route path="/About" render={() => <About state={this.state} />} /> */}
         <Route path="/Admin" render={() => this.Admin(1)} />
         <Route path="/About" render={() => <About />} />
 
-        <Route path="/Filter/:CatgoryName" exact render={({ match }) => <Filter name={match.params.CatgoryName} />} />
+        <Route path="/Filter/:CatgoryName" exact render={({ match }) => <Filter name={match.params.CatgoryName} state={this.state} />} />
         <Route path="/Item/:ItemName" exact render={({ match }) => <Item state={this.state} name={match.params.ItemName} />} />
-        <Route path="/Signup" exact render={() => this.state.user ? <Home  state={this.state}   /> : <SignUp handle={this.handleChange} state={this.state} saveUser={this.saveNewUserToDb} handleImg={this.handleImage} upload={this.handleUpload} />} />
+        <Route path="/Signup" exact render={() => this.state.user ? <Home state={this.state} /> : <SignUp handle={this.handleChange} state={this.state} saveUser={this.saveNewUserToDb} handleImg={this.handleImage} upload={this.handleUpload} />} />
         {/* <Route path="/OpenBisnnes" render={() => this.state.user ? <Home returnCatgories={this.returnCatgories} reaseCatgories={this.reaseCatgories} state={this.state} Catgories={this.state.Catgories} userEmail={this.state.userEmail} /> : <OpenBisnnes Catgories={this.state.Catgories} saveNew={this.saveNewBiz} state={this.state} handleImg={this.handleImage} upload={this.handleUpload} />} /> */}
         {/* <Route path="/Test" render={() => <Tset />} /> */}
 

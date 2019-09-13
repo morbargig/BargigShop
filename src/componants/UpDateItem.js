@@ -108,6 +108,7 @@ class UpDateItem extends Component {
         }
         console.log(upDate, id)
         await axios.put(`${route}upDateItem/${id}`, upDate)
+        //   window.location.reload();
     }
 
 

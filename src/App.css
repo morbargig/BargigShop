@@ -43,11 +43,14 @@
  } 
 
 .newItem {
-  position: fixed;
+  /* position: absolute; */
   height: 900px;
   /* height: 900px;   */
   width: 500px;
-  display: grid;
+  /* display: none; */
+/* display: inline; */
+display: block;
+/* display: inline-block; */
   margin:auto;
   top: 0;
   right: 0;
@@ -63,5 +66,40 @@
   display: grid;
   grid-template-rows: repeat(2,1fr);
   grid-template-columns: repeat(4,1fr)
+}
+
+
+
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+  position: relative;
+}
+
+.topnav a {
+  float: left;
+  color: white;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a.Admin {
+  float: right;
+  background-color: black
+}
+
+.topnav a.logo {
+  float: right;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.active {
+  background-color: #4CAF50;
+  color: white;
 }
 

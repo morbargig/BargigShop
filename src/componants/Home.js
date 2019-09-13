@@ -14,7 +14,7 @@ class Home extends Component {
       loggedInUserName: undefined,
       loggedInUserImg: undefined,
       catagorySearch: undefined,
-      newItem: false
+      editItem: false
     }
   }
 
@@ -168,7 +168,7 @@ class Home extends Component {
   editItem = (e) => {
     let id = e.target.parentElement.id
     console.log(id)
-    let x = this.state.newItem
+    let x = this.state.editItem
     x = !x
     console.log(x)
     let items = this.state.resultByCatgory
@@ -177,7 +177,7 @@ class Home extends Component {
     this.setState({
       itemToUpdateId: id,
       itemToUpdate: itemToUpdate,
-      newItem: x
+      editItem: x
     })
     // console.log(this.state, this.state.userToUpdate)
   }
@@ -201,7 +201,7 @@ class Home extends Component {
 
         <div class="card">
           <div class="card-image">
-            <img src={this.state[c.name] !== undefined ? this.state[c.name] : c.image}></img>
+            <img src={this.state[c.name] !== undefined ? this.state[c.name] : c.image} alt={c.name}  ></img>
             <span class="card-title">{c.name}</span>
           </div>
           <div class="card-content">
@@ -215,7 +215,7 @@ class Home extends Component {
                 backgroundColor: o,
                 width: '15px',
                 height: '15px',
-              }} type="button" class="color-box" data-color-id="267" title="choose color" aria-label="choose color"> </button>
+              }} type="button" class="color-box" data-color-id="267" title="choose color" aria-label={`choose ${o} color`}> </button>
             ) : null
             }
             <br></br>
@@ -239,10 +239,10 @@ class Home extends Component {
 
 
   afterUpdateItem = () => {
-    let x = this.state.newItem
+    let x = this.state.editItem
     x = !x
     this.setState({
-      newItem: x
+      editItem: x
     })
   }
 
@@ -272,7 +272,7 @@ class Home extends Component {
 
 
       {
-        this.state.newItem ? <UpDateItem upDateItem={this.upDateItem} item={this.state.itemToUpdate} afterUpdateItem={this.afterUpdateItem} />
+        this.state.editItem ? <UpDateItem upDateItem={this.upDateItem} item={this.state.itemToUpdate} afterUpdateItem={this.afterUpdateItem} />
           : null
       }
       {this.state.loggedInUser !== undefined ? <div className="userDetails">  <h6> Welcome back {this.state.loggedInUser.name}   </h6>
@@ -289,7 +289,8 @@ class Home extends Component {
           <option value="Collection">קולקציה</option>
         </select>
 
-        <input name="input" type="text" value={this.state.fullName} onChange={this.updateusersText} placeholder="type here" /></button>
+        <input name="input" type="text" value={this.state.fullName} onChange={this.updateusersText} placeholder="type here" />
+        </button>
       {/* {this.welcomeUser()} */}
       <div className="categories">
         {this.state.Catgories !== undefined ? this.state.Catgories.map(c =>
