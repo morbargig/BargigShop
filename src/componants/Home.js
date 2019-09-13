@@ -264,6 +264,14 @@ class Home extends Component {
     // </div>
   }
 
+  welcomIfMobile = (user) => {
+    !this.props.state.isMobile ?
+      <div className="userDetails">  <h6> Welcome back {user.name}   </h6>
+        <img width="100" height="100" className="circle responsive-img" src={user.img} />
+      </div> : <img width="100" height="100" className="circle responsive-img" src={user.img} />
+
+  }
+
   render() {
     return <div className="#f1f8e9 light-green lighten-5">
       {/* {this.props.state.user.email.includes('bargig') ? <Admin state={this.props.state} /> : <div> */}
@@ -274,9 +282,7 @@ class Home extends Component {
         this.state.editItem ? <UpDateItem upDateItem={this.upDateItem} item={this.state.itemToUpdate} afterUpdateItem={this.afterUpdateItem} />
           : null
       }
-      {this.state.loggedInUser !== undefined ? <div className="userDetails">  <h6> Welcome back {this.state.loggedInUser.name}   </h6>
-        <img width="100" height="100" className="circle responsive-img" src={this.state.loggedInUser.img} />
-      </div>
+      {this.state.loggedInUser !== undefined ? this.welcomIfMobile(this.state.loggedInUser)
         : null}
       {!this.state.isMobile ? <button className={"homeButton"} on={this.slecetCatgory}>
         <select class="browser-default" onClick={this.catagorySearch}>
