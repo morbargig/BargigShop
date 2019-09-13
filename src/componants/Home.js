@@ -265,11 +265,12 @@ class Home extends Component {
   }
 
   welcomIfMobile = (user) => {
-    !this.props.state.isMobile ?
-      <div className="userDetails">  <h6> Welcome back {user.name}   </h6>
+    if (!this.props.state.isMobile) {
+      return <div className="userDetails">  <h6> Welcome back {user.name}   </h6>
         <img width="100" height="100" className="circle responsive-img" src={user.img} />
-      </div> : <img width="100" height="100" className="circle responsive-img" src={user.img} />
-
+      </div>
+    }
+    else { return <div className="userDetails"><img width="100" height="100" className="circle responsive-img" src={user.img} />    </div > }
   }
 
   render() {
