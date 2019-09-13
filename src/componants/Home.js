@@ -288,9 +288,9 @@ class Home extends Component {
           <option value="price">מחיר מתחת ל</option>
           <option value="Collection">קולקציה</option>
         </select>
+      </button>
 
-        </button>
-        <input name="input" type="text" value={this.state.fullName} onChange={this.updateusersText} placeholder="type here" />
+      <input name="input" type="text" value={this.state.fullName} onChange={this.updateusersText} placeholder="type here" />
       {/* {this.welcomeUser()} */}
       <div className="categories">
         {this.state.Catgories !== undefined ? this.state.Catgories.map(c =>
