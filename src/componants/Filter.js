@@ -66,6 +66,7 @@ class Filter extends Component {
         this.setState({
             editItem: x
         })
+        window.location.reload()
     }
 
     colorImage = (e) => {
@@ -109,7 +110,7 @@ class Filter extends Component {
                                             {/* <p>{c.description}</p> */}
                                         </div>
                                         <div class="card-action">
-                                            <Link to={`/Filter/${c.name}`}> {c.name} </Link>
+                                            <Link to={`/Item/${c.name}`}> <button className="waves-effect waves-dark btn" > See Item</button> </Link>
 
                                             {c.color !== undefined ? Object.keys(c.color).map(o =>
                                                 <button id={c.id} name={c.name} value={c.color[o]} onClick={this.colorImage} style={{
@@ -118,7 +119,11 @@ class Filter extends Component {
                                                     height: '15px',
                                                 }} type="button" class="color-box" data-color-id="267" title="choose color" aria-label={`choose ${o} color`}> </button>
                                             ) : null
-                                            }
+                                            }   <p> <a> Price :  </a> {c.price} ₪ </p>
+                                            <p> <a> Categories : </a> {c.Category.map(i => <span> {" "} {i},</span>)} </p>
+                                            <p> <a> Sizes : </a> {c.sizes.map(i => <span> {" "} {i},</span>)} </p>
+                                            <p> <a> Collection :  </a> {c.Collection}  </p>
+                                            <p> <a> Discraption :  </a> {c.Discraption}  </p>
                                             <br></br>
                                             {this.Admin(c)}
 

@@ -18,7 +18,7 @@ class Search extends Component {
 
   serachForItem = async (e) => {
     let text = e.target.value
-    let value = "name"
+    let value = "id"
     const res = await axios.get(`${route}getItem/${value}/${text}`)
 
     console.log(res.data)

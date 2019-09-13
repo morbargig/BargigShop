@@ -68,6 +68,12 @@ display: block;
   grid-template-columns: repeat(4,1fr)
 }
 
+.busImg{
+  height: 400px;
+  width: 400px;
+  /* margin-left: 1000px */
+}
+
 
 
 .topnav {

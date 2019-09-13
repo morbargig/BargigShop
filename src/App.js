@@ -122,6 +122,9 @@ class App extends Component {
 
   Admin = (x) => {
     if (this.state.user) {
+      if (this.state.isAdmin === undefined) {
+        this.state.user.email.includes('issacbar') ? this.setState({ isAdmin: true }) : this.setState({ isAdmin: false })
+      }
       if (x === 1) { return this.state.user.email.includes('issacbar') ? <Admin state={this.state} /> : null } else {
         return this.state.user.email.includes('issacbar') ? <a ><Link to="/Admin" >Admin</Link></a> : null
       }
@@ -142,8 +145,6 @@ class App extends Component {
     return (
       <Router>
         <div className="topnav">
-
-          {!this.state.isMobile ? <div><h5>not mobile</h5></div> : <div><h1>mobile</h1></div>}
           <a onClick={this.openMenu} className="active"><Link >menu</Link></a>
 
           {this.state.openMenu ?

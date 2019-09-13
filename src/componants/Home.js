@@ -270,7 +270,6 @@ class Home extends Component {
 
 
 
-
       {
         this.state.editItem ? <UpDateItem upDateItem={this.upDateItem} item={this.state.itemToUpdate} afterUpdateItem={this.afterUpdateItem} />
           : null
@@ -279,18 +278,18 @@ class Home extends Component {
         <img width="100" height="100" className="circle responsive-img" src={this.state.loggedInUser.img} />
       </div>
         : null}
-      <button className={"homeButton"} on={this.slecetCatgory}>
+      {!this.state.isMobile ? <button className={"homeButton"} on={this.slecetCatgory}>
         <select class="browser-default" onClick={this.catagorySearch}>
           <option value="Catgory" disabled selected>חפש לפי </option>
           <option value="name">שם מוצר</option>
+          {this.props.state.isAdmin ? <option value="id">Id</option> : null}
           <option value="Category">קטגוריה</option>
           <option value="sizes">מידה</option>
           <option value="price">מחיר מתחת ל</option>
           <option value="Collection">קולקציה</option>
         </select>
-      </button>
-
-      <input name="input" type="text" value={this.state.fullName} onChange={this.updateusersText} placeholder="type here" />
+        <input name="input" type="text" value={this.state.fullName} onChange={this.updateusersText} placeholder="type here" />
+      </button> : <div><h1>mobile</h1></div>}
       {/* {this.welcomeUser()} */}
       <div className="categories">
         {this.state.Catgories !== undefined ? this.state.Catgories.map(c =>
