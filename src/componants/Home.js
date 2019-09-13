@@ -285,7 +285,7 @@ class Home extends Component {
       }
       {this.state.loggedInUser !== undefined ? this.welcomIfMobile(this.state.loggedInUser)
         : null}
-      {!this.state.isMobile ? <button className={"homeButton"} on={this.slecetCatgory}>
+      {!this.props.state.isMobile ? <button className={"homeButton"} on={this.slecetCatgory}>
         <select class="browser-default" onClick={this.catagorySearch}>
           <option value="Catgory" disabled selected>חפש לפי </option>
           <option value="name">שם מוצר</option>
@@ -296,7 +296,7 @@ class Home extends Component {
           <option value="Collection">קולקציה</option>
         </select>
         <input name="input" type="text" value={this.state.fullName} onChange={this.updateusersText} placeholder="type here" />
-      </button> : <div><h1>mobile</h1></div>}
+      </button> : null}
       {/* {this.welcomeUser()} */}
       <div className="categories">
         {this.state.Catgories !== undefined ? this.state.Catgories.map(c =>
