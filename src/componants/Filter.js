@@ -116,7 +116,7 @@ class Filter extends Component {
                                                 backgroundColor: 'none',
                                                 width: '15px',
                                                 height: '15px',
-                                            }} type="button" class="color-box" data-color-id="267" title="choose color" aria-label={`בחר תמונת רגילה`}> </button> <br></br><br></br><a>Color</a> : {Object.keys(i.color).map(o =>
+                                            }} type="button" class="color-box" data-color-id="267" title="choose color" aria-label={`בחר תמונת רגילה`}> </button> <br></br><br></br><a>Color</a> : {Object.keys(c.color).map(o =>
                                                 <button id={c.id} name={c.name} value={c.color[o]} onClick={this.colorImage} className="left" style={{
                                                     backgroundColor: o,
                                                     width: '15px',

@@ -24,7 +24,7 @@ class App extends Component {
     super()
     this.state = {
       AdminIn: true,
-      openMenu: true
+      // openMenu: true
     }
   }
 
