@@ -208,7 +208,7 @@ class Home extends Component {
             {/* <p>{c.description}</p> */}
           </div>
           <div class="card-action">
-            <Link to={`/Filter/${c.name}`}> {c.name} </Link>
+            <Link to={`/Item/${c.name}`}> {c.name} </Link>
 
             {c.color !== undefined ? Object.keys(c.color).map(o =>
               <button id={c.id} name={c.name} value={c.color[o]} onClick={this.colorImage} style={{
@@ -270,7 +270,7 @@ class Home extends Component {
         <img width="100" height="100" className="circle responsive-img" src={user.img} />
       </div>
     }
-    else { return <div className="userDetails"><img width="100" height="100" className="circle responsive-img" src={user.img} />    </div > }
+    else { return <div className="userDetails"><span>Welcome back {user.name}  </span> <img width="100" height="100" className="circle responsive-img" src={user.img} />    </div > }
   }
 
   render() {

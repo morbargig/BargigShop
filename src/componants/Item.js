@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios'
 // import alertify from 'alertify.js'
 import route from '../config/route'
+import { async } from 'q';
 
 class Item extends Component {
     constructor() {
@@ -41,6 +42,29 @@ class Item extends Component {
         await axios.post(`${route}sendEmail`, mail)
     }
 
+    colorImage = (e) => {
+        let name = e.target.name
+        // let id = e.target.id
+        let value = e.target.value
+        // if (this.state[id]  ){
+        // this.setState({ })
+        // }
+        console.log(name, value)
+        this.setState({ [name]: value }, function () { console.log(this.state[name]) })
+    }
+
+    addToShoppingCart = async (e) => {
+        let name = e.target.id
+        // let image = e.target.name
+        let image = e.target.value
+        let userId = this.props.state.user.uid
+        let obj = { name: name, image: image }
+        // shoppingCard
+        await axios.post(`${route}addToShoppingCard/${userId}`, obj)
+        // shoppingCard = []
+        console.log(userId, name, image)
+    }
+
 
     //   googleMapLocation = () => {
     //     let b = this.state.business[0]
@@ -60,7 +84,7 @@ class Item extends Component {
             {this.state.item ? this.state.item.map(i => <div className="details">
                 <div className="flip-card-back">
                     <h2>{i.name}</h2>
-                    <img className="itemImage" src={i.image} class="busImg"></img>
+                    <img class="busImg" src={this.state[i.name] !== undefined ? this.state[i.name] : i.image} alt={i.name}  ></img>
                     {/* <p> <a> Address : </a>  {i.city}, {i.address}</p> */}
                     {/* <span id="cardTitle" className="card-title"> Name : {i.name}</span> */}
                     <br></br>
@@ -79,6 +103,8 @@ class Item extends Component {
                     <p> <a> Collection :  </a> {i.Collection}  </p>
                     <p> <a> Discraption :  </a> {i.Discraption}  </p>
                     {this.props.state.isAdmin ? <p> <a> ID :  </a> {i.id}  </p> : null}
+                    <button id={i.name} name={i.image} value={i.image} onClick={this.addToShoppingCart}> Add to Shopping Cart </button>
+                    <br></br><br></br>
                     <a> Cell Me :</a>  <a href="tel:+97252-861-2379"> <i class="fa fa-phone fa-fw"></i><span dir="ltr"> +972 52-861-2379</span> </a>
                     <br></br><br></br>
                     <a>Email Me :</a>  <a href="mailto:morbargig@gmail.com"><i class="fa fa-envelope-o fa-fw"></i> morbargig@gmail.com</a>
