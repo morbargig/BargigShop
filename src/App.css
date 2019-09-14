@@ -109,14 +109,14 @@ display: block;
   color: white;
 }
 
-.card {
-  height: 590px;
-}
+/* .card {
+  height: 20%;
+} */
 
-.card-action {
+/* .card-action { */
   /* float: end; */
   /* text-align: ; */
   /* display:  */
   /* margin-bottom: 10px */
-  background-color: black;
-}
+  /* background-color: black; */
+/* } */

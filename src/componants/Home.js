@@ -270,7 +270,7 @@ class Home extends Component {
         <img width="100" height="100" className="circle responsive-img" src={user.img} />
       </div>
     }
-    else { return <div className="userDetails"><span>Welcome back {user.name}  </span> <img width="100" height="100" className="circle responsive-img" src={user.img} />    </div > }
+    else { return <div> <a className='left'> Welcome back {user.name}  </a><div className="userDetails"> <img width="100" height="100" className="circle responsive-img" src={user.img} />    </div > </div> }
   }
 
   render() {
