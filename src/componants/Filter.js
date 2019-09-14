@@ -112,14 +112,19 @@ class Filter extends Component {
                                         <div class="card-action">
                                             <Link to={`/Item/${c.name}`}> <button className="waves-effect waves-dark btn" > See Item</button> </Link>
 
-                                            {c.color !== undefined ? Object.keys(c.color).map(o =>
-                                                <button id={c.id} name={c.name} value={c.color[o]} onClick={this.colorImage} style={{
+                                            {c.color !== undefined ? <div> <a> Regular color</a> :  <button id={c.id} name={c.name} value={c.image} onClick={this.colorImage} className="left" style={{
+                                                backgroundColor: 'none',
+                                                width: '15px',
+                                                height: '15px',
+                                            }} type="button" class="color-box" data-color-id="267" title="choose color" aria-label={`בחר תמונת רגילה`}> </button> <br></br><br></br><a>Color</a> : {Object.keys(i.color).map(o =>
+                                                <button id={c.id} name={c.name} value={c.color[o]} onClick={this.colorImage} className="left" style={{
                                                     backgroundColor: o,
                                                     width: '15px',
                                                     height: '15px',
                                                 }} type="button" class="color-box" data-color-id="267" title="choose color" aria-label={`choose ${o} color`}> </button>
-                                            ) : null
-                                            }   <p> <a> Price :  </a> {c.price} ₪ </p>
+                                            )}</div> : null
+                                            }
+                                            <p> <a> Price :  </a> {c.price} ₪ </p>
                                             <p> <a> Categories : </a> {c.Category.map(i => <span> {" "} {i},</span>)} </p>
                                             <p> <a> Sizes : </a> {c.sizes.map(i => <span> {" "} {i},</span>)} </p>
                                             <p> <a> Collection :  </a> {c.Collection}  </p>

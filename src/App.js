@@ -182,7 +182,7 @@ class App extends Component {
     return (
       <Router>
         <div className="topnav">
-          <a onClick={this.openMenu} className="active"><Link >menu</Link></a>
+          <a onClick={this.openMenu} className="active"><Link >Menu</Link></a>
 
           {this.state.openMenu ?
             <div id="myLinks">

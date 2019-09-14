@@ -210,13 +210,17 @@ class Home extends Component {
           <div class="card-action">
             <Link to={`/Item/${c.name}`}> {c.name} </Link>
 
-            {c.color !== undefined ? Object.keys(c.color).map(o =>
-              <button id={c.id} name={c.name} value={c.color[o]} onClick={this.colorImage} style={{
+            {c.color !== undefined ? <div> <a> Regular color</a> :  <button id={c.id} name={c.name} value={c.image} onClick={this.colorImage} className="left" style={{
+              backgroundColor: 'none',
+              width: '15px',
+              height: '15px',
+            }} type="button" class="color-box" data-color-id="267" title="choose color" aria-label={`בחר תמונת רגילה`}> </button> <br></br><br></br><a>Color</a> : {Object.keys(i.color).map(o =>
+              <button id={c.id} name={c.name} value={c.color[o]} onClick={this.colorImage} className="left" style={{
                 backgroundColor: o,
                 width: '15px',
                 height: '15px',
               }} type="button" class="color-box" data-color-id="267" title="choose color" aria-label={`choose ${o} color`}> </button>
-            ) : null
+            )}</div> : null
             }
             <br></br>
             {this.props.state.user.email.includes('issacbar') ? <div id={c._id}> <button onClick={this.editItem}> ערוך </button>  <br></br> <button name={c.name} id={c._id} onClick={this.deleteItem}> מחק מוצר </button> </div> : null}
