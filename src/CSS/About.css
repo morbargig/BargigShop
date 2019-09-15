@@ -1,0 +1,52 @@
+img.bg {
+    opacity: 0.85; 
+    min-height: 100%;
+    min-width: 1024px;
+    width: 100%;
+    height: auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+  }
+  
+  #About{
+      font-family: 'Dancing Script', cursive;
+      font-size: 150px;
+      margin-bottom: 30px;
+      color: rgb(255, 255, 255);
+  }
+  
+  #firstimg{
+      -webkit-box-shadow: 15px 19px 164px -37px rgba(0,0,0,0.5);
+      -moz-box-shadow: 15px 19px 164px -37px rgba(0,0,0,0.5);
+      box-shadow: 15px 19px 164px -37px rgba(0,0,0,0.5);
+  }
+  
+  #whoWeR, #howDoesItWork, #Signup,#OpenBusiness{
+      font-family: 'Playfair Display', serif;
+  }
+  
+  
+  
+  #OpenBusiness span{
+      font-size: 140%;
+  }
+  
+  #Signup span{
+      font-size: 140%;
+  }
+  
+  #howDoesItWork span{
+      font-size: 140%;
+  }
+  
+  blockquote{
+      font-size: 100%
+  }
+  
+  #arrow1, #arrow2{
+      font-size: 200%
+  }
+  
+  
