@@ -19,7 +19,7 @@ class Admin extends Component {
             inputsWithFewInputs: ['sizes', 'Category'],
             newItem: { sizes: [], Category: [], color: {} },
             itemArry: {},
-            colorSData =['aqua', 'black', 'blue', 'fuchsia', 'gray', 'green',
+            colorSData : ['aqua', 'black', 'blue', 'fuchsia', 'gray', 'green',
                 'lime', 'maroon', 'navy', 'olive', 'orange', 'purple', 'red',
                 'silver', 'teal', 'white', 'yellow']
         }
