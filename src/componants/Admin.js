@@ -18,7 +18,10 @@ class Admin extends Component {
             numberInputs: ['price'],
             inputsWithFewInputs: ['sizes', 'Category'],
             newItem: { sizes: [], Category: [], color: {} },
-            itemArry: {}
+            itemArry: {},
+            colorSData =['aqua', 'black', 'blue', 'fuchsia', 'gray', 'green',
+                'lime', 'maroon', 'navy', 'olive', 'orange', 'purple', 'red',
+                'silver', 'teal', 'white', 'yellow']
         }
 
     }
@@ -125,7 +128,7 @@ class Admin extends Component {
 
     render() {
         // console.log(this.props.state.user)
-        let data = ["black", "red", "blue"]
+        // let data = ["black", "red", "blue"]
         return <div>  <h5>{this.props.state.user ? 'Hello Admin ' + this.props.state.user.email : null} </h5>
             <br></br>
             <h5> ** הוסף מוצר חדש כל השדות חובה חוץ מתמונה לפי צבע **</h5>
@@ -156,7 +159,7 @@ class Admin extends Component {
             </label>
             <div>
                 צבע מוצר : <datalist id="searchColor" className='select-input' onChange={this.updateItemdetails}>
-                    {data.map(c => <option value={c}>{c} </option>)}
+                    {this.state.colorSData.map(c => <option value={c}>{c} </option>)}
                 </datalist>
                 <input id="arry" autoComplete="on" list="searchColor" name='color'
                     value={this.state.color}
