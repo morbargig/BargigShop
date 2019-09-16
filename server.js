@@ -41,5 +41,9 @@ mongoose.connect(process.env.MONGODB_URI || `mongodb://localhost/${DBname}`, { u
 
 console.log(process.env.port)
 
+const routee = process.env.port
+
+export default routee
+
 
 
