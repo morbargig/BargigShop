@@ -1,6 +1,7 @@
-// const route  = 'http://localhost:8000/'
-const route = '/'
 
 // if ( )
-console.log(process.env.PORT)
+if (process.env.PORT !== undefined) {
+    const route = '/'
+} else { const route = 'http://localhost:8000/' }
+
 export default route
