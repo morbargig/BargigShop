@@ -26,19 +26,20 @@ app.use(express.static(path.join(__dirname, 'build')))
 app.use('/', api)
 
 
-app.get('*', function(req, res){
-    res.sendFile(path.join(__dirname,'build','index.html'))
+app.get('*', function (req, res) {
+    res.sendFile(path.join(__dirname, 'build', 'index.html'))
 })
 
 
 
-port =  8000
+port = 8000
 DBname = 'BargigShop'
 
 mongoose.connect(process.env.MONGODB_URI || `mongodb://localhost/${DBname}`, { useNewUrlParser: true }).then(() => {
     app.listen(process.env.PORT || port, () => console.log(`Running server on port` + port))
 })
 
+console.log(process.env.port)
 
 
 
