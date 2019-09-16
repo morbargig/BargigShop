@@ -39,11 +39,12 @@ mongoose.connect(process.env.MONGODB_URI || `mongodb://localhost/${DBname}`, { u
     app.listen(process.env.PORT || port, () => console.log(`Running server on port` + port))
 })
 
-console.log(process.env.port)
 
-const routee = process.env.port
 
-export default routee
+
+// const routee = process.env.port
+
+// export default routee
 
 
 

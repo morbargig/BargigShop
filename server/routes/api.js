@@ -281,6 +281,13 @@ router.get('/getSomethinBySomeFiedAndValue/:Collection/:filed/:value', function 
 // }
 // x()
 
-
+console.log(process.env.port)
+// router.get('/route', function (req, res) {
+//     // let id = req.params.id
+//     // User.findOne({ "_id": id }).exec(function (err, x) {
+//     // console.log(x)
+//     // })
+//     res.send(process.env.port)
+// })
 
 module.exports = router
