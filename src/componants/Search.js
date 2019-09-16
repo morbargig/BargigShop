@@ -31,8 +31,8 @@ class Search extends Component {
 
   render() {
     return <div>
-      <h5>חפש מוצר</h5>
-      <input type='text' name='searchItem' placeholder='search for Item' value={this.state['search']} onChange={this.serachForItem} />
+      <h5> ID חפש מוצר לפי  </h5>
+      <input type='text' name='searchItem' placeholder='אפשר לראות תעודת זהות בבקשה' value={this.state['search']} onChange={this.serachForItem} />
       {this.state.Items !== undefined ? this.state.Items.map(c =>
         <div className="category">
           <div class="card">

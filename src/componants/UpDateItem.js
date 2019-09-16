@@ -183,29 +183,46 @@ class UpDateItem extends Component {
 
     render() {
         return <div class="newItem">
+            <h6>עידכון מוצר <br></br>
+                כאשר אתה משנה שדה מסויים רק הוא משתנה <br></br>
+                {/* פרט לקטגוריות, מידות ,תמונות לפי צבע */}
+                 </h6>
             {/* {u = this.props.itemToUpdate} */}
             <label>price</label>  <input name="price" type="number" value={this.state.price} onChange={this.updateusersText} placeholder={`Price was "${this.props.item.price}" before`} />
             {this.state.ragularInput.map(r =>
                 <div>  <label>{r}</label><input name={r} type="text" value={this.state[r]} onChange={this.updateusersText} placeholder={`${r} was "${this.props.item[r]}" before`} /></div>
             )}
-            <div> Categories : </div>
-            {this.state.itemToUpdate.Category.map(i => <button name="Category" id={i} onClick={this.addToArry}>  היה לפני לחץ כדי לשמר "{i}"  <i class="material-icons left">add</i> </button>)}
-            <input name='newCategory' onChange={this.updateusersText} type='text' placeholder='New Category' value={this.state.newCategory} />
-            <button name='newCategory' onClick={this.AddNewToArry}>הוסף קטגוריה </button>
-            <div> Sizes :</div>
+            <h6>כאשר אתה רוצה לשנות אחד מהשדות הבאים 
+                 <br></br> עליך לבחור אם לשמר את הבחירות הקודמות 
+                 <br></br> אם ברצונך למחוק מהשדה תשמר הכל חוץ 
+                 <br></br>  מאותו דבר אותו תרצה למחוק 
+                 <br></br> אם תרצה להוסיף תשמר את הפרטים הקודמים 
+                 <br></br> ותרשום את הדבר חדש ותלץ כל הכתפור
+                 </h6>
 
-            {this.state.itemToUpdate.sizes.map(i => <button name="sizes" id={i} onClick={this.addToArry}> היה לפני לחץ כדי לשמר  "{i}"  <i class="material-icons left">add</i> </button>)}
-            <input name='newsizes' type='text' placeholder='New Size' value={this.state.newsizes} onChange={this.updateusersText} />
+            <h6> קטגוריות : </h6>
+            {this.state.itemToUpdate.Category.map(i => <button name="Category" id={i} onClick={this.addToArry}>   לפני לחץ כדי לשמר  "{i}" היה  <i class="material-icons left">add</i> </button>)}
+            <input name='newCategory' onChange={this.updateusersText} type='text' placeholder='קטגוריה חדשה' value={this.state.newCategory} />
+            <button name='newCategory' onClick={this.AddNewToArry}>הוסף קטגוריה </button>
+
+            <h6> מידות :</h6>
+            {/* <br></br> */}
+            {this.state.itemToUpdate.sizes.map(i => <button name="sizes" id={i} onClick={this.addToArry}> לפני לחץ כדי לשמר  "{i}" היה  <i class="material-icons left">add</i> </button>)}
+            <input name='newsizes' type='text' placeholder='מידה חדשה' value={this.state.newsizes} onChange={this.updateusersText} />
             <button name='newsizes' onClick={this.AddNewToArry}>הוסף מידה </button>
+            <br></br>
+            <br></br>
+            <h6>ערוך תמונה </h6>
             <input type="file" onChange={this.handleImage} />
-            <button onClick={this.handleUpload}>העלה תמונה </button>
+            <button  onClick={this.handleUpload}>עדכן תמונה </button>
 
             {/* <input name="lastName" type="text" value={this.state.lastName} onChange={this.updateusersText} placeholder={"Last Name was " + this.props.itemToUpdate.name + ' before'} />
             <label>Discraption</label>  <input name="Discraption" type="text" value={this.state.email} onChange={this.updateusersText} placeholder={`E-Mail was "${this.props.itemToUpdate.email}" before`} />
             <label>Collection</label>   <input name="Collection" type="text" value={this.state.emailType} onChange={this.updateusersText} placeholder={`emailType was "${this.props.itemToUpdate.emailType}" before`} />
             <label>image</label> <input name="image" type="text" value={this.state.oountry} onChange={this.updateusersText} placeholder={`Country was "${this.props.itemToUpdate.country}" before`} /> */}
-
-            <button onClick={this.getValue} >עדכן מוצר או בטל</button>
+<br></br>
+<br></br>
+            <button class="waves-effect waves-dark btn" onClick={this.getValue} >עדכן מוצר או בטל</button>
             {/* <input type="checkbox" id="horns" name="horns"></input> */}
             {/* {
                 "_id": {

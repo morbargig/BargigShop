@@ -94,7 +94,7 @@ class Admin extends Component {
         alert(name + ' was added secsecfuly')
     }
 
-    updeBesniiesText = (e) => {
+    updateItemdetails = (e) => {
         let name = e.target.name
         let id = e.target.id
         let text = e.target.value
@@ -116,7 +116,8 @@ class Admin extends Component {
         let newItem = { ...this.state.newItem }
         // newItem["color"] = []
         newItem.color[color] = imageByColor
-        this.setState({ newItem }, function () { console.log(this.state) })
+        this.setState({ newItem, color: "" }, function () { console.log(this.state) })
+        alert("color for Item Add Successfully")
     }
 
 
@@ -124,34 +125,60 @@ class Admin extends Component {
 
     render() {
         // console.log(this.props.state.user)
+        let data = ["black", "red", "blue"]
         return <div>  <h5>{this.props.state.user ? 'Hello Admin ' + this.props.state.user.email : null} </h5>
             <br></br>
-            <h5> הוסף מוצר חדש</h5>
-            {this.state.stringInputs.map(i => <label>{i} <input type='text' placeholder={i} name={i} value={this.state.newItem[i]} onChange={this.updeBesniiesText} /> </label>)}
+            <h5> ** הוסף מוצר חדש כל השדות חובה חוץ מתמונה לפי צבע **</h5>
+            {this.state.stringInputs.map(i => <label>{i} <input type='text' placeholder={i} name={i} value={this.state.newItem[i]} onChange={this.updateItemdetails} /> </label>)}
             <br></br>
             {/* <br></br> */}
             <br></br>
-            {this.state.numberInputs.map(i => <label>{i} <input type='number' placeholder={i} name={i} value={this.state.newItem[i]} onChange={this.updeBesniiesText} /> </label>)}
+            {this.state.numberInputs.map(i => <label>{i} <input type='number' placeholder={i} name={i} value={this.state.newItem[i]} onChange={this.updateItemdetails} /> </label>)}
             <br></br>
+            <h5>קטגוריה ומידות  </h5>
             <br></br>
-            {this.state.inputsWithFewInputs.map(i => <label id={i}> you need to add {i} one by one  <input type='text' id='arry' name={i} placeholder={i} value={this.state[i]} onChange={this.updeBesniiesText} />  <button onClick={this.pushNewValue}> add  </button><br></br> </label>)}
+            {this.state.inputsWithFewInputs.map(i => <label id={i}>** אחד אחרי השני  {i} אתה צריך להוסיף **  <input type='text' id='arry' name={i} placeholder={i} value={this.state[i]} onChange={this.updateItemdetails} />  <button onClick={this.pushNewValue}> {i} הוסף </button><br></br> </label>)}
             <br></br>
-            <br></br>
+            <h5>הוסף תמונה ראשית</h5>
             <br></br>
             <input type="file" onChange={this.handleImage} />
-            <button onClick={this.handleUpload}>Upload Image</button><br></br>
 
-            <label>color <input id="arry" type='text' placeholder='color' name='color' value={this.state.color} onChange={this.updeBesniiesText} /> </label>
+            <h5>1 הוסף תמונה ראשית שלב</h5>
+            <br></br>
+            <button onClick={this.handleUpload}>*  לחץ עליי להעלות תמונה ראשית  *</button>
+            <br></br>
+            <br></br>
+            <h5>הוסף תמונה לפי צבע </h5>
+            <br></br>
+
+            <label>  ** הוסף תמונה לפי צבע... צבע חייב לרשום באנגלית באותיות קטנות  **
+                {/* <input id="arry" type='text' placeholder='color' name='color' value={this.state.color} onChange={this.updateItemdetails} /> */}
+            </label>
+            <div>
+                צבע מוצר : <datalist id="searchColor" className='select-input' onChange={this.updateItemdetails}>
+                    {data.map(c => <option value={c}>{c} </option>)}
+                </datalist>
+                <input id="arry" autoComplete="on" list="searchColor" name='color'
+                    value={this.state.color}
+                    placeholder='צבע' onChange={this.updateItemdetails} className='select-input' />
+            </div>
             <input type="file" onChange={this.handleImage} />
-            <button name="color" onClick={this.handleUpload}>העלה תמונה לפי צבע</button>
+            <br></br>
+            <h5> 1   הוסף תמונה לפי צבע שלב</h5>
+            <br></br>
+            <button name="color" onClick={this.handleUpload} >  לחץ עליי ראשון כדי להעלות את התמונה ולקבל כתובת יורל לתמונה והמתן כשתי שניות  </button>
+            <br></br>
+            <h5>2 הוסף תמונה לפי צבע שלב </h5>
+            <br></br>
             <button onClick={this.addImageByColor}>
-                הוסף תמונה לפי צבע  </button>
+                לחץ עליי שני כדי להוסיף את התמונה והצבע שבחרת למוצר  </button>
+            <br></br>
+            <h5>סיום ושליחת מוצר</h5>
+            <br></br>
+            <button class="waves-effect waves-dark btn" onClick={this.addNewitem} >  לחץ עליי להעלות מוצר רק כאשר כל הפרטים תקינים </button>
+            <br></br>
             <br></br>
 
-            <br></br>
-            <button onClick={this.addNewitem} > Add new Item</button>
-            <br></br>
-            <br></br>
             <br></br>
             <br></br>
             <Search />
