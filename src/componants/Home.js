@@ -41,50 +41,6 @@ class Home extends Component {
   }
 
 
-  //   resultByCatgory = () => {
-  //     if (this.state.resultByCatgory !== undefined) {
-  //         return this.state.resultByCatgory.map(c =>
-  //             <div className="category">
-
-  //                 <div class="card">
-  //                     <div class="card-image">
-  //                         <img src={c.img}></img>
-  //                         <span class="card-title">{c.name}</span>
-  //                     </div>
-  //                     <div class="card-content">
-  //                         <p>{c.description}</p>
-  //                     </div>
-  //                     <div class="card-action">
-  //                         <Link to={`/SmallBizz/${c.name}`}> {c.name} </Link>
-  //                     </div>
-  //                 </div>
-  //             </div>
-  //             // {/* <div>  
-  //             //                  <h2>{r.name}</h2>
-  //             //                 <img src={r.img}></img>
-  //             //                 <p>{r.description}</p>
-
-  //             //                 <a className="waves-effect waves-light btn-small" onClick={this.changeDisplay}>Make an appointment</a></div>) */}
-  //         )
-  //     }
-  // }
-
-  // welcomeUser = async () => {
-  //   if (this.state.user) {
-  //     let user = this.state.user
-  //     console.log(user)
-  //     // let items = await axios.get(`${route}getbyfield/${this.props.name}`)
-  //     let res = await axios.get(`${route}getUserByEmail/${user.email}`)
-  //     console.log(res)
-  //     //  return <div className="userDetails">
-  //     //   <h6> {this.state.loggedInUserName !== undefined ? "Welcome back " + this.state.loggedInUserName : null} </h6>
-  //     //   <img width="100" height="100" className="circle responsive-img" src={this.state.loggedInUserImg} />
-  //     // </div>
-
-  //   }
-  // }
-
-
   updateusersText = (e) => {
     let name = e.target.name
     let text = e.target.value
@@ -209,7 +165,7 @@ class Home extends Component {
           </div>
           <div class="card-action">
             <Link to={`/Item/${c.name}`}> {c.name} </Link>
-            <br></br><br></br>   
+            <br></br><br></br>
             {c.color !== undefined ? <div> <a> Regular color</a> :  <button id={c.id} name={c.name} value={c.image} onClick={this.colorImage} className="left" style={{
               backgroundColor: 'color:transparent',
               width: '15px',

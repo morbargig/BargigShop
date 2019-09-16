@@ -2,21 +2,25 @@ import React, { Component } from 'react';
 import axios from 'axios'
 import route from '../config/route'
 import firebase from 'firebase'
+import { colors } from '@material-ui/core';
 
 
 class UpDateItem extends Component {
     constructor() {
         super()
         this.state = {
-            itemToUpdate: {},
+            itemToUpdate: { color: {} },
             ragularInput: [
                 "name",
                 "Discraption",
                 "Collection",
                 "image"],
             Category: [],
-            sizes: []
-
+            sizes: [],
+            color: {},
+            colorSData: ['aqua', 'black', 'blue', 'fuchsia', 'gray', 'green',
+                'lime', 'maroon', 'navy', 'olive', 'orange', 'purple', 'red',
+                'silver', 'teal', 'white', 'yellow']
         }
 
     }
@@ -44,8 +48,11 @@ class UpDateItem extends Component {
     getValue = (e) => {
         console.log(e.target.parentElement)
         console.log(this.state)
+
         let x = this.state
         let itemToUpdate = this.state.itemToUpdate
+        let color
+        x.color !== undefined ? color = x.color : color = itemToUpdate.color
         let name
         x.name !== undefined ? name = x.name : name = itemToUpdate.name
         let Discraption
@@ -64,6 +71,7 @@ class UpDateItem extends Component {
         console.log(name, this.state.itemToUpdate)
         let obj = {
             _id: this.state.itemToUpdate._id,
+            color: color,
             name: name,
             Discraption: Discraption,
             Collection: Collection,
@@ -81,9 +89,9 @@ class UpDateItem extends Component {
             price: undefined,
             image: undefined,
             Category: [],
-            sizes: []
+            sizes: [],
+            color: {}
 
-            // itemToUpdate: obj
         }
             , function () {
                 console.log(obj)
@@ -104,6 +112,7 @@ class UpDateItem extends Component {
             "price": obj.price,
             "image": obj.image,
             "Category": obj.Category,
+            "color": obj.color,
             "sizes": obj.sizes
         }
         console.log(upDate, id)
@@ -123,7 +132,12 @@ class UpDateItem extends Component {
         }
     }
 
-    handleUpload = () => {
+    handleUpload = (e) => {
+        let img = "image"
+        let name = e.target.name
+        if (name === "color") {
+            img = "colorImg"
+        }
         console.log("kjgjyfjukguyv")
         const { uploadedImage } = this.state
         if (this.state.uploadedImage === null) {
@@ -141,7 +155,7 @@ class UpDateItem extends Component {
                 () => {
                     firebase.storage().ref('BargigShopItems').child(uploadedImage.name).getDownloadURL().then(url => {
                         this.setState({
-                            image: url
+                            [img]: url
                         })
                         console.log(this.state.image)
 
@@ -159,12 +173,18 @@ class UpDateItem extends Component {
 
     addToArry = (e) => {
         let name = e.target.name
-        let value = e.target.id
-        console.log(name, value)
-        let arry = this.state[name]
-        arry.push(value)
-        this.setState({ [name]: arry }, function () { console.log(this.state[name]) })
-
+        let value = e.target.value
+        let id = e.target.id
+        console.log(name, value, id, e.target)
+        if (name === "color") {
+            let obj = this.state[name]
+            obj[value] = id
+            this.setState({ [name]: obj }, function () { console.log(this.state[name]) })
+        } else {
+            let arry = this.state[name]
+            arry.push(id)
+            this.setState({ [name]: arry }, function () { console.log(this.state[name]) })
+        }
     }
 
     AddNewToArry = (e) => {
@@ -179,6 +199,16 @@ class UpDateItem extends Component {
         this.setState({ [arryName]: newArry })
     }
 
+    addImageByColor = () => {
+
+        let colorName = this.state.colorName
+        let imageByColor = this.state.colorImg
+        let color = { ...this.state.color }
+        color[colorName] = imageByColor
+        this.setState({ color: color, colorName: "" }, function () { console.log(this.state) })
+        alert("color for Item Add Successfully")
+    }
+
     // id={this.state.itemToUpdateId} itemToUpdate={this.itemToUpdate} newUser={this.state.newUser}
 
     render() {
@@ -186,17 +216,17 @@ class UpDateItem extends Component {
             <h6>עידכון מוצר <br></br>
                 כאשר אתה משנה שדה מסויים רק הוא משתנה <br></br>
                 {/* פרט לקטגוריות, מידות ,תמונות לפי צבע */}
-                 </h6>
+            </h6>
             {/* {u = this.props.itemToUpdate} */}
             <label>price</label>  <input name="price" type="number" value={this.state.price} onChange={this.updateusersText} placeholder={`Price was "${this.props.item.price}" before`} />
             {this.state.ragularInput.map(r =>
                 <div>  <label>{r}</label><input name={r} type="text" value={this.state[r]} onChange={this.updateusersText} placeholder={`${r} was "${this.props.item[r]}" before`} /></div>
             )}
-            <h6>כאשר אתה רוצה לשנות אחד מהשדות הבאים 
-                 <br></br> עליך לבחור אם לשמר את הבחירות הקודמות 
-                 <br></br> אם ברצונך למחוק מהשדה תשמר הכל חוץ 
-                 <br></br>  מאותו דבר אותו תרצה למחוק 
-                 <br></br> אם תרצה להוסיף תשמר את הפרטים הקודמים 
+            <h6>כאשר אתה רוצה לשנות אחד מהשדות הבאים
+                 <br></br> עליך לבחור אם לשמר את הבחירות הקודמות
+                 <br></br> אם ברצונך למחוק מהשדה תשמר הכל חוץ
+                 <br></br>  מאותו דבר אותו תרצה למחוק
+                 <br></br> אם תרצה להוסיף תשמר את הפרטים הקודמים
                  <br></br> ותרשום את הדבר חדש ותלץ כל הכתפור
                  </h6>
 
@@ -214,36 +244,41 @@ class UpDateItem extends Component {
             <br></br>
             <h6>ערוך תמונה </h6>
             <input type="file" onChange={this.handleImage} />
-            <button  onClick={this.handleUpload}>עדכן תמונה </button>
+            <button onClick={this.handleUpload}>עדכן תמונה </button>
+            <br></br>
+            <br></br>
+
+            {this.props.item.color ? <div> : צבעים שהיו לפני <br></br><br></br>{Object.keys(this.props.item.color).map(c => <button id={this.props.item.color[c]} name={'color'} value={c} onClick={this.addToArry}> לפני לחץ כדי לשמר  "{c}" היה <img className="editImage" src={this.props.item.color[c]}></img> </button>)} </div> : null}
+            <br></br>
+            <div>
+                צבע מוצר : <datalist id="searchColor" className='select-input' onChange={this.updateusersText}>
+                    {this.state.colorSData.map(c => <option value={c}>{c} </option>)}
+                </datalist>
+                <input id="arry" autoComplete="on" list="searchColor" name='colorName'
+                    value={this.state.colorName}
+                    placeholder='צבע' onChange={this.updateusersText} className='select-input' />
+            </div>
+            <br></br>
+            <input type="file" onChange={this.handleImage} />
+            <br></br>
+            <h5> 1   הוסף תמונה לפי צבע שלב</h5>
+            <br></br>
+            <button name="color" onClick={this.handleUpload} >  לחץ עליי ראשון כדי להעלות את התמונה ולקבל כתובת יורל לתמונה והמתן כשתי שניות  </button>
+            <br></br>
+            <h5>2 הוסף תמונה לפי צבע שלב </h5>
+            <br></br>
+            <button onClick={this.addImageByColor}>
+                לחץ עליי שני כדי להוסיף את התמונה והצבע שבחרת למוצר  </button>
+            <br></br>
 
             {/* <input name="lastName" type="text" value={this.state.lastName} onChange={this.updateusersText} placeholder={"Last Name was " + this.props.itemToUpdate.name + ' before'} />
             <label>Discraption</label>  <input name="Discraption" type="text" value={this.state.email} onChange={this.updateusersText} placeholder={`E-Mail was "${this.props.itemToUpdate.email}" before`} />
             <label>Collection</label>   <input name="Collection" type="text" value={this.state.emailType} onChange={this.updateusersText} placeholder={`emailType was "${this.props.itemToUpdate.emailType}" before`} />
             <label>image</label> <input name="image" type="text" value={this.state.oountry} onChange={this.updateusersText} placeholder={`Country was "${this.props.itemToUpdate.country}" before`} /> */}
-<br></br>
-<br></br>
+            <br></br>
+            <br></br>
             <button class="waves-effect waves-dark btn" onClick={this.getValue} >עדכן מוצר או בטל</button>
-            {/* <input type="checkbox" id="horns" name="horns"></input> */}
-            {/* {
-                "_id": {
-                    "$oid": "5d7293c2eb70532fa086c52a"
-                },
-                "Category": [
-                    null,
-                    "כיפות"
-                ],
-  "sizes": [],
-  "name": "כיפה",
-  "id": "024",
-  "Discraption": "כיפה לבנה",
-  "Collection": "כיפות חגיגיות",
-  "price": 20,
-  "image": "https://firebasestorage.googleapis.com/v0/b/morbargig-a81d2.appspot.com/o/BargigShopItems%2FWhatsApp%20Image%202019-09-04%20at%2012.41.24%20(2).jpeg?alt=media&token=b8ebf9f3-439f-4c89-9c73-3a32cf2d0df5",
-  "__v": 0
-} */}
-            {/* <label onClick={this.getValue} for="horns">Sold</label> */}
-            {/* <input type="checkbox" name="vehicle" > I have a bike </input>
-            <input type="submit" ></input> */}
+
         </div>
     }
 
