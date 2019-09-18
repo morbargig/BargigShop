@@ -201,10 +201,7 @@ class Admin extends Component {
             </label>
             <div>
                 צבע מוצר : <datalist id="searchColor" className='select-input' onChange={this.updateItemdetails}>
-                    {this.state.colorSData.map(c => <option className="optionsColor" style={{
-                        backgroundColor: { c },
-                        color: { c }
-                    }} value={c}>{c}  </option>)}
+                    {this.state.colorSData.map(c => <option className="optionsColor"  value={c}>{c}  </option>)}
                 </datalist>
 
                 <input id="arry" autoComplete="on" list="searchColor" name='color'

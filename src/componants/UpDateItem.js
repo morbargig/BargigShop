@@ -46,6 +46,9 @@ class UpDateItem extends Component {
     updateusersText = (e) => {
         let name = e.target.name
         let text = e.target.value
+        console.log(name,text)
+        alert(name)
+        alert(text)
         // console.log(text)
         // this.state[name] = 0
         this.setState({
@@ -189,9 +192,10 @@ class UpDateItem extends Component {
         let name = e.target.name
         let value = e.target.value
         let id = e.target.id
-        alert(id)
-        alert(name)
-        alert(value)
+        // alert(id)
+        // alert(name)
+        // alert(value)
+
         console.log(name, value, id, e.target)
         if (name === "color") {
             let obj = this.state[name]
@@ -270,10 +274,7 @@ class UpDateItem extends Component {
             <br></br>
             <div>
                 הוסף צבע מוצר  : <datalist id="searchColor" className='select-input' onChange={this.updateusersText}>
-                    {this.state.colorSData.map(c => <option class={c} style={{
-                        backgroundColor: c,
-                        color: c
-                    }} value={c}>{c}  </option>)}
+                    {this.state.colorSData.map(c => <option className={`option${c}`} value={c}>{c}  </option>)}
                 </datalist>
                 <input id="arry" autoComplete="on" list="searchColor" name='colorName'
                     value={this.state.colorName}
