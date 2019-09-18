@@ -4,7 +4,7 @@ import axios from 'axios'
 import route from '../config/route'
 import { Link } from 'react-router-dom'
 import UpDateItem from './UpDateItem';
-import {  inject } from 'mobx-react'
+import { inject } from 'mobx-react'
 // observer,
 
 @inject("ItemsStore")
@@ -211,6 +211,7 @@ class Home extends Component {
     this.setState({
       editItem: x
     })
+    window.location.reload()
   }
 
   welcomBack = async () => {

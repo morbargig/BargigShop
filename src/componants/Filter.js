@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import axios from 'axios'
 // import '../CSS/Filter.css'
 import route from '../config/route';
@@ -66,12 +66,11 @@ class Filter extends Component {
         this.setState({
             editItem: x
         })
-        window.location.reload()
     }
 
     colorImage = (e) => {
         let name = e.target.name
-        // let id = e.target.id
+        let id = e.target.id
         let value = e.target.value
         // if (this.state[id]  ){
         // this.setState({ })
@@ -101,15 +100,15 @@ class Filter extends Component {
 
                                 <div className="category">
 
-                                    <div class="card">
-                                        <div class="card-image">
+                                    <div className="card">
+                                        <div className="card-image">
                                             <img src={this.state[c.name] !== undefined ? this.state[c.name] : c.image} alt={c.name}  ></img>
-                                            <span class="card-title">{c.name}</span>
+                                            <span className="card-title">{c.name}</span>
                                         </div>
-                                        <div class="card-content">
+                                        <div className="card-content">
                                             {/* <p>{c.description}</p> */}
                                         </div>
-                                        <div class="card-action">
+                                        <div className="card-action">
                                             <Link to={`/Item/${c.name}`}> <button className="waves-effect waves-dark btn" > See Item</button> </Link>
 
                                             {c.color !== undefined ? <div> <a> Regular color</a> :  <button id={c.id} name={c.name} value={c.image} onClick={this.colorImage} className="left" style={{

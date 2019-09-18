@@ -46,9 +46,9 @@ class UpDateItem extends Component {
     updateusersText = (e) => {
         let name = e.target.name
         let text = e.target.value
-        console.log(name,text)
-        alert(name)
-        alert(text)
+        console.log(name, text)
+        // alert(name)
+        // alert(text)
         // console.log(text)
         // this.state[name] = 0
         this.setState({
@@ -148,8 +148,8 @@ class UpDateItem extends Component {
 
         let img = "image"
         let name = e.target.name
+        // alert(name)
 
-alert(name)
         if (name === "color") {
             img = "colorImg"
         }
