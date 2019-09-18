@@ -175,6 +175,15 @@ class App extends Component {
   shoppingCart = () => {
     this.asyncShoppingCart()
   }
+  About = () => {
+    if (this.state.user) {
+
+      if (this.state.user.email.includes('issacbar92@gmail.com')) {
+
+        return <About state={this.state} />
+      }
+    }
+  }
 
 
   render() {
@@ -189,14 +198,15 @@ class App extends Component {
               {/* <ul id="nav-mobile" class="left hide-on-med-and-down"> */}
 
               <a ><Link to="/" >Home</Link></a>
-              <a ><Link to="/About">About </Link></a>
+              {this.state.isAdmin ? <a ><Link to="/About">About </Link></a> : null}
               {this.Admin()}
               {/* {this.state.user ? */}
               {this.shoppingCart()}
               {this.state.shoppingCart ? <a ><Link to="/ShoppingCart">Shopping Cart </Link></a> : null}
               {/* <a ><Link to="/shoppingCart">Shopping Cart </Link></a> */}
               {/* : null} */}
-              {this.state.user === undefined ? <a ><Link to="/SingUp">singup  </Link></a> : <a onClick={this.logout} > <Link to='/'> Logout</Link> </a>}
+              {console.log(this.state.user)}
+              {this.state.user === null ? <a ><Link to="/SingUp">Sing Up  </Link></a> : <a onClick={this.logout} > <Link to='/'> Logout</Link> </a>}
 
 
             </div>
@@ -207,7 +217,7 @@ class App extends Component {
         {/* <Route path="/Home" render={() => <Home returnCatgories={this.returnCatgories} reaseCatgories={this.reaseCatgories} state={this.state} Catgories={this.state.Catgories} userEmail={this.state.userEmail} />} /> */}
         {/* <Route path="/About" render={() => <About state={this.state} />} /> */}
         <Route path="/Admin" render={() => this.Admin(1)} />
-        <Route path="/About" render={() => <About />} />
+        <Route path="/About" render={() => this.About()} />
         <Route path="/ShoppingCart" render={() => <ShoppingCart state={this.state} />} />
         <Route path="/Filter/:CatgoryName" exact render={({ match }) => <Filter name={match.params.CatgoryName} state={this.state} />} />
         <Route path="/Item/:ItemName" exact render={({ match }) => <Item state={this.state} name={match.params.ItemName} />} />

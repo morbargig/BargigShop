@@ -19,7 +19,7 @@ class Admin extends Component {
             inputsWithFewInputs: ['sizes', 'Category'],
             newItem: { sizes: [], Category: [], color: {} },
             itemArry: {},
-            colorSData : ['aqua', 'black', 'blue', 'fuchsia', 'gray', 'green',
+            colorSData: ['aqua', 'black', 'blue', 'fuchsia', 'gray', 'green',
                 'lime', 'maroon', 'navy', 'olive', 'orange', 'purple', 'red',
                 'silver', 'teal', 'white', 'yellow']
         }
@@ -159,8 +159,12 @@ class Admin extends Component {
             </label>
             <div>
                 צבע מוצר : <datalist id="searchColor" className='select-input' onChange={this.updateItemdetails}>
-                    {this.state.colorSData.map(c => <option value={c}>{c} </option>)}
+                    {this.state.colorSData.map(c => <option className="optionsColor" style={{
+                        backgroundColor: { c },
+                        color: { c }
+                    }} value={c}>{c}  </option>)}
                 </datalist>
+
                 <input id="arry" autoComplete="on" list="searchColor" name='color'
                     value={this.state.color}
                     placeholder='צבע' onChange={this.updateItemdetails} className='select-input' />
@@ -191,3 +195,4 @@ class Admin extends Component {
 }
 
 export default Admin;
+

@@ -249,11 +249,14 @@ class UpDateItem extends Component {
             <br></br>
             <br></br>
 
-            {this.props.item.color ? <div> : צבעים שהיו לפני <br></br><br></br>{Object.keys(this.props.item.color).map(c => <button id={this.props.item.color[c]} name={'color'} value={c} onClick={this.addToArry}> לפני לחץ כדי לשמר  "{c}" היה <img className="editImage" src={this.props.item.color[c]}></img> </button>)} </div> : null}
+            {this.props.item.color ? <div >  : צבעים שהיו לפני <br></br><br></br>{Object.keys(this.props.item.color).map(c => <button id={this.props.item.color[c]} name={'color'} value={c} onClick={this.addToArry}> לפני לחץ כדי לשמר  "{c}" היה <img className="editImage" src={this.props.item.color[c]}></img> </button>)} </div> : null}
             <br></br>
             <div>
                 הוסף צבע מוצר  : <datalist id="searchColor" className='select-input' onChange={this.updateusersText}>
-                    {this.state.colorSData.map(c => <option value={c}>{c} </option>)}
+                    {this.state.colorSData.map(c => <option class={c} style={{
+                        backgroundColor: c ,
+                        color:  c 
+                    }} value={c}>{c}  </option>)}
                 </datalist>
                 <input id="arry" autoComplete="on" list="searchColor" name='colorName'
                     value={this.state.colorName}

@@ -10,6 +10,8 @@ class Item extends Component {
         this.state = {
             business: [],
             displayAppo: false,
+            orderItem: undefined,
+            orderColor: undefined
         }
     }
 
@@ -79,6 +81,10 @@ class Item extends Component {
 
     render() {
         // const MapWrapped = withScriptjs(withGoogleMap(Maps))
+
+        const whatAppUrl = `https://api.whatsapp.com/send?l=en&phone=972528612379&text=?%20אוכל%20בבקשה%20להזמין%20את%20המוצר%20${this.state.orderItem}%20%20%20בצבע%20%20%20%20${this.state.orderColor}%20%20%20%20`
+        // const whatAppUrl2 = `https://api.whatsapp.com/send?l=en&phone=972528612379&text=אוכל%20בבקשה%20להזמין%20את%20המוצר%20` + itemxx + `%20%20בצבע%20` + colorxx + `%20`
+
         console.log(this.state.item)
         return <div className="stores">
             {this.state.item ? this.state.item.map(i => <div className="details">
@@ -114,6 +120,7 @@ class Item extends Component {
                     <a>Email Me :</a>  <a href="mailto:morbargig@gmail.com"><i class="fa fa-envelope-o fa-fw"></i> morbargig@gmail.com</a>
                     <br></br><br></br>
                     <a className="waves-effect waves-light btn-small" onClick={this.makeRequestToMail}>Make an oerder</a>
+                    <a className="waves-effect waves-light btn-small" href={whatAppUrl}>What APP oerder</a>
                 </div>
             </div>) : null
 

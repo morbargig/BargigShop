@@ -12,6 +12,9 @@ class About extends Component {
   render() {
 
     return <div>
+      <div><a href="tel:+972 52-888-9657"> <i class="fa fa-phone fa-fw"></i><span dir="ltr"> +972 52-888-9657</span></a>
+        <br></br>
+        <a href="mailto:issacbar92@gmail.com"><i class="fa fa-envelope-o fa-fw"></i> issacbar92@gmail.com</a></div>
       <img className="bg" src="https://www.dentons.com/-/media/images/website/background-images/practices/employment-and-labor/office-work.jpg" />
       <h1 id="About" className="center-align">About Us</h1>
       <div className="row">
@@ -24,7 +27,7 @@ class About extends Component {
             </blockquote>
           </div>
         </div>
-        <div id="firststimg"className="col s3 right">
+        <div id="firststimg" className="col s3 right">
           <div className="card">
             <div className="card-image">
               <img src="https://www.metasource.co/wp-content/uploads/2017/11/Startup-tech-team2-800x400.jpg"></img>
@@ -57,7 +60,7 @@ class About extends Component {
             <span className="card-title white-text text-darken-4">"Wow your website is great! How do I signup?"</span>
             <blockquote>
               <p>Click the "Signup" button below and fill in the form.</p>
-              <p id="arrow1"className="btn pulse">↓</p>
+              <p id="arrow1" className="btn pulse">↓</p>
               <p>{this.props.state.user ? <Button className="black-text text-darken-1" href='/' >Sign-Up</Button> : <Button className="black-text text-darken-1" href='/Signup'>Sign-Up</Button>}</p>
             </blockquote>
           </div>
@@ -89,9 +92,6 @@ class About extends Component {
             </div>
           </div>
         </div>
-   <div><a href="tel:+972 52-888-9657"> <i class="fa fa-phone fa-fw"></i><span dir="ltr"> +972 52-888-9657</span></a>
-    <br></br>
-    <a href="mailto:issacbar92@gmail.com"><i class="fa fa-envelope-o fa-fw"></i> issacbar92@gmail.com</a></div>
       </div>
 
     </div>
