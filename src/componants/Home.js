@@ -3,9 +3,9 @@ import React, { Component } from 'react';
 import axios from 'axios'
 import route from '../config/route'
 import { Link } from 'react-router-dom'
-import { async } from 'q';
 import UpDateItem from './UpDateItem';
-import { observer, inject } from 'mobx-react'
+import {  inject } from 'mobx-react'
+// observer,
 
 @inject("ItemsStore")
 class Home extends Component {
@@ -148,7 +148,7 @@ class Home extends Component {
 
   colorImage = (e) => {
     let name = e.target.name
-    let id = e.target.id
+    // let id = e.target.id
     let value = e.target.value
     // if (this.state[id]  ){
     // this.setState({ })

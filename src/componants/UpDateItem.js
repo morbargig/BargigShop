@@ -24,13 +24,18 @@ class UpDateItem extends Component {
 
     }
 
-    componentWillMount = () => {
-        // console.log(this.state.fullName)
-        this.setState({
-            itemToUpdate: this.props.item
+
+    componentDidMount = async () => {
+        if (this.state.CategoryList.length === 0) {
+            const res = await axios.get(`${route}Catgories/0`)
+            res.data[0].Catgories.map(i => i.name)
+            if (res.data[0] === undefined) {
+                let res2 = await axios.get(`${route}Catgories/1`)
+                this.setState({ itemToUpdate: this.props.item, CategoryList: res2.data[0].Catgories.map(i => i.name) })
+            } else {
+                this.setState({ itemToUpdate: this.props.item, CategoryList: res.data[0].Catgories.map(i => i.name) }, function () { console.log(this.state.CategoryList) })
+            }
         }
-            , function () { console.log(this.state.itemToUpdate) }
-        )
     }
 
     updateusersText = (e) => {
@@ -159,7 +164,10 @@ class UpDateItem extends Component {
                             [img]: url
                         })
                         console.log(this.state[img])
-                        img === 'image' ? null : alert("now you can continue to button 2")
+                        if (img !== 'image') {
+                            alert("now you can continue to button 2")
+                        }
+
                     })
                 }
             )
@@ -176,6 +184,7 @@ class UpDateItem extends Component {
         let name = e.target.name
         let value = e.target.value
         let id = e.target.id
+        alert(name, value, id)
         console.log(name, value, id, e.target)
         if (name === "color") {
             let obj = this.state[name]
@@ -250,7 +259,7 @@ class UpDateItem extends Component {
             <br></br>
             <br></br>
 
-            {this.props.item.color ? <div >  : צבעים שהיו לפני <br></br><br></br>{Object.keys(this.props.item.color).map(c => <button id={this.props.item.color[c]} name={'color'} value={c} onClick={this.addToArry}> לפני לחץ כדי לשמר  "{c}" היה <img className="editImage" src={this.props.item.color[c]}></img> </button>)} </div> : null}
+            {this.state.itemToUpdate.color ? <div >  : צבעים שהיו לפני <br></br><br></br>{Object.keys(this.state.itemToUpdate.color).map(c => <button id={this.state.itemToUpdate.color[c]} name='color' value={c} onClick={this.addToArry}> לפני לחץ כדי לשמר  "{c}" היה <img className="editImage" src={this.props.item.color[c]}></img> </button>)} </div> : null}
             <br></br>
             <div>
                 הוסף צבע מוצר  : <datalist id="searchColor" className='select-input' onChange={this.updateusersText}>

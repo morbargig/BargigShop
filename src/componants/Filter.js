@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Link } from 'react-router-dom'
 import axios from 'axios'
 // import '../CSS/Filter.css'
 import route from '../config/route';
@@ -71,7 +71,7 @@ class Filter extends Component {
 
     colorImage = (e) => {
         let name = e.target.name
-        let id = e.target.id
+        // let id = e.target.id
         let value = e.target.value
         // if (this.state[id]  ){
         // this.setState({ })

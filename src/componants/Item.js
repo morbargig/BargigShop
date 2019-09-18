@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios'
 // import alertify from 'alertify.js'
 import route from '../config/route'
-import { async } from 'q';
 import UpDateItem from './UpDateItem';
 
 class Item extends Component {

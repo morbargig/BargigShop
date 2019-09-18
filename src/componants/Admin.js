@@ -36,8 +36,8 @@ class Admin extends Component {
             const res = await axios.get(`${route}Catgories/0`)
             res.data[0].Catgories.map(i => i.name)
             if (res.data[0] === undefined) {
-                res = await axios.get(`${route}Catgories/1`)
-                this.setState({ CategoryList: res.data[0].Catgories.map(i => i.name) })
+               let res2 = await axios.get(`${route}Catgories/1`)
+                this.setState({ CategoryList: res2.data[0].Catgories.map(i => i.name) })
             } else {
                 this.setState({ CategoryList: res.data[0].Catgories.map(i => i.name) }, function () { console.log(this.state.CategoryList) })
             }
@@ -85,7 +85,9 @@ class Admin extends Component {
                             [img]: url
                         })
                         console.log(this.state[img])
-                        img === 'img' ? null : alert("now you can continue to button 2")
+                        if (img !== 'img') {
+                            alert("now you can continue to button 2")
+                        }
                     })
                 }
             )

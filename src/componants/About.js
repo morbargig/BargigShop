@@ -4,10 +4,7 @@ import '../CSS/About.css'
 // import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 
 class About extends Component {
-  constructor() {
-    super()
 
-  }
 
   render() {
 
