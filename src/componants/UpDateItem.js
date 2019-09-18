@@ -145,10 +145,11 @@ class UpDateItem extends Component {
     }
 
     handleUpload = (e) => {
+
         let img = "image"
         let name = e.target.name
 
-
+alert(name)
         if (name === "color") {
             img = "colorImg"
         }
