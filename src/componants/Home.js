@@ -5,8 +5,9 @@ import route from '../config/route'
 import { Link } from 'react-router-dom'
 import { async } from 'q';
 import UpDateItem from './UpDateItem';
+import { observer, inject } from 'mobx-react'
 
-
+@inject("ItemsStore")
 class Home extends Component {
   constructor() {
     super()
@@ -18,25 +19,31 @@ class Home extends Component {
     }
   }
 
+
   componentDidMount = () => {
     this.returnCatgories()
     this.welcomBack()
   }
 
   returnCatgories = async () => {
-    const res = await axios.get(`${route}Catgories`)
-    if (res.data[0] === undefined) {
-      this.componentDidMount()
-    } else {
+    if (this.state.Catgories === undefined) {
 
-      let Catgories = res.data[0].Catgories
-      // Catgories = Object.keys(Catgories)
-      console.log(Catgories)
+      const res = await axios.get(`${route}Catgories/1`)
+      if (res.data[0] === undefined) {
+        this.componentDidMount()
+      } else {
 
-      this.setState({
-        Catgories: Catgories
-      })
-      console.log(this.state.Catgories)
+        let Catgories = res.data[0].Catgories
+        // Catgories = Object.keys(Catgories)
+        console.log(Catgories)
+
+        this.props.ItemsStore.getCatgories(Catgories)
+        this.setState({
+          Catgories: Catgories
+        })
+        ////////////////////
+        console.log(this.state.Catgories)
+      }
     }
   }
 
@@ -258,6 +265,8 @@ class Home extends Component {
         <input name="input" type="text" value={this.state.fullName} onChange={this.updateusersText} placeholder="type here" />
       </button> : null}
       {/* {this.welcomeUser()} */}
+      {this.state.Catgories !== undefined ? <h5> Categories : </h5> : null}
+      <br></br>
       <div className="categories">
         {this.state.Catgories !== undefined ? this.state.Catgories.map(c =>
           <div className="category">
@@ -274,8 +283,9 @@ class Home extends Component {
                 <Link to={`/Filter/${c.name}`}> {c.name} </Link>
               </div>
             </div>
-          </div>
-        ) :
+
+          </div>)
+          :
           // this.resultByCatgory()
           this.resultByCatgory()
         }

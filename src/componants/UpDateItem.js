@@ -135,12 +135,14 @@ class UpDateItem extends Component {
     handleUpload = (e) => {
         let img = "image"
         let name = e.target.name
+
+
         if (name === "color") {
             img = "colorImg"
         }
         console.log("kjgjyfjukguyv")
         const { uploadedImage } = this.state
-        if (this.state.uploadedImage === null) {
+        if (this.state.uploadedImage === undefined) {
             alert('Please pick a valid image!')
         }
         else {
@@ -157,8 +159,8 @@ class UpDateItem extends Component {
                         this.setState({
                             [img]: url
                         })
-                        console.log(this.state.image)
-
+                        console.log(this.state[img])
+                        alert("now you can continue to button 2")
                     })
                 }
             )
@@ -254,8 +256,8 @@ class UpDateItem extends Component {
             <div>
                 הוסף צבע מוצר  : <datalist id="searchColor" className='select-input' onChange={this.updateusersText}>
                     {this.state.colorSData.map(c => <option class={c} style={{
-                        backgroundColor: c ,
-                        color:  c 
+                        backgroundColor: c,
+                        color: c
                     }} value={c}>{c}  </option>)}
                 </datalist>
                 <input id="arry" autoComplete="on" list="searchColor" name='colorName'
@@ -267,12 +269,12 @@ class UpDateItem extends Component {
             <br></br>
             <h5> 1   הוסף תמונה לפי צבע שלב</h5>
             <br></br>
-            <button name="color" onClick={this.handleUpload} >  לחץ עליי ראשון כדי להעלות את התמונה ולקבל כתובת יורל לתמונה והמתן כשתי שניות  </button>
+            <button name="color" onClick={this.handleUpload} > 1 לחץ עליי ראשון כדי להעלות את התמונה ולקבל כתובת יורל לתמונה והמתן כשתי שניות  </button>
             <br></br>
             <h5>2 הוסף תמונה לפי צבע שלב </h5>
             <br></br>
             <button onClick={this.addImageByColor}>
-                לחץ עליי שני כדי להוסיף את התמונה והצבע שבחרת למוצר  </button>
+                2  לחץ עליי שני כדי להוסיף את התמונה והצבע שבחרת למוצר  </button>
             <br></br>
 
             {/* <input name="lastName" type="text" value={this.state.lastName} onChange={this.updateusersText} placeholder={"Last Name was " + this.props.itemToUpdate.name + ' before'} />

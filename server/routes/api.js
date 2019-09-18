@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const User = require('../models/User')
-const Items = require('../models/Item')
+const Items = require('../models/Items')
 const Categories = require('../models/Categories')
 const Order = require('../models/Order')
 // Category
@@ -147,8 +147,11 @@ router.get('/getbyname/:name', function (req, res) {
 })
 
 
-router.get('/Catgories', function (req, res) {
-    getCatgoties()
+router.get('/Catgories/:id', function (req, res) {
+    let id = req.params.id
+    if (id === '1') {
+        getCatgoties()
+    }
     Categories.find({}).exec(function (err, x) {
         console.log(x)
         res.send(x)

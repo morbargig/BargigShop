@@ -5,6 +5,9 @@ import firebase from 'firebase'
 // import { Link } from 'react-router-dom'
 import Search from './Search';
 import { observer, inject } from 'mobx-react'
+import axios from 'axios'
+import route from '../config/route';
+
 
 
 @inject("UsersStore", "ItemsStore")
@@ -21,9 +24,24 @@ class Admin extends Component {
             itemArry: {},
             colorSData: ['aqua', 'black', 'blue', 'fuchsia', 'gray', 'green',
                 'lime', 'maroon', 'navy', 'olive', 'orange', 'purple', 'red',
-                'silver', 'teal', 'white', 'yellow']
+                'silver', 'teal', 'white', 'yellow'],
+            CategoryList: [],
+            sizesList: ["XS", "S", "M", "L", "XL", "XXL", "XXXL", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47"]
         }
 
+    }
+
+    componentDidMount = async () => {
+        if (this.state.CategoryList.length === 0) {
+            const res = await axios.get(`${route}Catgories/0`)
+            res.data[0].Catgories.map(i => i.name)
+            if (res.data[0] === undefined) {
+                res = await axios.get(`${route}Catgories/1`)
+                this.setState({ CategoryList: res.data[0].Catgories.map(i => i.name) })
+            } else {
+                this.setState({ CategoryList: res.data[0].Catgories.map(i => i.name) }, function () { console.log(this.state.CategoryList) })
+            }
+        }
     }
 
     addNewitem = async () => {
@@ -67,7 +85,7 @@ class Admin extends Component {
                             [img]: url
                         })
                         console.log(this.state[img])
-
+                        alert("now you can continue to button 2")
                     })
                 }
             )
@@ -140,7 +158,29 @@ class Admin extends Component {
             <br></br>
             <h5>קטגוריה ומידות  </h5>
             <br></br>
-            {this.state.inputsWithFewInputs.map(i => <label id={i}>** אחד אחרי השני  {i} אתה צריך להוסיף **  <input type='text' id='arry' name={i} placeholder={i} value={this.state[i]} onChange={this.updateItemdetails} />  <button onClick={this.pushNewValue}> {i} הוסף </button><br></br> </label>)}
+            {this.state.inputsWithFewInputs.map(i => <label id={i}>** אחד אחרי השני  {i} אתה צריך להוסיף **
+            <div>
+                    {i} : <datalist id={`search${i}`} className='select-input' onChange={this.updateItemdetails}>
+                        {this.state[i + 'List'].map(c => <option className={`options${c}`} value={c}>{c}  </option>)}
+                    </datalist>
+                    <input id="arry" autoComplete="on" list={`search${i}`} name={i}
+                        value={this.state[i]}
+                        placeholder={i} onChange={this.updateItemdetails} className='select-input' />
+                </div>
+                <button onClick={this.pushNewValue}> {i} הוסף </button><br></br> </label>
+            )}
+            <br></br>
+            {/* <label id='Category'>** אחד אחרי השני  Category אתה צריך להוסיף ** */}
+            {/* <div>
+                    קטגוריות : <datalist id="searchCategory" className='select-input' onChange={this.updateItemdetails}>
+                        {this.state.Category.map(c => <option className="optionsColor" value={c}>{c}  </option>)}
+                    </datalist>
+                    <input id="arry" autoComplete="on" list="searchCategory" name='Category'
+                        value={this.state.Category}
+                        placeholder='קטגוריה' onChange={this.updateItemdetails} className='select-input' />
+                </div>
+                <button onClick={this.pushNewValue}> {"Category"} הוסף </button><br></br> </label> */}
+            {/* <input type='text' id='arry' name={'Category'} placeholder={'Category'} value={this.state.Category} onChange={this.updateItemdetails} /> */}
             <br></br>
             <h5>הוסף תמונה ראשית</h5>
             <br></br>
@@ -173,12 +213,12 @@ class Admin extends Component {
             <br></br>
             <h5> 1   הוסף תמונה לפי צבע שלב</h5>
             <br></br>
-            <button name="color" onClick={this.handleUpload} >  לחץ עליי ראשון כדי להעלות את התמונה ולקבל כתובת יורל לתמונה והמתן כשתי שניות  </button>
+            <button name="color" onClick={this.handleUpload} > 1 לחץ עליי ראשון כדי להעלות את התמונה ולקבל כתובת יורל לתמונה והמתן כשתי שניות  </button>
             <br></br>
             <h5>2 הוסף תמונה לפי צבע שלב </h5>
             <br></br>
             <button onClick={this.addImageByColor}>
-                לחץ עליי שני כדי להוסיף את התמונה והצבע שבחרת למוצר  </button>
+               2 לחץ עליי שני כדי להוסיף את התמונה והצבע שבחרת למוצר  </button>
             <br></br>
             <h5>סיום ושליחת מוצר</h5>
             <br></br>

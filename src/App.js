@@ -12,7 +12,6 @@ import route from './config/route'
 import axios from 'axios'
 import Filter from './componants/Filter';
 import Item from './componants/Item';
-import { async } from 'q';
 import ShoppingCart from './componants/ShoppingCart';
 
 
@@ -37,7 +36,7 @@ class App extends Component {
         this.setState({ isMobile: true })
       } else { this.setState({ isMobile: false }) }
     }
-    await this.authListener()
+    this.authListener()
     // this.ShoppingCard()
   }
 

@@ -1,8 +1,8 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
-const ItemSchema = new Schema({
-    id : String,
+const ItemsSchema = new Schema({
+    id: String,
     name: String,
     price: Number,
     Category: Array,
@@ -10,11 +10,11 @@ const ItemSchema = new Schema({
     Collection: String,
     Discraption: String,
     image: String,
-    color : Object
+    color: Object
 })
 
-const Item = mongoose.model("Item", ItemSchema)
-module.exports = Item
+const Items = mongoose.model("Items", ItemsSchema)
+module.exports = Items
 
 
 

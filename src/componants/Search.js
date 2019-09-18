@@ -17,9 +17,9 @@ class Search extends Component {
   }
 
   serachForItem = async (e) => {
-    let text = e.target.value
-    let value = "id"
-    const res = await axios.get(`${route}getItem/${value}/${text}`)
+    let value = e.target.value
+    let filed = "id"
+    const res = await axios.get(`${route}getItem/${filed}/${value}`)
 
     console.log(res.data)
 
@@ -45,7 +45,7 @@ class Search extends Component {
               <p>{c.description}</p>
             </div>
             <div class="card-action">
-              <Link to={`/BargigShop/${c.name}`}> {c.name} </Link>
+              <Link to={`/Item/${c.name}`}> {c.name} </Link>
             </div>
           </div>
         </div>) : null}

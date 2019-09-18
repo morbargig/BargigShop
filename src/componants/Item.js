@@ -3,6 +3,7 @@ import axios from 'axios'
 // import alertify from 'alertify.js'
 import route from '../config/route'
 import { async } from 'q';
+import UpDateItem from './UpDateItem';
 
 class Item extends Component {
     constructor() {
@@ -79,6 +80,54 @@ class Item extends Component {
     //     window.open(` https://earth.google.com/web/search/${i.address.replace(" ", "%20") + "," + i.city.replace(" ", "%20")}@${i.location.hight},${i.location.wight},34.10008876a,4820.53237024d,35y,0.00000001h,45.00123153t,-0r/data=CigiJgokCYXl_8M40D9AEbv3D5wdxT9AGUKWKNz_WEFAIe-0dx4IUEFA `)
     //   }
 
+    editItem = async (e) => {
+        let id = e.target.parentElement.id
+        console.log(id)
+        let x = this.state.editItem
+        x = !x
+        console.log(x)
+        // let items = this.state.resultByCatgory
+        const res = await axios.get(`${route}getSomethinBySomeFiedAndValue/Item/_id/${id}`)
+        console.log(res.data)
+        // let itemToUpdate = items.find(u => u._id === id)
+
+        this.setState({
+            itemToUpdateId: id,
+            itemToUpdate: res.data,
+            editItem: x
+        })
+        console.log(this.state, this.state.userToUpdate)
+    }
+
+    deleteItem = async (e) => {
+        let id = e.target.id
+        let name = e.target.name
+        console.log(id, name)
+        let answer = window.confirm(`are you sure you want to delete ${name}?`)
+        if (answer === true) {
+            await axios.delete(`${route}deleteItem/${id}`)
+        }
+    }
+    Admin = (i) => {
+        console.log("1")
+        if (this.props.state.user) {
+            console.log("2")
+
+            return this.props.state.user.email.includes('issacbar') ? <div id={i._id}> <button onClick={this.editItem}> ערוך </button>  <br></br> <button name={i.name} id={i._id} onClick={this.deleteItem}> מחק מוצר </button> </div> : null
+        }
+
+    }
+
+    afterUpdateItem = () => {
+        let x = this.state.editItem
+        x = !x
+        this.setState({
+            editItem: x
+        })
+    }
+
+
+
     render() {
         // const MapWrapped = withScriptjs(withGoogleMap(Maps))
 
@@ -87,6 +136,10 @@ class Item extends Component {
 
         console.log(this.state.item)
         return <div className="stores">
+            {
+                this.state.editItem ? <UpDateItem upDateItem={this.upDateItem} item={this.state.itemToUpdate} afterUpdateItem={this.afterUpdateItem} />
+                    : null
+            }
             {this.state.item ? this.state.item.map(i => <div className="details">
                 <div className="flip-card-back">
                     <h2>{i.name}</h2>
@@ -115,15 +168,28 @@ class Item extends Component {
                     {this.props.state.isAdmin ? <p> <a> ID :  </a> {i.id}  </p> : null}
                     <button id={i.name} name={i.image} value={i.image} onClick={this.addToShoppingCart}> Add to Shopping Cart </button>
                     <br></br><br></br>
-                    <a> Cell Me :</a>  <a href="tel:+97252-861-2379"> <i class="fa fa-phone fa-fw"></i><span dir="ltr"> +972 52-861-2379</span> </a>
+                    <br></br>
+
+                    <a> Cell Me :</a>
+                    {/* <a href="tel:+97252-861-2379"> <i class="fa fa-phone fa-fw"></i><span dir="ltr"> +972 52-861-2379</span> </a> */}
+                    <a href="tel:+972 52-888-9657"> <i class="fa fa-phone fa-fw"></i><span dir="ltr"> +972 52-888-9657</span></a>
                     <br></br><br></br>
-                    <a>Email Me :</a>  <a href="mailto:morbargig@gmail.com"><i class="fa fa-envelope-o fa-fw"></i> morbargig@gmail.com</a>
+                    <a>Email Me :</a>
+                    {/* <a href="mailto:morbargig@gmail.com"><i class="fa fa-envelope-o fa-fw"></i> morbargig@gmail.com</a> */}
+                    <a href="mailto:issacbar92@gmail.com"><i class="fa fa-envelope-o fa-fw"></i> issacbar92@gmail.com</a>
+
+                    {
+                        this.state.order ?
+                            <a>WhatsAPP Me :
+                    <a onClick={this.getOrder} href={whatAppUrl}><i class="fa fa-envelope-o fa-fw"></i> Itzik Bargig </a> </a> : null
+                    }
+                    {/* <a className="waves-effect waves-light btn-small" href={whatAppUrl}>WhatsAPP oerder</a> */}
                     <br></br><br></br>
                     <a className="waves-effect waves-light btn-small" onClick={this.makeRequestToMail}>Make an oerder</a>
-                    <a className="waves-effect waves-light btn-small" href={whatAppUrl}>What APP oerder</a>
+                    <br></br><br></br>
+                    {this.Admin(i)}
                 </div>
             </div>) : null
-
 
             }
         </div>
