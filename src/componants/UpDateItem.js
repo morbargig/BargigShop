@@ -8,7 +8,6 @@ class UpDateItem extends Component {
     constructor() {
         super()
         this.state = {
-            itemToUpdate: { color: {} },
             ragularInput: [
                 "name",
                 "Discraption",
@@ -19,21 +18,27 @@ class UpDateItem extends Component {
             color: {},
             colorSData: ['aqua', 'black', 'blue', 'fuchsia', 'gray', 'green',
                 'lime', 'maroon', 'navy', 'olive', 'orange', 'purple', 'red',
-                'silver', 'teal', 'white', 'yellow']
+                'silver', 'teal', 'white', 'yellow'],
+            CategoryList: []
         }
 
     }
 
 
     componentDidMount = async () => {
+        if (this.state.itemToUpdate === undefined) {
+            this.setState({
+                itemToUpdate: this.props.item
+            })
+        }
         if (this.state.CategoryList.length === 0) {
             const res = await axios.get(`${route}Catgories/0`)
             res.data[0].Catgories.map(i => i.name)
             if (res.data[0] === undefined) {
                 let res2 = await axios.get(`${route}Catgories/1`)
-                this.setState({ itemToUpdate: this.props.item, CategoryList: res2.data[0].Catgories.map(i => i.name) })
+                this.setState({ CategoryList: res2.data[0].Catgories.map(i => i.name) })
             } else {
-                this.setState({ itemToUpdate: this.props.item, CategoryList: res.data[0].Catgories.map(i => i.name) }, function () { console.log(this.state.CategoryList) })
+                this.setState({ CategoryList: res.data[0].Catgories.map(i => i.name) }, function () { console.log(this.state.CategoryList) })
             }
         }
     }
@@ -184,7 +189,9 @@ class UpDateItem extends Component {
         let name = e.target.name
         let value = e.target.value
         let id = e.target.id
-        alert(name, value, id)
+        alert(id)
+        alert(name)
+        alert(value)
         console.log(name, value, id, e.target)
         if (name === "color") {
             let obj = this.state[name]
@@ -241,13 +248,13 @@ class UpDateItem extends Component {
                  </h6>
 
             <h6> קטגוריות : </h6>
-            {this.state.itemToUpdate.Category.map(i => <button name="Category" id={i} onClick={this.addToArry}>   לפני לחץ כדי לשמר  "{i}" היה  <i class="material-icons left">add</i> </button>)}
+            {this.props.item.Category.map(i => <button name="Category" id={i} onClick={this.addToArry}>   לפני לחץ כדי לשמר  "{i}" היה  <i class="material-icons left">add</i> </button>)}
             <input name='newCategory' onChange={this.updateusersText} type='text' placeholder='קטגוריה חדשה' value={this.state.newCategory} />
             <button name='newCategory' onClick={this.AddNewToArry}>הוסף קטגוריה </button>
 
             <h6> מידות :</h6>
             {/* <br></br> */}
-            {this.state.itemToUpdate.sizes.map(i => <button name="sizes" id={i} onClick={this.addToArry}> לפני לחץ כדי לשמר  "{i}" היה  <i class="material-icons left">add</i> </button>)}
+            {this.props.item.sizes.map(i => <button name="sizes" id={i} onClick={this.addToArry}> לפני לחץ כדי לשמר  "{i}" היה  <i class="material-icons left">add</i> </button>)}
             <input name='newsizes' type='text' placeholder='מידה חדשה' value={this.state.newsizes} onChange={this.updateusersText} />
             <button name='newsizes' onClick={this.AddNewToArry}>הוסף מידה </button>
             <br></br>
@@ -259,7 +266,7 @@ class UpDateItem extends Component {
             <br></br>
             <br></br>
 
-            {this.state.itemToUpdate.color ? <div >  : צבעים שהיו לפני <br></br><br></br>{Object.keys(this.state.itemToUpdate.color).map(c => <button id={this.state.itemToUpdate.color[c]} name='color' value={c} onClick={this.addToArry}> לפני לחץ כדי לשמר  "{c}" היה <img className="editImage" src={this.props.item.color[c]}></img> </button>)} </div> : null}
+            {this.props.item.color ? <div >  : צבעים שהיו לפני <br></br><br></br>{Object.keys(this.props.item.color).map(c => <button id={this.props.item.color[c]} name='color' value={c} onClick={this.addToArry}> לפני לחץ כדי לשמר  "{c}" היה <img className="editImage" src={this.props.item.color[c]}></img> </button>)} </div> : null}
             <br></br>
             <div>
                 הוסף צבע מוצר  : <datalist id="searchColor" className='select-input' onChange={this.updateusersText}>
