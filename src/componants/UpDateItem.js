@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios'
 import route from '../config/route'
 import firebase from 'firebase'
-import { colors } from '@material-ui/core';
 
 
 class UpDateItem extends Component {
@@ -160,7 +159,7 @@ class UpDateItem extends Component {
                             [img]: url
                         })
                         console.log(this.state[img])
-                        alert("now you can continue to button 2")
+                        img === 'image' ? null : alert("now you can continue to button 2")
                     })
                 }
             )

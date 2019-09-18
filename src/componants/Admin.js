@@ -85,7 +85,7 @@ class Admin extends Component {
                             [img]: url
                         })
                         console.log(this.state[img])
-                        alert("now you can continue to button 2")
+                        img === 'img' ? null : alert("now you can continue to button 2")
                     })
                 }
             )
@@ -218,7 +218,7 @@ class Admin extends Component {
             <h5>2 הוסף תמונה לפי צבע שלב </h5>
             <br></br>
             <button onClick={this.addImageByColor}>
-               2 לחץ עליי שני כדי להוסיף את התמונה והצבע שבחרת למוצר  </button>
+                2 לחץ עליי שני כדי להוסיף את התמונה והצבע שבחרת למוצר  </button>
             <br></br>
             <h5>סיום ושליחת מוצר</h5>
             <br></br>
