@@ -165,7 +165,7 @@ class Home extends Component {
         <div class="card">
           <div class="card-image">
             <img src={this.state[c.name] !== undefined ? this.state[c.name] : c.image} alt={c.name}  ></img>
-            <span class="card-title">{c.name}</span>
+            {/* <span class="card-title">{c.name}</span> */}
           </div>
           <div class="card-content">
             {/* <p>{c.description}</p> */}
@@ -263,7 +263,7 @@ class Home extends Component {
           <option value="price">מחיר מתחת ל</option>
           <option value="Collection">קולקציה</option>
         </select>
-        <input name="input" type="text" value={this.state.fullName} onChange={this.updateusersText} placeholder="type here" />
+        <input name="input" type="text" value={this.state.input} onChange={this.updateusersText} placeholder="type here" />
       </button> : <div>    <select class="browser-default" onChange={this.catagorySearch}>
         <option value="Catgory" disabled selected>חפש לפי </option>
         <option value="name">שם מוצר</option>
@@ -273,7 +273,7 @@ class Home extends Component {
         <option value="price">מחיר מתחת ל</option>
         <option value="Collection">קולקציה</option>
       </select>
-          <input name="input" type="text" value={this.state.fullName} onChange={this.updateusersText} placeholder="type here" />
+          <input name="input" type="text" value={this.state.input} onChange={this.updateusersText} placeholder="type here" />
         </div>}
       {/* {this.welcomeUser()} */}
       {this.state.Catgories !== undefined ? <h5> Categories : </h5> : null}
