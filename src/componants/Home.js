@@ -160,37 +160,76 @@ class Home extends Component {
   resultByCatgory = () => {
     if (this.state.resultByCatgory !== undefined) {
       // console.log(this.props.state.user)
-      return this.state.resultByCatgory.map(c => 
-      <div >
+      return this.state.resultByCatgory.map(c =>
+        this.props.state.isMobile ? <div>
+          <div className="category">
+            <div class="card">
+              <div class="card-image">
+                <img src={this.state[c.name] !== undefined ? this.state[c.name] : c.image} alt={c.name}  ></img>
+                {/* <span class="card-title">{c.name}</span> */}
+              </div>
+              <div class="card-content">
 
-        <div >
-          <div class="card-image">
-            <img src={this.state[c.name] !== undefined ? this.state[c.name] : c.image} alt={c.name}  ></img>
-            {/* <span class="card-title">{c.name}</span> */}
+                <p>{c.description}</p>
+              </div>
+              <div class="card-action">
+                <Link to={`/Item/${c.name}`}> <button className="waves-effect waves-dark btn" > See Item</button> </Link>
+
+                {c.color !== undefined ? <div> <a> Regular color</a> :  <button id={c.id} name={c.name} value={c.image} onClick={this.colorImage} className="left" style={{
+                  backgroundColor: 'none',
+                  width: '15px',
+                  height: '15px',
+                }} type="button" class="color-box" data-color-id="267" title="choose color" aria-label={`בחר תמונת רגילה`}> </button> <br></br><br></br><a>Color</a> : {Object.keys(c.color).map(o =>
+                  <button id={c.id} name={c.name} value={c.color[o]} onClick={this.colorImage} className="left" style={{
+                    backgroundColor: o,
+                    width: '15px',
+                    height: '15px',
+                  }} type="button" class="color-box" data-color-id="267" title="choose color" aria-label={`choose ${o} color`}> </button>
+                )}</div> : null
+                }
+                <p> <a> Price :  </a> {c.price} ₪ </p>
+                <p> <a> Categories : </a> {c.Category.map(i => <span> {" "} {i},</span>)} </p>
+                <p> <a> Sizes : </a> {c.sizes.map(i => <span> {" "} {i},</span>)} </p>
+                <p> <a> Collection :  </a> {c.Collection}  </p>
+                <p> <a> Discraption :  </a> {c.Discraption}  </p>
+                <br></br>
+                {this.props.state.user.email.includes('issacbar') ? <div id={c._id}> <button onClick={this.editItem}> ערוך </button>  <br></br> <button name={c.name} id={c._id} onClick={this.deleteItem}> מחק מוצר </button> </div> : null}
+              </div>
+            </div>
           </div>
-          <div class="card-content">
-            {/* <p>{c.description}</p> */}
-          </div>
-          <div class="card-action">
-            <Link to={`/Item/${c.name}`}> {c.name} </Link>
-            <br></br><br></br>
-            {c.color !== undefined ? <div> <a> Regular color</a> :  <button id={c.id} name={c.name} value={c.image} onClick={this.colorImage} className="left" style={{
-              backgroundColor: 'color:transparent',
-              width: '15px',
-              height: '15px',
-            }} type="button" class="color-box" data-color-id="267" title="choose color" aria-label={`בחר תמונת רגילה`}> </button> <br></br><br></br><a>Color</a> : {Object.keys(c.color).map(o =>
-              <button id={c.id} name={c.name} value={c.color[o]} onClick={this.colorImage} className="left" style={{
-                backgroundColor: o,
-                width: '15px',
-                height: '15px',
-              }} type="button" class="color-box" data-color-id="267" title="choose color" aria-label={`choose ${o} color`}> </button>
-            )}</div> : null
-            }
-            <br></br>
-            {this.props.state.user.email.includes('issacbar') ? <div id={c._id}> <button onClick={this.editItem}> ערוך </button>  <br></br> <button name={c.name} id={c._id} onClick={this.deleteItem}> מחק מוצר </button> </div> : null}
-          </div>
+
+
         </div>
-      </div>
+          : <div className="category">
+            <div class="card">
+              <div class="card-image">
+                <img src={this.state[c.name] !== undefined ? this.state[c.name] : c.image} alt={c.name}  ></img>
+                {/* <span class="card-title">{c.name}</span> */}
+              </div>
+              <div class="card-content">
+                {/* <p>{c.description}</p> */}
+              </div>
+              <div class="card-action">
+                <Link to={`/Item/${c.name}`}> {c.name} </Link>
+                <br></br><br></br>
+                {c.color !== undefined ? <div> <a> Regular color</a> :  <button id={c.id} name={c.name} value={c.image} onClick={this.colorImage} className="left" style={{
+                  backgroundColor: 'color:transparent',
+                  width: '15px',
+                  height: '15px',
+                }} type="button" class="color-box" data-color-id="267" title="choose color" aria-label={`בחר תמונת רגילה`}> </button> <br></br><br></br><a>Color</a> : {Object.keys(c.color).map(o =>
+                  <button id={c.id} name={c.name} value={c.color[o]} onClick={this.colorImage} className="left" style={{
+                    backgroundColor: o,
+                    width: '15px',
+                    height: '15px',
+                  }} type="button" class="color-box" data-color-id="267" title="choose color" aria-label={`choose ${o} color`}> </button>
+                )}</div> : null
+                }
+                <br></br>
+                {this.props.state.user.email.includes('issacbar') ? <div id={c._id}> <button onClick={this.editItem}> ערוך </button>  <br></br> <button name={c.name} id={c._id} onClick={this.deleteItem}> מחק מוצר </button> </div> : null}
+              </div>
+            </div>
+          </div>
+
       )
     }
   }
@@ -263,6 +302,7 @@ class Home extends Component {
           <option value="sizes">מידה</option>
           <option value="price">מחיר מתחת ל</option>
           <option value="Collection">קולקציה</option>
+          <option value="color"> (  צבע  ( נא לרשום באנגלית  </option>
         </select>
         <input name="input" type="text" value={this.state.input} onChange={this.updateusersText} placeholder="type here" />
       </button> : <div>    <select class="browser-default" onChange={this.catagorySearch}>
@@ -273,13 +313,14 @@ class Home extends Component {
         <option value="sizes">מידה</option>
         <option value="price">מחיר מתחת ל</option>
         <option value="Collection">קולקציה</option>
+        <option value="color"> (  צבע  ( נא לרשום באנגלית      </option>
       </select>
           <input name="input" type="text" value={this.state.input} onChange={this.updateusersText} placeholder="type here" />
         </div>}
       {/* {this.welcomeUser()} */}
       {this.state.Catgories !== undefined ? <h5> Categories : </h5> : null}
       <br></br>
-      <div className="categories">
+      <div className={!this.props.state.isMobile ? "categories" : null}>
         {this.state.Catgories !== undefined ? this.state.Catgories.map(c =>
           <div className="category">
 

@@ -216,7 +216,14 @@ router.get('/searchByCatagory/:Catagory/:text', (req, res) => {
 
         Items.find({}, function (err, x) {
             let result = []
-            x.map(x => x[Catagory].map(c => c === text ? result.push(x) : null))
+            x.map(x => x[Catagory].map(c => c.includes(text) || c === text ? result.push(x) : null))
+            // console.log(result)
+            res.send(result)
+        })
+    } else if (Catagory === "color") {
+        Items.find({}, function (err, x) {
+            let result = []
+            x.map(x => x[Catagory] ? Object.keys(x[Catagory]).map(c => c.includes(text) || c === text ? result.push(x) : null) : null)
             // console.log(result)
             res.send(result)
         })
