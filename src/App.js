@@ -228,7 +228,7 @@ class App extends Component {
         <Route path="/ShoppingCart" render={() => <ShoppingCart state={this.state} />} />
         <Route path="/Filter/:CatgoryName" exact render={({ match }) => <Filter name={match.params.CatgoryName} state={this.state} />} />
         <Route path="/Item/:ItemName" exact render={({ match }) => <Item state={this.state} name={match.params.ItemName} />} />
-        <Route path="/Signup" exact render={() => this.state.user ? <Home state={this.state} /> : <SignUp handle={this.handleChange} state={this.state} saveUser={this.saveNewUserToDb} handleImg={this.handleImage} upload={this.handleUpload} />} />
+        <Route path="/Singup" exact render={() => this.state.user ? <Home state={this.state} /> : <SignUp handle={this.handleChange} state={this.state} saveUser={this.saveNewUserToDb} handleImg={this.handleImage} upload={this.handleUpload} />} />
         {/* <Route path="/OpenBisnnes" render={() => this.state.user ? <Home returnCatgories={this.returnCatgories} reaseCatgories={this.reaseCatgories} state={this.state} Catgories={this.state.Catgories} userEmail={this.state.userEmail} /> : <OpenBisnnes Catgories={this.state.Catgories} saveNew={this.saveNewBiz} state={this.state} handleImg={this.handleImage} upload={this.handleUpload} />} /> */}
         {/* <Route path="/Test" render={() => <Tset />} /> */}
 
