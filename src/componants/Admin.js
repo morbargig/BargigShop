@@ -157,7 +157,7 @@ class Admin extends Component {
             {/* <br></br> */}
             <br></br>
             {/* {this.props.state.isMobile ? <input type="tel"  name="phone"  value={this.props.state.phone} onChange={this.props.handle}></input> : <input type="number" pattern="\d*" className="numbers-only" maxlength="10" name="phone" autocomplete="off" value={this.props.state.phone} onChange={this.props.handle}></input>} */}
-            {this.state.numberInputs.map(i =>  <label>{i} <input type='number' autocomplete="off" placeholder={i} pattern="\d*"  maxlength="4" name={i} value={this.state.newItem[i]} onChange={this.updateItemdetails} /> </label> )}
+            {this.state.numberInputs.map(i =>  <label>{i} <input type='number' autocomplete="off" placeholder={i} pattern="\d*"  min="1" max="999" name={i} value={this.state.newItem[i]} onChange={this.updateItemdetails} /> </label> )}
             {/* {this.state.numberInputs.map(i => <label>{i} <input type='number' placeholder={i} name={i} value={this.state.newItem[i]} onChange={this.updateItemdetails} /> </label>)} */}
             <br></br>
             <h5>קטגוריה ומידות  </h5>

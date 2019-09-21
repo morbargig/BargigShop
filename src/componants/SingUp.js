@@ -55,7 +55,7 @@ class SignUp extends Component {
           <input placeholder='Full Name' value={this.props.state.name} onChange={this.props.handle} type='text' name='name' />
           <label>Phone</label>
           <div class="ui-input-text ui-shadow-inset ui-corner-all ui-btn-shadow ui-body-c">
-            {this.props.state.isMobile ? <input type="tel" pattern="\d*" className="numbers-only" maxlength="10" name="phone" autocomplete="off" value={this.props.state.phone} onChange={this.props.handle}></input> : <input type="number"  maxlength="10" name="phone" autocomplete="off" value={this.props.state.phone} onChange={this.props.handle}></input>}
+            {this.props.state.isMobile ? <input type="tel" pattern="\d*" className="numbers-only" maxlength="10" name="phone" autocomplete="off" value={this.props.state.phone} onChange={this.props.handle}></input> : <input type="number"  min="0520000000" max="0549999999" name="phone" autocomplete="off" value={this.props.state.phone} onChange={this.props.handle}></input>}
 
           </div>
           {/* <input placeholder='Phone' value={this.props.state.phone} onChange={this.props.handle} type='text' name='phone' /> */}
