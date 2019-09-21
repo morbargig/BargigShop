@@ -160,9 +160,10 @@ class Home extends Component {
   resultByCatgory = () => {
     if (this.state.resultByCatgory !== undefined) {
       // console.log(this.props.state.user)
-      return this.state.resultByCatgory.map(c => <div className="category">
+      return this.state.resultByCatgory.map(c => 
+      <div >
 
-        <div class="card">
+        <div >
           <div class="card-image">
             <img src={this.state[c.name] !== undefined ? this.state[c.name] : c.image} alt={c.name}  ></img>
             {/* <span class="card-title">{c.name}</span> */}
