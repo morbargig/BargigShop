@@ -275,7 +275,7 @@ class Home extends Component {
             <div class="card">
               <div class="card-image">
                 <img src={c.img}></img>
-                <span class="card-title">{c.name}</span>
+                {/* <span class="card-title">{c.name}</span> */}
               </div>
               <div class="card-content">
                 <p>{c.description}</p>
