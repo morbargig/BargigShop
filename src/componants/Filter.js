@@ -102,7 +102,7 @@ class Filter extends Component {
                                 <div className="category">
                                     <div class="card">
                                         <div class="card-image">
-                                        <img src={this.state[c.name] !== undefined ? this.state[c.name] : c.image} alt={c.name}  ></img>
+                                            <img src={this.state[c.name] !== undefined ? this.state[c.name] : c.image} alt={c.name}  ></img>
                                             {/* <span class="card-title">{c.name}</span> */}
                                         </div>
                                         <div class="card-content">

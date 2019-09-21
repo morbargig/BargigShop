@@ -10,6 +10,15 @@ const Order = require('../models/Order')
 const nodemailer = require('nodemailer');
 
 const bodyParser = require('body-parser')
+
+const Nexmo = require('nexmo');
+const nexmo = new Nexmo({
+    apiKey: '34d361c8',
+    apiSecret: 'Hdhhdhd3777',
+});
+
+
+
 router.use(bodyParser.json())
 router.use(bodyParser.urlencoded({ extended: false }))
 
@@ -292,5 +301,23 @@ router.get('/getSomethinBySomeFiedAndValue/:Collection/:filed/:value', function 
 //     // })
 //     res.send(process.env.port)
 // })
+
+router.get('/sendSms/:from/:to/:text', function (req, res) {
+    let from = req.params.from
+    let to = req.params.to
+    let text = req.params.text
+    nexmo.message.sendSms(from, to, text, (err, responseData) => {
+        if (err) {
+            console.log(err);
+        } else {
+            if (responseData.messages[0]['status'] === "0") {
+                console.log("Message sent successfully.");
+            } else {
+                console.log(`Message failed with error: ${responseData.messages[0]['error-text']}`);
+            }
+        }
+    })
+})
+
 
 module.exports = router

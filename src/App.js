@@ -13,6 +13,7 @@ import axios from 'axios'
 import Filter from './componants/Filter';
 import Item from './componants/Item';
 import ShoppingCart from './componants/ShoppingCart';
+import Test from './componants/Test';
 
 
 
@@ -140,6 +141,9 @@ class App extends Component {
       if (this.state.isAdmin === undefined) {
         this.state.user.email.includes('issacbar') ? this.setState({ isAdmin: true }) : this.setState({ isAdmin: false })
       }
+      if (x === 2) {
+        return this.state.user.email.includes('issacbar') ? <a ><Link to="/Test" >Test</Link></a> : null
+      }
       if (x === 1) { return this.state.user.email.includes('issacbar') ? <Admin state={this.state} /> : null } else {
         return this.state.user.email.includes('issacbar') ? <a ><Link to="/Admin" >Admin</Link></a> : null
       }
@@ -161,9 +165,11 @@ class App extends Component {
       if (this.state.user) {
         let id = this.state.user.uid
         const res = await axios.get(`${route}getSomethinBySomeFiedAndValue/User/_id/${id}`)
-        if (res.data.ShoppingCard.length > 0) {
-          this.state.shoppingCart = true
-          this.setState({ ItemShoppingCart: res.data.ShoppingCard })
+        if (res.data.ShoppingCard) {
+          if (res.data.ShoppingCard.length > 0) {
+            this.state.shoppingCart = true
+            this.setState({ ItemShoppingCart: res.data.ShoppingCard })
+          }
         }
       }
       // console.log("kjbkjbkjbkjb")
@@ -199,6 +205,7 @@ class App extends Component {
               <a ><Link to="/" >Home</Link></a>
               {this.state.isAdmin ? <a ><Link to="/About">About </Link></a> : null}
               {this.Admin()}
+              {this.Admin(2)}
               {/* {this.state.user ? */}
               {this.shoppingCart()}
               {this.state.shoppingCart ? <a ><Link to="/ShoppingCart">Shopping Cart </Link></a> : null}
@@ -215,6 +222,7 @@ class App extends Component {
         <Route path="/" exact render={() => this.state.user ? <Home state={this.state} /> : <Login handle={this.handleChange} email={this.state.email} password={this.state.password} />} />
         {/* <Route path="/Home" render={() => <Home returnCatgories={this.returnCatgories} reaseCatgories={this.reaseCatgories} state={this.state} Catgories={this.state.Catgories} userEmail={this.state.userEmail} />} /> */}
         {/* <Route path="/About" render={() => <About state={this.state} />} /> */}
+        <Route path="/Test" render={() => <Test state={this.state} />} />
         <Route path="/Admin" render={() => this.Admin(1)} />
         <Route path="/About" render={() => this.About()} />
         <Route path="/ShoppingCart" render={() => <ShoppingCart state={this.state} />} />
