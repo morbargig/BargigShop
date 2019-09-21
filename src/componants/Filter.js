@@ -93,22 +93,23 @@ class Filter extends Component {
             <h2 id="catHead" className="center-align">{itemCatgory}</h2>
             <div>
                 {/* <div className="row"> */}
-                <div className="#f1f8e9 light-green lighten-5">
-                    <div className="categories">
+                {/* <div className="#f1f8e9 light-green lighten-5"> */}
+                <div>
+                    {/* <div className="categories"> */}
+                    <div>
                         {this.state.items.map(c => {
                             return (
-
                                 <div className="category">
+                                    <div class="card">
+                                        <div class="card-image">
+                                        <img src={this.state[c.name] !== undefined ? this.state[c.name] : c.image} alt={c.name}  ></img>
+                                            <span class="card-title">{c.name}</span>
+                                        </div>
+                                        <div class="card-content">
 
-                                    <div className="card">
-                                        <div className="card-image">
-                                            <img src={this.state[c.name] !== undefined ? this.state[c.name] : c.image} alt={c.name}  ></img>
-                                            <span className="card-title">{c.name}</span>
+                                            <p>{c.description}</p>
                                         </div>
-                                        <div className="card-content">
-                                            {/* <p>{c.description}</p> */}
-                                        </div>
-                                        <div className="card-action">
+                                        <div class="card-action">
                                             <Link to={`/Item/${c.name}`}> <button className="waves-effect waves-dark btn" > See Item</button> </Link>
 
                                             {c.color !== undefined ? <div> <a> Regular color</a> :  <button id={c.id} name={c.name} value={c.image} onClick={this.colorImage} className="left" style={{
@@ -134,6 +135,43 @@ class Filter extends Component {
                                         </div>
                                     </div>
                                 </div>
+
+                                // <div className="category">
+
+                                //     <div className="card">
+                                //         <div className="card-image">
+                                //             <img src={this.state[c.name] !== undefined ? this.state[c.name] : c.image} alt={c.name}  ></img>
+                                //             <span className="card-title">{c.name}</span>
+                                //         </div>
+                                //         <div className="card-content">
+                                //             {/* <p>{c.description}</p> */}
+                                //         </div>
+                                //         <div className="card-action">
+                                //             <Link to={`/Item/${c.name}`}> <button className="waves-effect waves-dark btn" > See Item</button> </Link>
+
+                                //             {c.color !== undefined ? <div> <a> Regular color</a> :  <button id={c.id} name={c.name} value={c.image} onClick={this.colorImage} className="left" style={{
+                                //                 backgroundColor: 'none',
+                                //                 width: '15px',
+                                //                 height: '15px',
+                                //             }} type="button" class="color-box" data-color-id="267" title="choose color" aria-label={`בחר תמונת רגילה`}> </button> <br></br><br></br><a>Color</a> : {Object.keys(c.color).map(o =>
+                                //                 <button id={c.id} name={c.name} value={c.color[o]} onClick={this.colorImage} className="left" style={{
+                                //                     backgroundColor: o,
+                                //                     width: '15px',
+                                //                     height: '15px',
+                                //                 }} type="button" class="color-box" data-color-id="267" title="choose color" aria-label={`choose ${o} color`}> </button>
+                                //             )}</div> : null
+                                //             }
+                                //             <p> <a> Price :  </a> {c.price} ₪ </p>
+                                //             <p> <a> Categories : </a> {c.Category.map(i => <span> {" "} {i},</span>)} </p>
+                                //             <p> <a> Sizes : </a> {c.sizes.map(i => <span> {" "} {i},</span>)} </p>
+                                //             <p> <a> Collection :  </a> {c.Collection}  </p>
+                                //             <p> <a> Discraption :  </a> {c.Discraption}  </p>
+                                //             <br></br>
+                                //             {this.Admin(c)}
+
+                                //         </div>
+                                //     </div>
+                                // </div>
 
                                 // <div>
                                 //     <div id="filterGrid" className="col s3">
