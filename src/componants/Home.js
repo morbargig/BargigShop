@@ -253,7 +253,7 @@ class Home extends Component {
       }
       {this.state.loggedInUser !== undefined ? this.welcomIfMobile(this.state.loggedInUser)
         : null}
-      {!this.props.state.isMobile ? <button className={"homeButton"} on={this.slecetCatgory}>
+      {!this.props.state.isMobile ? <button className="homeButton" >
         <select class="browser-default" onClick={this.catagorySearch}>
           <option value="Catgory" disabled selected>חפש לפי </option>
           <option value="name">שם מוצר</option>
@@ -264,7 +264,17 @@ class Home extends Component {
           <option value="Collection">קולקציה</option>
         </select>
         <input name="input" type="text" value={this.state.fullName} onChange={this.updateusersText} placeholder="type here" />
-      </button> : null}
+      </button> : <div>    <select class="browser-default" onChange={this.catagorySearch}>
+        <option value="Catgory" disabled selected>חפש לפי </option>
+        <option value="name">שם מוצר</option>
+        {this.props.state.isAdmin ? <option value="id">Id</option> : null}
+        <option value="Category">קטגוריה</option>
+        <option value="sizes">מידה</option>
+        <option value="price">מחיר מתחת ל</option>
+        <option value="Collection">קולקציה</option>
+      </select>
+          <input name="input" type="text" value={this.state.fullName} onChange={this.updateusersText} placeholder="type here" />
+        </div>}
       {/* {this.welcomeUser()} */}
       {this.state.Catgories !== undefined ? <h5> Categories : </h5> : null}
       <br></br>

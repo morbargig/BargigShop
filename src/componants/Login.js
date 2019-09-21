@@ -45,7 +45,7 @@ class Login extends Component {
                 </div>
                 <h1>Don`t have a user?</h1>
                 <br></br>
-                <Link to="/Signup" className='btn btn-success'>CLICK HERE</Link>
+                <Link to="/Singup" className='btn btn-success'>CLICK HERE</Link>
             </div>
         </div>
     }
