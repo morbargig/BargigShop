@@ -12,7 +12,8 @@ const UserSchema = new Schema({
     city: String,
     ShoppingCard: [],
     img: String
-
+    // recipes: [{ type: mongoose.Types.ObjectId, ref: "recipe" }],
+    // likes: [{ type: mongoose.Types.ObjectId, ref: "recipe" }]
 })
 
 const User = mongoose.model("User", UserSchema)

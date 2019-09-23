@@ -92,10 +92,11 @@ class Home extends Component {
     let res = await axios.get(`${route}searchByCatagory/${catagorySearch}/${text}`)
     console.log(res.data)
     this.setState({
-      resultByCatgory: res.data,
+      resultByCatgory: res.data[0],
+      resultByCatgoryDataList: res.data[1],
       Catgories: undefined
     }, function () {
-      console.log(this.state.Catgories, this.state.resultByCatgory)
+      console.log(this.state.Catgories, this.state.resultByCatgory, this.state.resultByCatgoryDataList)
       // if (typeof text === "string" && text === "") {
       //     console.log("gfdgfdbgkjbdkgbkdj")
       //     this.setState({
@@ -180,10 +181,15 @@ class Home extends Component {
                   width: '15px',
                   height: '15px',
                 }} type="button" class="color-box" data-color-id="267" title="choose color" aria-label={`בחר תמונת רגילה`}> </button> <br></br><br></br><a>Color</a> : {Object.keys(c.color).map(o =>
-                  <button id={c.id} name={c.name} value={c.color[o]} onClick={this.colorImage} className="left" style={{
+                  <button id={c.id} name={c.name} value={c.color[o]} onClick={this.colorImage} className="colorButton" style={{
                     backgroundColor: o,
-                    width: '15px',
                     height: '15px',
+                    width: '15px',
+                    // background-color: #bbb;
+                    // border-radius: '50%',
+                    display: 'inline-block'
+                    // width: '15px',
+                    // height: '15px',
                   }} type="button" class="color-box" data-color-id="267" title="choose color" aria-label={`choose ${o} color`}> </button>
                 )}</div> : null
                 }
@@ -217,7 +223,7 @@ class Home extends Component {
                   width: '15px',
                   height: '15px',
                 }} type="button" class="color-box" data-color-id="267" title="choose color" aria-label={`בחר תמונת רגילה`}> </button> <br></br><br></br><a>Color</a> : {Object.keys(c.color).map(o =>
-                  <button id={c.id} name={c.name} value={c.color[o]} onClick={this.colorImage} className="left" style={{
+                  <button id={c.id} name={c.name} value={c.color[o]} onClick={this.colorImage} className="colorButton" style={{
                     backgroundColor: o,
                     width: '15px',
                     height: '15px',
@@ -293,8 +299,27 @@ class Home extends Component {
       }
       {this.state.loggedInUser !== undefined ? this.welcomIfMobile(this.state.loggedInUser)
         : null}
-      {!this.props.state.isMobile ? <button className="homeButton" >
-        <select class="browser-default" onClick={this.catagorySearch}>
+      {!this.props.state.isMobile ?
+        <button className="homeButton" >
+          <select class="browser-default" onClick={this.catagorySearch}>
+            <option value="Catgory" disabled selected>חפש לפי </option>
+            <option value="name">שם מוצר</option>
+            {this.props.state.isAdmin ? <option value="id">Id</option> : null}
+            <option value="Category">קטגוריה</option>
+            <option value="sizes">מידה</option>
+            <option value="price">מחיר מתחת ל</option>
+            <option value="Collection">קולקציה</option>
+            <option value="color"> (  צבע  ( נא לרשום באנגלית  </option>
+          </select>
+          <datalist name="input" id="searchOptions" className='select-input' onChange={this.updateusersText}>
+            {this.state.resultByCatgoryDataList ? Object.keys(this.state.resultByCatgoryDataList).map(c => <option className={`option${c}`} value={c}> {c}  </option>) : null}
+          </datalist>
+          <input name="input" id="arry" autoComplete="on" list="searchOptions"
+            value={this.state.input}
+            placeholder='צבע' onChange={this.updateusersText} className='select-input' />
+          {/* <input name="input" type="text" value={this.state.input} onChange={this.updateusersText} placeholder="type here" /> */}
+        </button>
+        : <div>    <select class="browser-default" onChange={this.catagorySearch}>
           <option value="Catgory" disabled selected>חפש לפי </option>
           <option value="name">שם מוצר</option>
           {this.props.state.isAdmin ? <option value="id">Id</option> : null}
@@ -302,21 +327,15 @@ class Home extends Component {
           <option value="sizes">מידה</option>
           <option value="price">מחיר מתחת ל</option>
           <option value="Collection">קולקציה</option>
-          <option value="color"> (  צבע  ( נא לרשום באנגלית  </option>
+          <option value="color"> (  צבע  ( נא לרשום באנגלית      </option>
         </select>
-        <input name="input" type="text" value={this.state.input} onChange={this.updateusersText} placeholder="type here" />
-      </button> : <div>    <select class="browser-default" onChange={this.catagorySearch}>
-        <option value="Catgory" disabled selected>חפש לפי </option>
-        <option value="name">שם מוצר</option>
-        {this.props.state.isAdmin ? <option value="id">Id</option> : null}
-        <option value="Category">קטגוריה</option>
-        <option value="sizes">מידה</option>
-        <option value="price">מחיר מתחת ל</option>
-        <option value="Collection">קולקציה</option>
-        <option value="color"> (  צבע  ( נא לרשום באנגלית      </option>
-      </select>
-          <input name="input" type="text" value={this.state.input} onChange={this.updateusersText} placeholder="type here" />
-        </div>}
+          <datalist name="input" id="searchOptions" className='select-input' onChange={this.updateusersText}>
+            {this.state.resultByCatgoryDataList ? Object.keys(this.state.resultByCatgoryDataList).map(c => <option className={`option${c}`} value={c}> {c}  </option>) : null}
+          </datalist>
+          <input name="input" id="arry" autoComplete="on" list="searchOptions"
+            value={this.state.input}
+            placeholder='צבע' onChange={this.updateusersText} className='select-input' />  </div>
+      }
       {/* {this.welcomeUser()} */}
       {this.state.Catgories !== undefined ? <h5> Categories : </h5> : null}
       <br></br>
@@ -345,7 +364,7 @@ class Home extends Component {
       </div>
       {/* </div>} */}
 
-    </div>
+    </div >
   }
 
 }

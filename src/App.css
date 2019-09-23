@@ -7,7 +7,9 @@
   height: 40vmin;
   pointer-events: none;
 }
-
+.colorButton{
+border-radius: '50%',
+}
 .App-header {
   background-color: #282c34;
   min-height: 100vh;

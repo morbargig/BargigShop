@@ -207,33 +207,37 @@ router.get('/searchByCatagory/:Catagory/:text', (req, res) => {
 
     if (Catagory === "price") {
         Items.find({}, function (err, x) {
+            let dataList = {}
             let result = []
-            x.map(u => u[Catagory] < parseInt(text) ? result.push(u) : console.log(u[Catagory]))
+            x.map(u => u[Catagory] < parseInt(text) ? result.push(u) && (dataList[u[Catagory]] = null) : console.log(u[Catagory]))
             // console.log(result)
-            res.send(result)
+            res.send([result, dataList])
         })
     } else if (Catagory === 'Category' || Catagory === 'sizes') {
 
         Items.find({}, function (err, x) {
+            let dataList = {}
             let result = []
-            x.map(x => x[Catagory].map(c => c.includes(text) || c === text ? result.push(x) : null))
+            x.map(x => x[Catagory].map(c => c.includes(text) || c === text ? result.push(x) && (dataList[c] = null) : null))
             // console.log(result)
-            res.send(result)
+            res.send([result, dataList])
         })
     } else if (Catagory === "color") {
         Items.find({}, function (err, x) {
             let result = []
-            x.map(x => x[Catagory] ? Object.keys(x[Catagory]).map(c => c.includes(text) || c === text ? result.push(x) : null) : null)
+            let dataList = {}
+            x.map(x => x[Catagory] ? Object.keys(x[Catagory]).map(c => c.includes(text) || c === text ? result.push(x) && (dataList[c] = null) : null) : null)
             // console.log(result)
-            res.send(result)
+            res.send([result, dataList])
         })
     } else {
         console.log(text, Catagory)
         Items.find({}, function (err, x) {
             let result = []
-            x.map(u => u[Catagory].includes(text) || u[Catagory] === text ? result.push(u) : console.log(u[Catagory]))
+            let dataList =  {}
+            x.map(u => u[Catagory].includes(text) || u[Catagory] === text ? result.push(u) && (dataList[u[Catagory]] = null) : console.log(u[Catagory]))
             // console.log(result)
-            res.send(result)
+            res.send([result, dataList])
         })
     }
 })

@@ -70,7 +70,7 @@ class Filter extends Component {
 
     colorImage = (e) => {
         let name = e.target.name
-        let id = e.target.id
+        // let id = e.target.id
         let value = e.target.value
         // if (this.state[id]  ){
         // this.setState({ })

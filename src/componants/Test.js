@@ -4,10 +4,10 @@ import axios from 'axios';
 
 
 class Test extends Component {
-    constructor() {
-        super()
+    // constructor() {
+    //     super()
 
-    }
+    // }
 
     fn = async () => {
         let name = 'Itzik'
