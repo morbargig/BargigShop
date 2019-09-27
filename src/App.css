@@ -7,6 +7,34 @@
   height: 40vmin;
   pointer-events: none;
 }
+
+.fixed-social-list-wrapper {
+  width:  15px;
+  position: fixed;
+  z-index: 90;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 35px;
+
+
+}
+li {
+
+  font-size: inherit;
+}
+.contectIconsDiv{
+  width: 20vw;
+  height: 20vh;
+  margin-top: 50px;
+  position: fixed
+}
+.contectIcons{
+  height: 25px;
+  width: 25px;
+  
+  /* position: absolute */
+}
 .colorButton{
 border-radius: '50%',
 }

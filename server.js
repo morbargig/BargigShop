@@ -36,7 +36,7 @@ port = 8000
 DBname = 'BargigShop'
 
 mongoose.connect(process.env.MONGODB_URI || `mongodb://localhost/${DBname}`, { useNewUrlParser: true }).then(() => {
-    app.listen(process.env.PORT || port, () => console.log(`Running server on port` + port))
+    app.listen(process.env.PORT || port, () => console.log(`Running server on port ` + port))
 })
 
 

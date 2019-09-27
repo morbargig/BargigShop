@@ -213,6 +213,15 @@ router.get('/searchByCatagory/:Catagory/:text', (req, res) => {
             // console.log(result)
             res.send([result, dataList])
         })
+    } else if (Catagory === "price2") {
+        Catagory = "price"
+        Items.find({}, function (err, x) {
+            let dataList = {}
+            let result = []
+            x.map(u => u[Catagory] > parseInt(text) ? result.push(u) && (dataList[u[Catagory]] = null) : console.log(u[Catagory]))
+            // console.log(result)
+            res.send([result, dataList])
+        })
     } else if (Catagory === 'Category' || Catagory === 'sizes') {
 
         Items.find({}, function (err, x) {
@@ -234,7 +243,7 @@ router.get('/searchByCatagory/:Catagory/:text', (req, res) => {
         console.log(text, Catagory)
         Items.find({}, function (err, x) {
             let result = []
-            let dataList =  {}
+            let dataList = {}
             x.map(u => u[Catagory].includes(text) || u[Catagory] === text ? result.push(u) && (dataList[u[Catagory]] = null) : console.log(u[Catagory]))
             // console.log(result)
             res.send([result, dataList])

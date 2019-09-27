@@ -96,7 +96,7 @@ class Home extends Component {
       resultByCatgoryDataList: res.data[1],
       Catgories: undefined
     }, function () {
-      console.log(this.state.Catgories, this.state.resultByCatgory, this.state.resultByCatgoryDataList)
+      console.log(this.state.Catgories, this.state.resultByCatgory, this.state.resultByCatgoryDataList, Object.keys(this.state.resultByCatgoryDataList))
       // if (typeof text === "string" && text === "") {
       //     console.log("gfdgfdbgkjbdkgbkdj")
       //     this.setState({
@@ -308,6 +308,7 @@ class Home extends Component {
             <option value="Category">קטגוריה</option>
             <option value="sizes">מידה</option>
             <option value="price">מחיר מתחת ל</option>
+            <option value="price2">מחיר מעל ל</option>
             <option value="Collection">קולקציה</option>
             <option value="color"> (  צבע  ( נא לרשום באנגלית  </option>
           </select>
@@ -326,6 +327,7 @@ class Home extends Component {
           <option value="Category">קטגוריה</option>
           <option value="sizes">מידה</option>
           <option value="price">מחיר מתחת ל</option>
+          <option value="price2">מחיר מעל ל</option>
           <option value="Collection">קולקציה</option>
           <option value="color"> (  צבע  ( נא לרשום באנגלית      </option>
         </select>

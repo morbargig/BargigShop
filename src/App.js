@@ -205,7 +205,7 @@ class App extends Component {
               <a ><Link to="/" >Home</Link></a>
               {this.state.isAdmin ? <a ><Link to="/About">About </Link></a> : null}
               {this.Admin()}
-              {/* {this.Admin(2)} */}
+              {this.Admin(2)}
               {/* {this.state.user ? */}
               {this.shoppingCart()}
               {this.state.shoppingCart ? <a ><Link to="/ShoppingCart">Shopping Cart </Link></a> : null}
