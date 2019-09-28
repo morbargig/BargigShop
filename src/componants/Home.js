@@ -165,39 +165,47 @@ class Home extends Component {
         this.props.state.isMobile ? <div>
           <div className="category">
             <div class="card">
-              <div class="card-image">
-                <img src={this.state[c.name] !== undefined ? this.state[c.name] : c.image} alt={c.name}  ></img>
-                {/* <span class="card-title">{c.name}</span> */}
-              </div>
-              <div class="card-content">
+              <Link to={`/Item/${c.name}`}>
+                <div class="card-image">
+                  <img src={this.state[c.name] !== undefined ? this.state[c.name] : c.image} alt={c.name}  ></img>
+                  {/* <span class="card-title">{c.name}</span> */}
+                </div>
+                <div class="card-content">
 
-                <p>{c.description}</p>
-              </div>
+                  <p>{c.description}</p>
+                </div>
+              </Link>
               <div class="card-action">
-                <Link to={`/Item/${c.name}`}> <button className="waves-effect waves-dark btn" > See Item</button> </Link>
+                {/* <button className="waves-effect waves-dark btn" > See Item</button> */}
 
-                {c.color !== undefined ? <div> <a> Regular color</a> :  <button id={c.id} name={c.name} value={c.image} onClick={this.colorImage} className="left" style={{
-                  backgroundColor: 'none',
-                  width: '15px',
-                  height: '15px',
-                }} type="button" class="color-box" data-color-id="267" title="choose color" aria-label={`בחר תמונת רגילה`}> </button> <br></br><br></br><a>Color</a> : {Object.keys(c.color).map(o =>
-                  <button id={c.id} name={c.name} value={c.color[o]} onClick={this.colorImage} className="colorButton" style={{
-                    backgroundColor: o,
-                    height: '15px',
+                {c.color !== undefined ? <div >
+                  {/* <a> Regular color</a> : */}
+                  <button id={c.id} name={c.name} value={c.image} onClick={this.colorImage} className="left" style={{
+                    backgroundColor: 'none',
                     width: '15px',
-                    // background-color: #bbb;
-                    // border-radius: '50%',
-                    display: 'inline-block'
-                    // width: '15px',
-                    // height: '15px',
-                  }} type="button" class="color-box" data-color-id="267" title="choose color" aria-label={`choose ${o} color`}> </button>
-                )}</div> : null
+                    height: '15px',
+                  }} type="button" class="color-box" data-color-id="267" title="choose color" aria-label={`בחר תמונת רגילה`}> </button> <br></br><br></br>
+                  {/* <a>Color</a> :  */}
+                  {Object.keys(c.color).map(o =>
+                    <button id={c.id} name={c.name} value={c.color[o]} onClick={this.colorImage} className="colorButton" style={{
+                      backgroundColor: o,
+                      height: '15px',
+                      width: '15px',
+                      // background-color: #bbb;
+                      // border-radius: '50%',
+                      display: 'inline-block'
+                      // width: '15px',
+                      // height: '15px',
+                    }} type="button" class="color-box" data-color-id="267" title="choose color" aria-label={`choose ${o} color`}> </button>
+                  )}</div> : null
                 }
-                <p> <a> Price :  </a> {c.price} ₪ </p>
-                <p> <a> Categories : </a> {c.Category.map(i => <span> {" "} {i},</span>)} </p>
+                <p>
+                  {/* <a> Price :  </a> */}
+                  ₪{c.price}.00  </p>
+                {/* <p> <a> Categories : </a> {c.Category.map(i => <span> {" "} {i},</span>)} </p>
                 <p> <a> Sizes : </a> {c.sizes.map(i => <span> {" "} {i},</span>)} </p>
                 <p> <a> Collection :  </a> {c.Collection}  </p>
-                <p> <a> Discraption :  </a> {c.Discraption}  </p>
+                <p> <a> Discraption :  </a> {c.Discraption}  </p> */}
                 <br></br>
                 {this.props.state.user.email.includes('issacbar') ? <div id={c._id}> <button onClick={this.editItem}> ערוך </button>  <br></br> <button name={c.name} id={c._id} onClick={this.deleteItem}> מחק מוצר </button> </div> : null}
               </div>
@@ -301,7 +309,7 @@ class Home extends Component {
         : null}
       {!this.props.state.isMobile ?
         <button className="homeButton" >
-          <select class="browser-default" onClick={this.catagorySearch}>
+          <select class="browser-default" onChange={this.catagorySearch}>
             <option value="Catgory" disabled selected>חפש לפי </option>
             <option value="name">שם מוצר</option>
             {this.props.state.isAdmin ? <option value="id">Id</option> : null}
@@ -339,23 +347,26 @@ class Home extends Component {
             placeholder='צבע' onChange={this.updateusersText} className='select-input' />  </div>
       }
       {/* {this.welcomeUser()} */}
-      {this.state.Catgories !== undefined ? <h5> Categories : </h5> : null}
+      {this.state.Catgories !== undefined ? <h5 >  : קטגוריות  </h5> : null}
       <br></br>
-      <div className={!this.props.state.isMobile ? "categories" : null}>
+      <div className={!this.props.state.isMobile ? "categories" : "categoriesMobile"}>
         {this.state.Catgories !== undefined ? this.state.Catgories.map(c =>
           <div className="category">
 
             <div class="card">
-              <div class="card-image">
-                <img src={c.img}></img>
-                {/* <span class="card-title">{c.name}</span> */}
-              </div>
-              <div class="card-content">
+              <Link to={`/Filter/${c.name}`}>
+                <div class="card-image">
+                  <img className="imageMoblie" src={c.img}>
+                  </img>
+                  {/* <span class="card-title">{c.name}</span> */}
+                </div>
+                <a className="imageText">{c.name} </a>
+              </Link>
+              {/* <div class="card-content">
                 <p>{c.description}</p>
-              </div>
-              <div class="card-action">
-                <Link to={`/Filter/${c.name}`}> {c.name} </Link>
-              </div>
+              </div> */}
+              {/* <div class="card-action">
+              </div> */}
             </div>
 
           </div>)
