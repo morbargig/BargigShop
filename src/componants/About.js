@@ -58,3 +58,17 @@ class About extends Component {
 
 export default About;
 
+// position: fixed;
+// height: 400px;
+// width: 500px;
+// display: grid;
+// margin:auto;
+// top: 0;
+// right: 0;
+// left: 0;
+// bottom: 0;
+// background-color: navajowhite;
+// border-style: solid;
+// border-width: 3px;
+// opacity: 0.95;
+// color: #0a1612;
