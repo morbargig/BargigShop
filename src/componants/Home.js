@@ -288,11 +288,11 @@ class Home extends Component {
 
   welcomIfMobile = (user) => {
     if (!this.props.state.isMobile) {
-      return <div className="userDetails">  <h6> Welcome back {user.name}   </h6>
+      return <div className="userDetails">  <h6>  {user.name} ברוך הבא  </h6>
         <img width="100" height="100" className="circle responsive-img" src={user.img} />
       </div>
     }
-    else { return <div> <a className='left'> Welcome back {user.name}  </a><div className="userDetails"> <img width="100" height="100" className="circle responsive-img" src={user.img} />    </div > </div> }
+    else { return <div> <a className='left'> {user.name} ברוך הבא  </a><div className="userDetails"> <img width="100" height="100" className="circle responsive-img" src={user.img} />    </div > </div> }
   }
 
   render() {
@@ -362,11 +362,6 @@ class Home extends Component {
                 </div>
                 <a className="imageText">{c.name} </a>
               </Link>
-              {/* <div class="card-content">
-                <p>{c.description}</p>
-              </div> */}
-              {/* <div class="card-action">
-              </div> */}
             </div>
 
           </div>)

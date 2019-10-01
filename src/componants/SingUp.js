@@ -48,12 +48,12 @@ class SignUp extends Component {
 
 
   render() {
-    return <div className='col-md-6'>
+    return <div className='col-md-6 right'>
       <div>
         <div>
-          <label>Full Name</label>
-          <input placeholder='Full Name' value={this.props.state.name} onChange={this.props.handle} type='text' name='name' />
-          <label>Phone</label>
+          <label>שם מלא</label>
+          <input placeholder='שם מלא' value={this.props.state.name} onChange={this.props.handle} type='text' name='name' />
+          <label>טלפון</label>
           <div class="ui-input-text ui-shadow-inset ui-corner-all ui-btn-shadow ui-body-c">
             {this.props.state.isMobile ? <input type="tel" pattern="\d*" className="numbers-only" maxlength="10" name="phone" autocomplete="off" value={this.props.state.phone} onChange={this.props.handle}></input> : <input type="number"  min="0520000000" max="0549999999" name="phone" autocomplete="off" value={this.props.state.phone} onChange={this.props.handle}></input>}
 
@@ -61,29 +61,29 @@ class SignUp extends Component {
           {/* <input placeholder='Phone' value={this.props.state.phone} onChange={this.props.handle} type='text' name='phone' /> */}
 
           <div>
-            <label>Gender</label>
+            <label>מין</label>
             <select className="browser-default col s2" onChange={this.props.handle} name='gender'>
-              <option value='male'>Male</option>
-              <option value='female'>Female</option>
-              <option value='other'>Other</option>
+              <option value='male'>זכר</option>
+              <option value='female'>נקבה</option>
+              <option value='other'>אחר</option>
             </select>
           </div>
-          <label>City</label>
-          <input placeholder='City' value={this.props.state.city} onChange={this.props.handle} type='text' name='city' />
-          <label>Photo</label>
+          <label>עיר</label>
+          <input placeholder='עיר' value={this.props.state.city} onChange={this.props.handle} type='text' name='city' />
+          <label>תמונת פרופיל</label>
           <br></br>
           <input type="file" onChange={this.props.handleImg} />
-          <button onClick={this.props.upload}>Upload Image</button>
+          <button onClick={this.props.upload}>העלה תמונה</button>
           <br></br><br></br>
-          <label>Email Address</label>
-          <input placeholder='Enter email' value={this.props.state.email} onChange={this.props.handle} type='email' name='email' />
-          <small className='form-text text-muted'>We`ll Never Share Your Email With Anyone Else</small>
+          <label>דואר אלקטרוני</label>
+          <input placeholder='דואר אלקטרוני' value={this.props.state.email} onChange={this.props.handle} type='email' name='email' />
+          <small className='form-text text-muted'>אנחנו לעולם לא נשתף או נעשה כל שימוש בפרטים שלך</small>
         </div>
         <div>
-          <label>Password</label>
-          <input placeholder='Password' value={this.props.state.password} onChange={this.props.handle} type='password' name='password' />
+          <label>סיסמה</label>
+          <input placeholder='סיסמה' value={this.props.state.password} onChange={this.props.handle} type='password' name='password' />
 
-          <button href="/" onClick={this.signup}  >Signup</button>
+          <button href="/" onClick={this.signup}  >הירשם</button>
         </div>
       </div>
     </div>

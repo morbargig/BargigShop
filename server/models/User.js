@@ -10,7 +10,8 @@ const UserSchema = new Schema({
     gender: String,
     points: { type: Number, default: 5 },
     city: String,
-    ShoppingCard: [],
+    ShopingCard: [{ type: mongoose.Types.ObjectId, ref: "Items" }],
+    
     img: String
     // recipes: [{ type: mongoose.Types.ObjectId, ref: "recipe" }],
     // likes: [{ type: mongoose.Types.ObjectId, ref: "recipe" }]

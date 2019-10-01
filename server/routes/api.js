@@ -24,8 +24,7 @@ router.use(bodyParser.urlencoded({ extended: false }))
 
 
 router.post('/addnewuser', function (req, res) {
-    let u1 = new User(req.body)
-    u1.save()
+    new User(req.body).save()
     res.send('succes!')
 })
 
@@ -118,22 +117,6 @@ router.get('/getbyfield/:Category', function (req, res) {
     })
 })
 
-router.put('/upDateItem/:id', function (req, res) {
-    let id = req.params.id
-    let updatedData = req.body
-    Items.findOneAndUpdate({ "_id": id }, updatedData, function () {
-        res.end()
-        console.log(updatedData, id)
-
-    })
-
-})
-
-
-
-
-
-
 router.get('/getUserByEmail/:email', function (req, res) {
     let key = Object.keys(req.params)[0]
     let value = req.params[key]
@@ -167,6 +150,16 @@ router.get('/Catgories/:id', function (req, res) {
     })
 })
 
+router.put('/upDateItem/:id', function (req, res) {
+    let id = req.params.id
+    let updatedData = req.body
+    Items.findOneAndUpdate({ "_id": id }, updatedData, function () {
+        res.end()
+        console.log(updatedData, id)
+
+    })
+
+})
 
 
 router.post('/addNewItem', function (req, res) {
@@ -253,21 +246,19 @@ router.get('/searchByCatagory/:Catagory/:text', (req, res) => {
 
 
 
-router.post('/addToShoppingCard/:id', (req, res) => {
-    let id = req.params.id
-    const data = req.body
-    console.log(data)
-    let o = new Order(data)
-    o.save()
+router.put('/addToShoppingCard/:userId/:itemId', (req, res) => {
+    let userId = req.params.userId
+    let itemId = req.params.itemId
+    console.log(userId, itemId)
     res.end('saved')
     User.find({}).exec(function (err, x) {
         // console.log(x)
         // res.send(x)
-        let user = x.find(u => u._id === id)
-        user.ShoppingCard.push(o)
-        User.findOneAndUpdate({ "_id": id }, user, function () {
+        let user = x.find(u => u._id === userId)
+        user.ShopingCard.push(itemId)
+        User.findOneAndUpdate({ "_id": userId }, user, function () {
             res.end()
-            console.log(user, id)
+            console.log(user, userId, itemId)
         })
     })
 })
@@ -293,6 +284,32 @@ router.get('/getSomethinBySomeFiedAndValue/:Collection/:filed/:value', function 
         res.send(x)
     })
 })
+
+
+router.get('/getSomethinPopulateBySomeFiedAndValue/:Collection/:filed/:value', function (req, res) {
+    let Collection = req.params.Collection
+    let filed = req.params.filed
+    let value = req.params.value
+    Collection = require(`../models/${Collection}`)
+    Collection.findOne({ [filed]: value }).
+        populate('ShopingCard').
+        exec(function (err, user) {
+            console.log(user,"hsdjhfsdbjhfbsdjhb")
+            res.send(user)
+        })
+})
+// mor = function () {
+
+//     User.find({}).
+//         populate('ShopingCard').
+//         exec(function (err, users) {
+//             // res.send(users)
+//             console.log(users[0])
+//         })
+// }
+
+
+
 
 // obj = {
 //     _id: "WIRYk0LmHyZn09qSfc6etDpykMu1",
@@ -322,11 +339,18 @@ router.get('/getSomethinBySomeFiedAndValue/:Collection/:filed/:value', function 
 //     res.send(process.env.port)
 // })
 
-router.get('/sendSms/:from/:to/:text', function (req, res) {
+router.post('/sendSms/:from/:to', function (req, res) {
     let from = req.params.from
     let to = req.params.to
-    let text = req.params.text
-    nexmo.message.sendSms(from, to, text, (err, responseData) => {
+    let text = req.body.text
+    console.log(text)
+    // let text = req.params.text
+    // let text = 'https://api.get-in.com//Rosh_hashana?seller_code=I5TJ2QF2FUJ'
+    // req.params.callback
+    let url = req.params.url
+    text += url
+    nexmo.message.sendSms(from, to, text, { "type": 'unicode', "concat": 'true' }, (err, responseData) => {
+        // nexmo.message.sendSms(from, to, text, { "type": 'unicode', "concat": 'true' }, function (err, res)
         if (err) {
             console.log(err);
         } else {

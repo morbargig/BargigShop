@@ -12,7 +12,7 @@ import route from './config/route'
 import axios from 'axios'
 import Filter from './componants/Filter';
 import Item from './componants/Item';
-import ShoppingCart from './componants/ShoppingCart';
+import ShopingCart from './componants/ShopingCart';
 import Test from './componants/Test';
 
 
@@ -23,7 +23,7 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      AdminIn: true,
+      // AdminIn: true,
       // openMenu: true
     }
   }
@@ -159,26 +159,28 @@ class App extends Component {
     this.setState({ openMenu: !x })
   }
 
-  asyncShoppingCart = async () => {
-    if (this.state.ItemShoppingCart === undefined) {
+  asyncShopingCart = async () => {
+    console.log(this.state.ItemShopingCard)
+    if (this.state.ItemShopingCard === undefined) {
 
       if (this.state.user) {
-        let id = this.state.user.uid
-        const res = await axios.get(`${route}getSomethinBySomeFiedAndValue/User/_id/${id}`)
-        if (res.data.ShoppingCard) {
-          if (res.data.ShoppingCard.length > 0) {
-            this.state.shoppingCart = true
-            this.setState({ ItemShoppingCart: res.data.ShoppingCard })
+        let value = this.state.user.uid
+        let filed = "_id"
+        let Collection = 'User'
+        const res = await axios.get(`${route}getSomethinPopulateBySomeFiedAndValue/${Collection}/${filed}/${value}`)
+        if (res.data.ShopingCard) {
+          if (res.data.ShopingCard.length > 0) {
+            this.state.shopingCard = true
+            this.setState({ ItemShopingCard: res.data.ShopingCard })
+            console.log(res.data.ShopingCard)
           }
         }
       }
-      // console.log("kjbkjbkjbkjb")
-
     }
   }
 
-  shoppingCart = () => {
-    this.asyncShoppingCart()
+  shopingCart = () => {
+    this.asyncShopingCart()
   }
   About = () => {
     if (this.state.user) {
@@ -207,8 +209,8 @@ class App extends Component {
               {this.Admin()}
               {this.Admin(2)}
               {/* {this.state.user ? */}
-              {this.shoppingCart()}
-              {this.state.shoppingCart ? <a ><Link to="/ShoppingCart">Shopping Cart </Link></a> : null}
+              {this.shopingCart()}
+              {this.state.shopingCard ? <a ><Link to="/ShopingCart">Shopping Cart </Link></a> : null}
               {/* <a ><Link to="/shoppingCart">Shopping Cart </Link></a> */}
               {/* : null} */}
               {console.log(this.state.user)}
@@ -225,7 +227,7 @@ class App extends Component {
         <Route path="/Test" render={() => <Test state={this.state} />} />
         <Route path="/Admin" render={() => this.Admin(1)} />
         <Route path="/About" render={() => this.About()} />
-        <Route path="/ShoppingCart" render={() => <ShoppingCart state={this.state} />} />
+        <Route path="/ShopingCart" render={() => <ShopingCart state={this.state} />} />
         <Route path="/Filter/:CatgoryName" exact render={({ match }) => <Filter name={match.params.CatgoryName} state={this.state} />} />
         <Route path="/Item/:ItemName" exact render={({ match }) => <Item state={this.state} name={match.params.ItemName} />} />
         <Route path="/Singup" exact render={() => this.state.user ? <Home state={this.state} /> : <SignUp handle={this.handleChange} state={this.state} saveUser={this.saveNewUserToDb} handleImg={this.handleImage} upload={this.handleUpload} />} />

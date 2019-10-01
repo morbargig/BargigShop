@@ -95,8 +95,8 @@ class Filter extends Component {
                 {/* <div className="row"> */}
                 {/* <div className="#f1f8e9 light-green lighten-5"> */}
                 <div>
-                    {/* <div className="categories"> */}
-                    <div>
+                    <div className={!this.props.state.isMobile ? "categories" : "categoriesMobile"}>
+                        {/* <div> */}
                         {this.state.items.map(c => {
                             return (
                                 <div className="category">
@@ -125,11 +125,11 @@ class Filter extends Component {
                                             )}</div> : null
                                             }
                                             <p> <a> Price :  </a> {c.price} ₪ </p>
-                                            <p> <a> Categories : </a> {c.Category.map(i => <span> {" "} {i},</span>)} </p>
+                                            {/* <p> <a> Categories : </a> {c.Category.map(i => <span> {" "} {i},</span>)} </p>
                                             <p> <a> Sizes : </a> {c.sizes.map(i => <span> {" "} {i},</span>)} </p>
                                             <p> <a> Collection :  </a> {c.Collection}  </p>
                                             <p> <a> Discraption :  </a> {c.Discraption}  </p>
-                                            <br></br>
+                                            <br></br> */}
                                             {this.Admin(c)}
 
                                         </div>

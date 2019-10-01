@@ -184,7 +184,8 @@ body{
 
 .card-action{
   text-align: end
-; background-color: beige
+; background-color: beige;
+height: 223px;
 }
 .category{
   background-color: beige

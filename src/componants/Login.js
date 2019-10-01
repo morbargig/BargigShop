@@ -25,27 +25,35 @@ class Login extends Component {
     }
 
     render() {
-        return <div className='col-md-6'>
+        return <div className='col-md-6 right'>
             <div>
                 <h3>
-                    Welcome to Bargig Shop
+                    Bargig Shop - ברוך הבא ל
                 </h3>
                 <br></br>
-                <h1>Login: </h1>
+                <h1>: הירשם  </h1>
                 <div>
-                    <label>Email Address</label>
-                    <input placeholder='Enter email' value={this.state.email} onChange={this.handleChange} type='email' name='email' />
+                    {/* <input placeholder='Enter email' value={this.state.email} onChange={this.handleChange} type='email' name='email' /> */}
 
                 </div>
+                <form>
+                    <div class="input-group">
+                        <input type="text" class="form-control" value={this.state.email} onChange={this.handleChange} type='email' name='email' placeholder="אמייל"></input>
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                    </div>
+                    <div class="input-group">
+                        <input type="password" class="form-control" value={this.state.password} onChange={this.handleChange} name='password' placeholder="סיסמה"></input>
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                    </div>
+                </form>
                 <div>
-                    <label>Password</label>
-                    <input placeholder='Password' value={this.state.password} onChange={this.handleChange} type='password' name='password' />
-                    <button onClick={this.login} className='btn btn-primary'>Login</button>
+                    {/* <input placeholder='Password' value={this.state.password} onChange={this.handleChange} type='password' name='password' /> */}
+                    <button onClick={this.login} className='btn btn-primary'>התחבר </button>
 
                 </div>
-                <h1>Don`t have a user?</h1>
+                <h1>  ? אין לך משתמש   </h1>
                 <br></br>
-                <Link to="/Singup" className='btn btn-success'>CLICK HERE</Link>
+                <Link to="/Singup" className='btn btn-success'>הירשם</Link>
             </div>
         </div>
     }

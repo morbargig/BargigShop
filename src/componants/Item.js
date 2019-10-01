@@ -56,15 +56,10 @@ class Item extends Component {
     }
 
     addToShoppingCart = async (e) => {
-        let name = e.target.id
-        // let image = e.target.name
-        let image = e.target.value
+        let itemId = e.target.id
         let userId = this.props.state.user.uid
-        let obj = { name: name, image: image }
-        // shoppingCard
-        await axios.post(`${route}addToShoppingCard/${userId}`, obj)
-        // shoppingCard = []
-        console.log(userId, name, image)
+        await axios.put(`${route}addToShoppingCard/${userId}/${itemId}`)
+        console.log(userId, itemId)
     }
 
 
@@ -165,7 +160,7 @@ class Item extends Component {
                     <p> <a> Collection :  </a> {i.Collection}  </p>
                     <p> <a> Discraption :  </a> {i.Discraption}  </p>
                     {this.props.state.isAdmin ? <p> <a> ID :  </a> {i.id}  </p> : null}
-                    <button id={i.name} name={i.image} value={i.image} onClick={this.addToShoppingCart}> Add to Shopping Cart </button>
+                    <button id={i._id} onClick={this.addToShoppingCart}> Add to Shopping Cart </button>
                     <br></br><br></br>
                     <br></br>
 
