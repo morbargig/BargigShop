@@ -20,7 +20,7 @@ class About extends Component {
       <br></br>   <a href="https://api.whatsapp.com/send?text=https://bargigshop.herokuapp.com/">
         <i class="fab fa-whatsapp-square"> whatsApp</i>
       </a><br></br> */}
-      <ul className="">
+      <ul className="balck">
         {/* <li className="is-facebook">
           <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.purpleilat.co.il/product/19sh-rj62/" >
             <img className='contectIcons' src={facebook} alt="facebook"></img>
