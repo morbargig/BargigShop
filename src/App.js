@@ -14,6 +14,11 @@ import Filter from './componants/Filter';
 import Item from './componants/Item';
 import ShopingCart from './componants/ShopingCart';
 import Test from './componants/Test';
+import whatsApp from './photos/whatsapp.png'
+import facebook from "./photos/facebook-logo.png";
+import email from "./photos/close-envelope.png";
+import cellphone from "./photos/telephone-symbol-button.png";
+import instagram from "./photos/instagram.png";
 
 
 
@@ -233,7 +238,32 @@ class App extends Component {
         <Route path="/Singup" exact render={() => this.state.user ? <Home state={this.state} /> : <SignUp handle={this.handleChange} state={this.state} saveUser={this.saveNewUserToDb} handleImg={this.handleImage} upload={this.handleUpload} />} />
         {/* <Route path="/OpenBisnnes" render={() => this.state.user ? <Home returnCatgories={this.returnCatgories} reaseCatgories={this.reaseCatgories} state={this.state} Catgories={this.state.Catgories} userEmail={this.state.userEmail} /> : <OpenBisnnes Catgories={this.state.Catgories} saveNew={this.saveNewBiz} state={this.state} handleImg={this.handleImage} upload={this.handleUpload} />} /> */}
         {/* <Route path="/Test" render={() => <Tset />} /> */}
+        <div className="contectIconsDiv">
 
+          <ul className="balck">
+
+
+
+            <li className="is-cellphone">
+              <a href="tel:+972 52-888-9657" >
+                <img className='contectIcons' src={cellphone} alt="Cell Phone"></img>
+              </a>
+            </li>
+
+            <li className="is-whatsapp">
+              <a href="https://api.whatsapp.com/send?text=https://bargigshop.herokuapp.com/" >
+                <img className='contectIcons' src={whatsApp} alt="whatsapp"></img>
+
+              </a>
+            </li>
+
+            <li className="is-mailto">
+              <a href="mailto:issacbar92@gmail.com" >
+                <img className='contectIcons' src={email} alt="email"></img>
+              </a>
+            </li>
+          </ul>
+        </div>
       </Router >
     );
   }
