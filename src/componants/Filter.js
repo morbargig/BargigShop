@@ -69,9 +69,9 @@ class Filter extends Component {
     }
 
     colorImage = (e) => {
-        let name = e.target.name
+        let name = e.target.parentElement.name
         // let id = e.target.id
-        let value = e.target.value
+        let value = e.target.parentElement.value
         // if (this.state[id]  ){
         // this.setState({ })
         // }
@@ -112,17 +112,37 @@ class Filter extends Component {
                                         <div class="card-action">
                                             <Link to={`/Item/${c.name}`}> <button className="waves-effect waves-dark btn" > See Item</button> </Link>
 
-                                            {c.color !== undefined ? <div> <a> Regular color</a> :  <button id={c.id} name={c.name} value={c.image} onClick={this.colorImage} className="left" style={{
-                                                backgroundColor: 'none',
-                                                width: '15px',
-                                                height: '15px',
-                                            }} type="button" class="color-box" data-color-id="267" title="choose color" aria-label={`בחר תמונת רגילה`}> </button> <br></br><br></br><a>Color</a> : {Object.keys(c.color).map(o =>
-                                                <button id={c.id} name={c.name} value={c.color[o]} onClick={this.colorImage} className="left" style={{
-                                                    backgroundColor: o,
-                                                    width: '15px',
-                                                    height: '15px',
-                                                }} type="button" class="color-box" data-color-id="267" title="choose color" aria-label={`choose ${o} color`}> </button>
-                                            )}</div> : null
+                                            {c.color !== undefined ?
+                                                <div >
+                                                    <li id="color-154" class="item-color">
+
+                                                        <button id={c.id} name={c.name} value={c.image} onClick={this.colorImage} type="button" class="choose-color-btn " title="choose color" aria-label={`בחר צבע רגיל`}>
+                                                            <span class="color-box"
+                                                            ></span>
+                                                        </button>
+
+                                                    </li>
+                                                    <br></br><br></br>
+                                                    <div class="meta-color-list-wrapp">
+                                                        <ul class="color-list">
+                                                            {Object.keys(c.color).map(o =>
+                                                                <li id="color-154" class="item-color">
+
+                                                                    <button name={c.name} value={c.color[o]} onClick={this.colorImage} type="button" class="choose-color-btn " title="choose color" aria-label={`choose ${o} color`}>
+                                                                        <span class="color-box"
+                                                                            style={{
+                                                                                backgroundColor: o,
+                                                                            }}
+                                                                        // style="background-color: #fa2fa9;"
+                                                                        ></span>
+                                                                    </button>
+
+                                                                </li>
+                                                            )}
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                : null
                                             }
                                             <p> <a> Price :  </a> {c.price} ₪ </p>
                                             {/* <p> <a> Categories : </a> {c.Category.map(i => <span> {" "} {i},</span>)} </p>

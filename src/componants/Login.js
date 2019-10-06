@@ -31,7 +31,7 @@ class Login extends Component {
                     Bargig Shop - ברוך הבא ל
                 </h3>
                 <br></br>
-                <h1>: הירשם  </h1>
+                <h1>: היתחבר  </h1>
                 <div>
                     {/* <input placeholder='Enter email' value={this.state.email} onChange={this.handleChange} type='email' name='email' /> */}
 

@@ -148,13 +148,9 @@ class Home extends Component {
 
 
   colorImage = (e) => {
-    let name = e.target.name
-    // let id = e.target.id
-    let value = e.target.value
-    // if (this.state[id]  ){
-    // this.setState({ })
-    // }
-    console.log(name, value)
+    let name = e.target.parentElement.name
+    let value = e.target.parentElement.value
+    // console.log(name, value, e.target, e.target.parentElement)
     this.setState({ [name]: value }, function () { console.log(this.state[name]) })
   }
 
@@ -178,26 +174,55 @@ class Home extends Component {
               <div class="card-action">
                 {/* <button className="waves-effect waves-dark btn" > See Item</button> */}
 
-                {c.color !== undefined ? <div >
-                  {/* <a> Regular color</a> : */}
-                  <button id={c.id} name={c.name} value={c.image} onClick={this.colorImage} className="left" style={{
-                    backgroundColor: 'none',
-                    width: '15px',
-                    height: '15px',
-                  }} type="button" class="color-box" data-color-id="267" title="choose color" aria-label={`בחר תמונת רגילה`}> </button> <br></br><br></br>
-                  {/* <a>Color</a> :  */}
-                  {Object.keys(c.color).map(o =>
-                    <button id={c.id} name={c.name} value={c.color[o]} onClick={this.colorImage} className="colorButton" style={{
-                      backgroundColor: o,
-                      height: '15px',
+                {c.color !== undefined ?
+                  <div >
+                    {/* <a> Regular color</a> : */}       <li id="color-154" class="item-color">
+
+                      <button id={c.id} name={c.name} value={c.image} onClick={this.colorImage} type="button" class="choose-color-btn " title="choose color" aria-label={`בחר צבע רגיל`}>
+                        <span class="color-box"
+                        // style="background-color: #fa2fa9;"
+                        ></span>
+                      </button>
+
+                    </li>
+                    {/* <button id={c.id} name={c.name} value={c.image} onClick={this.colorImage} className="left none" style={{
+                      backgroundColor: 'none',
                       width: '15px',
-                      // background-color: #bbb;
-                      // border-radius: '50%',
-                      display: 'inline-block'
-                      // width: '15px',
-                      // height: '15px',
-                    }} type="button" class="color-box" data-color-id="267" title="choose color" aria-label={`choose ${o} color`}> </button>
-                  )}</div> : null
+                      height: '15px',
+                    }} type="button" class="color-box" data-color-id="267" title="choose color" aria-label={`בחר תמונת רגילה`}> </button> */}
+                    <br></br><br></br>
+                    {/* <a>Color</a> :  */}
+                    <div class="meta-color-list-wrapp">
+                      <ul class="color-list">
+                        {Object.keys(c.color).map(o =>
+                          <li id="color-154" class="item-color">
+
+                            <button name={c.name} value={c.color[o]} onClick={this.colorImage} type="button" class="choose-color-btn " title="choose color" aria-label={`choose ${o} color`}>
+                              <span class="color-box"
+                                style={{
+                                  backgroundColor: o,
+                                }}
+                              // style="background-color: #fa2fa9;"
+                              ></span>
+                            </button>
+
+                          </li>
+                          //   <button id={c.id} name={c.name} value={c.color[o]} onClick={this.colorImage} className="colorButton" 
+                          //   style={{
+                          //     backgroundColor: o,
+                          //     height: '15px',
+                          //     width: '15px',
+                          //     // background-color: #bbb;
+                          //     // border-radius: '50%',
+                          //     display: 'inline-block'
+                          //     // width: '15px',
+                          //     // height: '15px',
+                          //   }} type="button" class="color-box" data-color-id="267" title="choose color" aria-label={`choose ${o} color`}> </button>
+                        )}
+                      </ul>
+                    </div>
+                  </div>
+                  : null
                 }
                 <p>
                   {/* <a> Price :  </a> */}
@@ -224,20 +249,65 @@ class Home extends Component {
                 {/* <p>{c.description}</p> */}
               </div>
               <div class="card-action">
-                <Link to={`/Item/${c.name}`}> {c.name} </Link>
-                <br></br><br></br>
-                {c.color !== undefined ? <div> <a> Regular color</a> :  <button id={c.id} name={c.name} value={c.image} onClick={this.colorImage} className="left" style={{
-                  backgroundColor: 'color:transparent',
-                  width: '15px',
-                  height: '15px',
-                }} type="button" class="color-box" data-color-id="267" title="choose color" aria-label={`בחר תמונת רגילה`}> </button> <br></br><br></br><a>Color</a> : {Object.keys(c.color).map(o =>
-                  <button id={c.id} name={c.name} value={c.color[o]} onClick={this.colorImage} className="colorButton" style={{
-                    backgroundColor: o,
-                    width: '15px',
-                    height: '15px',
-                  }} type="button" class="color-box" data-color-id="267" title="choose color" aria-label={`choose ${o} color`}> </button>
-                )}</div> : null
+                {/* <button className="waves-effect waves-dark btn" > See Item</button> */}
+
+                {c.color !== undefined ?
+                  <div >
+                    {/* <a> Regular color</a> : */}       <li id="color-154" class="item-color">
+
+                      <button id={c.id} name={c.name} value={c.image} onClick={this.colorImage} type="button" class="choose-color-btn " title="choose color" aria-label={`בחר צבע רגיל`}>
+                        <span class="color-box"
+                        // style="background-color: #fa2fa9;"
+                        ></span>
+                      </button>
+
+                    </li>
+                    {/* <button id={c.id} name={c.name} value={c.image} onClick={this.colorImage} className="left none" style={{
+                      backgroundColor: 'none',
+                      width: '15px',
+                      height: '15px',
+                    }} type="button" class="color-box" data-color-id="267" title="choose color" aria-label={`בחר תמונת רגילה`}> </button> */}
+                    <br></br><br></br>
+                    {/* <a>Color</a> :  */}
+                    <div class="meta-color-list-wrapp">
+                      <ul class="color-list">
+                        {Object.keys(c.color).map(o =>
+                          <li id="color-154" class="item-color">
+
+                            <button name={c.name} value={c.color[o]} onClick={this.colorImage} type="button" class="choose-color-btn " title="choose color" aria-label={`choose ${o} color`}>
+                              <span class="color-box"
+                                style={{
+                                  backgroundColor: o,
+                                }}
+                              // style="background-color: #fa2fa9;"
+                              ></span>
+                            </button>
+
+                          </li>
+                          //   <button id={c.id} name={c.name} value={c.color[o]} onClick={this.colorImage} className="colorButton" 
+                          //   style={{
+                          //     backgroundColor: o,
+                          //     height: '15px',
+                          //     width: '15px',
+                          //     // background-color: #bbb;
+                          //     // border-radius: '50%',
+                          //     display: 'inline-block'
+                          //     // width: '15px',
+                          //     // height: '15px',
+                          //   }} type="button" class="color-box" data-color-id="267" title="choose color" aria-label={`choose ${o} color`}> </button>
+                        )}
+                      </ul>
+                    </div>
+                  </div>
+                  : null
                 }
+                <p>
+                  {/* <a> Price :  </a> */}
+                  ₪{c.price}.00  </p>
+                {/* <p> <a> Categories : </a> {c.Category.map(i => <span> {" "} {i},</span>)} </p>
+                <p> <a> Sizes : </a> {c.sizes.map(i => <span> {" "} {i},</span>)} </p>
+                <p> <a> Collection :  </a> {c.Collection}  </p>
+                <p> <a> Discraption :  </a> {c.Discraption}  </p> */}
                 <br></br>
                 {this.props.state.user.email.includes('issacbar') ? <div id={c._id}> <button onClick={this.editItem}> ערוך </button>  <br></br> <button name={c.name} id={c._id} onClick={this.deleteItem}> מחק מוצר </button> </div> : null}
               </div>

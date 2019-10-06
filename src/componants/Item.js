@@ -45,9 +45,9 @@ class Item extends Component {
     }
 
     colorImage = (e) => {
-        let name = e.target.name
+        let name = e.target.parentElement.name
         // let id = e.target.id
-        let value = e.target.value
+        let value = e.target.parentElement.value
         // if (this.state[id]  ){
         // this.setState({ })
         // }
@@ -141,17 +141,36 @@ class Item extends Component {
                     {/* <p> <a> Address : </a>  {i.city}, {i.address}</p> */}
                     {/* <span id="cardTitle" className="card-title"> Name : {i.name}</span> */}
                     <br></br>
-                    {i.color !== undefined ? <div> <a> Regular color</a> :  <button id={i.id} name={i.name} value={i.image} onClick={this.colorImage} className="left" style={{
-                        backgroundColor: 'none',
-                        width: '15px',
-                        height: '15px',
-                    }} type="button" class="color-box" data-color-id="267" title="choose color" aria-label={`בחר תמונת רגילה`}> </button> <br></br><br></br><a>Color</a> : {Object.keys(i.color).map(o =>
-                        <button id={i.id} name={i.name} value={i.color[o]} onClick={this.colorImage} className="left" style={{
-                            backgroundColor: o,
-                            width: '15px',
-                            height: '15px',
-                        }} type="button" class="color-box" data-color-id="267" title="choose color" aria-label={`choose ${o} color`}> </button>
-                    )}</div> : null
+                    {i.color !== undefined ?
+                        <div >
+                            <li id="color-154" class="item-color">
+
+                                <button id={i.id} name={i.name} value={i.image} onClick={this.colorImage} type="button" class="choose-color-btn " title="choose color" aria-label={`בחר צבע רגיל`}>
+                                    <span class="color-box"
+                                    ></span>
+                                </button>
+
+                            </li>
+                            <br></br><br></br>
+                            <div class="meta-color-list-wrapp">
+                                <ul class="color-list">
+                                    {Object.keys(i.color).map(o =>
+                                        <li id="color-154" class="item-color">
+
+                                            <button name={i.name} value={i.color[o]} onClick={this.colorImage} type="button" class="choose-color-btn " title="choose color" aria-label={`choose ${o} color`}>
+                                                <span class="color-box"
+                                                    style={{
+                                                        backgroundColor: o,
+                                                    }}
+                                                ></span>
+                                            </button>
+
+                                        </li>
+                                    )}
+                                </ul>
+                            </div>
+                        </div>
+                        : null
                     }
                     <p> <a> Name :  </a> {i.name} </p>
                     <p> <a> Price :  </a> {i.price} ₪ </p>
