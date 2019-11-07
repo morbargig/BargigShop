@@ -249,7 +249,6 @@ class App extends Component {
                 <img className='contectIcons' src={cellphone} alt="Cell Phone"></img>
               </a>
             </li>
-
             <li className="is-whatsapp">
               <a href="https://api.whatsapp.com/send?text=https://bargigshop.herokuapp.com/" >
                 <img className='contectIcons' src={whatsApp} alt="whatsapp"></img>

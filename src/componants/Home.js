@@ -224,9 +224,8 @@ class Home extends Component {
                   </div>
                   : null
                 }
-                <p>
                   {/* <a> Price :  </a> */}
-                  ₪{c.price}.00  </p>
+                <p>₪{c.price}.00  </p>
                 {/* <p> <a> Categories : </a> {c.Category.map(i => <span> {" "} {i},</span>)} </p>
                 <p> <a> Sizes : </a> {c.sizes.map(i => <span> {" "} {i},</span>)} </p>
                 <p> <a> Collection :  </a> {c.Collection}  </p>

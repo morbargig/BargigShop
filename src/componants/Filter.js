@@ -101,16 +101,18 @@ class Filter extends Component {
                             return (
                                 <div className="category">
                                     <div class="card">
-                                        <div class="card-image">
-                                            <img src={this.state[c.name] !== undefined ? this.state[c.name] : c.image} alt={c.name}  ></img>
-                                            {/* <span class="card-title">{c.name}</span> */}
-                                        </div>
+                                        <Link to={`/Item/${c.name}`}>
+                                            <div class="card-image">
+                                                <img src={this.state[c.name] !== undefined ? this.state[c.name] : c.image} alt={c.name}  ></img>
+                                                {/* <span class="card-title">{c.name}</span> */}
+                                            </div>
+                                        </Link>
                                         <div class="card-content">
 
                                             <p>{c.description}</p>
                                         </div>
                                         <div class="card-action">
-                                            <Link to={`/Item/${c.name}`}> <button className="waves-effect waves-dark btn" > See Item</button> </Link>
+                                            {/* <button className="waves-effect waves-dark btn" > See Item</button> */}
 
                                             {c.color !== undefined ?
                                                 <div >
@@ -144,7 +146,8 @@ class Filter extends Component {
                                                 </div>
                                                 : null
                                             }
-                                            <p> <a> Price :  </a> {c.price} ₪ </p>
+                                            <p>₪{c.price}.00  </p>
+
                                             {/* <p> <a> Categories : </a> {c.Category.map(i => <span> {" "} {i},</span>)} </p>
                                             <p> <a> Sizes : </a> {c.sizes.map(i => <span> {" "} {i},</span>)} </p>
                                             <p> <a> Collection :  </a> {c.Collection}  </p>

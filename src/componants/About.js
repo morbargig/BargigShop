@@ -20,12 +20,12 @@ class About extends Component {
       <br></br>   <a href="https://api.whatsapp.com/send?text=https://bargigshop.herokuapp.com/">
         <i class="fab fa-whatsapp-square"> whatsApp</i>
       </a><br></br> */}
-      <ul className="balck">
-        {/* <li className="is-facebook">
+      {/* <ul className="balck">
+        <li className="is-facebook">
           <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.purpleilat.co.il/product/19sh-rj62/" >
             <img className='contectIcons' src={facebook} alt="facebook"></img>
           </a>
-        </li> */}
+        </li>
 
 
         <li className="is-cellphone">
@@ -40,17 +40,17 @@ class About extends Component {
 
           </a>
         </li>
-        {/* <li className="is-instagram">
+        <li className="is-instagram">
           <a href="https://www.instagram.com/purple_by_sharona/" title="instagram" aria-label="instagram" >
             <img className='contectIcons' src={instagram} alt='instagram' ></img>
           </a>
-        </li> */}
+        </li>
         <li className="is-mailto">
           <a href="mailto:issacbar92@gmail.com" >
             <img className='contectIcons' src={email} alt="email"></img>
           </a>
         </li>
-      </ul>
+      </ul> */}
     </div>
   }
 
