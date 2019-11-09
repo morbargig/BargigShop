@@ -58,7 +58,7 @@ class ShopingCart extends Component {
 
                             <div class="card">
                                 <div class="card-image">
-                                    <img src={c.image}></img>
+                                    <img alt="" src={c.image}></img>
                                     <span class="card-title">{c.name}</span>
                                 </div>
                                 <div class="card-content">

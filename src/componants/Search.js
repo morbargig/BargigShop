@@ -41,7 +41,7 @@ class Search extends Component {
         <div className="category">
           <div class="card">
             <div class="card-image">
-              <img className='searchImg' src={c.image}></img>
+              <img alt="" className='searchImg' src={c.image}></img>
               <span class="card-title">{c.name}</span>
             </div>
             <div class="card-content">

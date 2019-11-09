@@ -38,7 +38,7 @@ class Login extends Component {
                 </div>
                 <form>
                     <div class="input-group">
-                        <input type="text" class="form-control" value={this.state.email} onChange={this.handleChange} type='email' name='email' placeholder="אמייל"></input>
+                        <input class="form-control" value={this.state.email} onChange={this.handleChange} type='email' name='email' placeholder="אמייל"></input>
                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                     </div>
                     <div class="input-group">

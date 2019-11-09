@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 // import Button from '@material-ui/core/Button'
 import '../CSS/About.css'
-import whatsApp from '../photos/whatsapp.png'
-import facebook from "../photos/facebook-logo.png";
-import email from "../photos/close-envelope.png";
-import cellphone from "../photos/telephone-symbol-button.png";
-import instagram from "../photos/instagram.png";
+// import whatsApp from '../photos/whatsapp.png'
+// import facebook from "../photos/facebook-logo.png";
+// import email from "../photos/close-envelope.png";
+// import cellphone from "../photos/telephone-symbol-button.png";
+// import instagram from "../photos/instagram.png";
 // import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 
 class About extends Component {

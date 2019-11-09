@@ -15,7 +15,7 @@ class Test extends Component {
         let password = 'bargig123456'
         let from = "Bargig Shop"
         let to = `972528612379`
-        let url = 'https://api.get-in.com//Rosh_hashana?seller_code=I5TJ2QF2FUJ'
+        // let url = 'https://api.get-in.com//Rosh_hashana?seller_code=I5TJ2QF2FUJ'
 
 
         let text = `Hi ${name} Welcome to our store, your email is : ${email}, and your password end with ${password.slice(password.length - 4, password.length - 1)}, we are Recommend to write it somewhere :)

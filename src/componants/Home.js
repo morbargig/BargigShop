@@ -163,7 +163,7 @@ class Home extends Component {
             <div class="card">
               <Link to={`/Item/${c.name}`}>
                 <div class="card-image">
-                  <img src={this.state[c.name] !== undefined ? this.state[c.name] : c.image} alt={c.name}  ></img>
+                  <img alt="" src={this.state[c.name] !== undefined ? this.state[c.name] : c.image} title={c.name}  ></img>
                   {/* <span class="card-title">{c.name}</span> */}
                 </div>
                 <div class="card-content">
@@ -241,7 +241,7 @@ class Home extends Component {
           : <div className="category">
             <div class="card">
               <div class="card-image">
-                <img src={this.state[c.name] !== undefined ? this.state[c.name] : c.image} alt={c.name}  ></img>
+                <img  alt="" src={this.state[c.name] !== undefined ? this.state[c.name] : c.image} title={c.name}  ></img>
                 {/* <span class="card-title">{c.name}</span> */}
               </div>
               <div class="card-content">
@@ -358,10 +358,10 @@ class Home extends Component {
   welcomIfMobile = (user) => {
     if (!this.props.state.isMobile) {
       return <div className="userDetails">  <h6>  {user.name} ברוך הבא  </h6>
-        <img width="100" height="100" className="circle responsive-img" src={user.img} />
+        <img alt="" width="100" height="100" className="circle responsive-img" src={user.img} />
       </div>
     }
-    else { return <div> <a className='left'> {user.name} ברוך הבא  </a><div className="userDetails"> <img width="100" height="100" className="circle responsive-img" src={user.img} />    </div > </div> }
+    else { return <div> <a className='left'> {user.name} ברוך הבא  </a><div className="userDetails"> <img alt="" width="100" height="100" className="circle responsive-img" src={user.img} />    </div > </div> }
   }
 
   render() {
@@ -425,7 +425,7 @@ class Home extends Component {
             <div class="card">
               <Link to={`/Filter/${c.name}`}>
                 <div class="card-image">
-                  <img className="imageMoblie" src={c.img}>
+                  <img alt="" className="imageMoblie" src={c.img}>
                   </img>
                   {/* <span class="card-title">{c.name}</span> */}
                 </div>
