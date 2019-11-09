@@ -45,7 +45,7 @@ class Search extends Component {
               <span class="card-title">{c.name}</span>
             </div>
             <div className="card-content">
-              <p> <a href="#">  Price :  </a> {c.price} ₪ </p>
+              <p> <a href="!#" >  Price :  </a> {c.price} ₪ </p>
               <p>{c.description}</p>
             </div>
             <div class="card-action">

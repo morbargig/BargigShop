@@ -172,33 +172,33 @@ class Item extends Component {
                         </div>
                         : null
                     }
-                    <p> <a> Name :  </a> {i.name} </p>
-                    <p> <a> Price :  </a> {i.price} ₪ </p>
-                    <p> <a> Categories : </a> {i.Category.map(c => <span> {" "} {c},</span>)} </p>
-                    <p> <a> Sizes : </a> {i.sizes.map(c => <span> {" "} {c},</span>)} </p>
-                    <p> <a> Collection :  </a> {i.Collection}  </p>
-                    <p> <a> Discraption :  </a> {i.Discraption}  </p>
-                    {this.props.state.isAdmin ? <p> <a> ID :  </a> {i.id}  </p> : null}
+                    <p> <a href="!#"> Name :  </a> {i.name} </p>
+                    <p> <a href="!#"> Price :  </a> {i.price} ₪ </p>
+                    <p> <a href="!#"> Categories : </a> {i.Category.map(c => <span> {" "} {c},</span>)} </p>
+                    <p> <a href="!#"> Sizes : </a> {i.sizes.map(c => <span> {" "} {c},</span>)} </p>
+                    <p> <a href="!#"> Collection :  </a> {i.Collection}  </p>
+                    <p> <a href="!#"> Discraption :  </a> {i.Discraption}  </p>
+                    {this.props.state.isAdmin ? <p> <a href="!#"> ID :  </a> {i.id}  </p> : null}
                     <button id={i._id} onClick={this.addToShoppingCart}> Add to Shopping Cart </button>
                     <br></br><br></br>
                     <br></br>
 
-                    <a> Cell Me :</a>
+                    <a href="!#"> Cell Me :</a>
                     {/* <a href="tel:+97252-861-2379"> <i class="fa fa-phone fa-fw"></i><span dir="ltr"> +972 52-861-2379</span> </a> */}
                     <a href="tel:+972 52-888-9657" target="_blank" rel="noopener noreferrer"> <i className="fa fa-phone fa-fw"></i><span dir="ltr"> +972 52-888-9657</span></a>
                     <br></br><br></br>
-                    <a>Email Me :</a>
+                    <a href="!#">Email Me :</a>
                     {/* <a href="mailto:morbargig@gmail.com"><i class="fa fa-envelope-o fa-fw"></i> morbargig@gmail.com</a> */}
                     <a href="mailto:issacbar92@gmail.com" target="_blank" rel="noopener noreferrer"><i className="fa fa-envelope-o fa-fw"></i> issacbar92@gmail.com</a>
 
                     {
                         this.state.order ?
-                            <a>WhatsAPP Me :
+                            <a href="!#">WhatsAPP Me :
                     <a onClick={this.getOrder} href={whatAppUrl} target="_blank" rel="noopener noreferrer"><i className="fa fa-envelope-o fa-fw"></i> Itzik Bargig </a> </a> : null
                     }
                     {/* <a className="waves-effect waves-light btn-small" href={whatAppUrl}>WhatsAPP oerder</a> */}
                     <br></br><br></br>
-                    <a className="waves-effect waves-light btn-small" onClick={this.makeRequestToMail}>Make an oerder</a>
+                    <a  href="!#" className="waves-effect waves-light btn-small" onClick={this.makeRequestToMail}>Make an oerder</a>
                     <br></br><br></br>
                     {this.Admin(i)}
                 </div>

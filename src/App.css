@@ -23,6 +23,18 @@ li {
 
   font-size: inherit;
 }
+
+.ButtonLink {
+  background-color: transparent;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+.ButtonLink:hover, .ButtonLink:focus {
+  text-decoration: underline;
+}
+
+
 .contectIconsDiv{
 
   font-size: 100%;

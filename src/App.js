@@ -147,10 +147,10 @@ class App extends Component {
         this.state.user.email.includes('issacbar') ? this.setState({ isAdmin: true }) : this.setState({ isAdmin: false })
       }
       if (x === 2) {
-        return this.state.user.email.includes('issacbar') ? <a ><Link to="/Test" >Test</Link></a> : null
+        return this.state.user.email.includes('issacbar') ? <a href="!#" ><Link to="/Test" >Test</Link></a> : null
       }
       if (x === 1) { return this.state.user.email.includes('issacbar') ? <Admin state={this.state} /> : null } else {
-        return this.state.user.email.includes('issacbar') ? <a ><Link to="/Admin" >Admin</Link></a> : null
+        return this.state.user.email.includes('issacbar') ? <a href="!#"><Link to="/Admin" >Admin</Link></a> : null
       }
     } else return null
   }
@@ -203,27 +203,27 @@ class App extends Component {
     return (
       <Router>
         <div className="topnav">
-          <a onClick={this.openMenu} className="active"><Link >Menu</Link></a>
+          <a  href="!#" onClick={this.openMenu} className="active"><Link to="!#" >Menu</Link></a>
 
           {this.state.openMenu ?
             <div id="myLinks">
               {/* <ul id="nav-mobile" class="left hide-on-med-and-down"> */}
 
-              <a ><Link to="/" >Home</Link></a>
-              {this.state.isAdmin ? <a ><Link to="/About">About </Link></a> : null}
+              <a href="!#"><Link to="/" >Home</Link></a>
+              {this.state.isAdmin ? <a href="!#"><Link to="/About">About </Link></a> : null}
               {this.Admin()}
               {this.Admin(2)}
               {/* {this.state.user ? */}
               {this.shopingCart()}
-              {this.state.shopingCard ? <a ><Link to="/ShopingCart">Shopping Cart </Link></a> : null}
+              {this.state.shopingCard ? <a href="!#"><Link to="/ShopingCart">Shopping Cart </Link></a> : null}
               {/* <a ><Link to="/shoppingCart">Shopping Cart </Link></a> */}
               {/* : null} */}
               {console.log(this.state.user)}
-              {this.state.user === null ? <a ><Link to="/SingUp">Sing Up  </Link></a> : <a onClick={this.logout} > <Link to='/'> Logout</Link> </a>}
+              {this.state.user === null ? <a href="!#"><Link to="/SingUp">Sing Up  </Link></a> : <a href="!#" onClick={this.logout} > <Link to='/'> Logout</Link> </a>}
 
 
             </div>
-            : <a  className="right" ><Link to="/" >Bargig Shop</Link> </a>}
+            : <a href="!#" className="right" ><Link to="/" >Bargig Shop</Link> </a>}
         </div>
 
         <Route path="/" exact render={() => this.state.user ? <Home state={this.state} /> : <Login handle={this.handleChange} email={this.state.email} password={this.state.password} />} />
@@ -240,7 +240,7 @@ class App extends Component {
         {/* <Route path="/Test" render={() => <Tset />} /> */}
         <div className="contectIconsDiv">
 
-          <ul className="balck">
+          <ul >
 
 
 
@@ -262,7 +262,9 @@ class App extends Component {
               </a>
             </li>
           </ul>
+          
         </div>
+        {/* <button className='ButtonLink'> jhvkhjhgcfgxdfchvjkbnbhvgcf</button> */}
       </Router >
     );
   }
