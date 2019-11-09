@@ -223,7 +223,7 @@ class App extends Component {
 
 
             </div>
-            : <a className="right" ><Link to="/" >Bargig Shop</Link> </a>}
+            : <a  className="right" ><Link to="/" >Bargig Shop</Link> </a>}
         </div>
 
         <Route path="/" exact render={() => this.state.user ? <Home state={this.state} /> : <Login handle={this.handleChange} email={this.state.email} password={this.state.password} />} />
@@ -245,19 +245,19 @@ class App extends Component {
 
 
             <li className="is-cellphone">
-              <a href="tel:+972 52-888-9657" >
+              <a href="tel:+972 52-888-9657" target="_blank" rel="noopener noreferrer">
                 <img className='contectIcons' src={cellphone} alt="Cell Phone"></img>
               </a>
             </li>
             <li className="is-whatsapp">
-              <a href="https://api.whatsapp.com/send?text=https://bargigshop.herokuapp.com/" >
+              <a href="https://api.whatsapp.com/send?text=https://bargigshop.herokuapp.com/" target="_blank"  rel="noopener noreferrer">
                 <img className='contectIcons' src={whatsApp} alt="whatsapp"></img>
 
               </a>
             </li>
 
             <li className="is-mailto">
-              <a href="mailto:issacbar92@gmail.com" >
+              <a href="mailto:issacbar92@gmail.com" target="_blank" rel="noopener noreferrer">
                 <img className='contectIcons' src={email} alt="email"></img>
               </a>
             </li>

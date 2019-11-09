@@ -185,16 +185,16 @@ class Item extends Component {
 
                     <a> Cell Me :</a>
                     {/* <a href="tel:+97252-861-2379"> <i class="fa fa-phone fa-fw"></i><span dir="ltr"> +972 52-861-2379</span> </a> */}
-                    <a href="tel:+972 52-888-9657"> <i class="fa fa-phone fa-fw"></i><span dir="ltr"> +972 52-888-9657</span></a>
+                    <a href="tel:+972 52-888-9657" target="_blank" rel="noopener noreferrer"> <i className="fa fa-phone fa-fw"></i><span dir="ltr"> +972 52-888-9657</span></a>
                     <br></br><br></br>
                     <a>Email Me :</a>
                     {/* <a href="mailto:morbargig@gmail.com"><i class="fa fa-envelope-o fa-fw"></i> morbargig@gmail.com</a> */}
-                    <a href="mailto:issacbar92@gmail.com"><i class="fa fa-envelope-o fa-fw"></i> issacbar92@gmail.com</a>
+                    <a href="mailto:issacbar92@gmail.com" target="_blank" rel="noopener noreferrer"><i className="fa fa-envelope-o fa-fw"></i> issacbar92@gmail.com</a>
 
                     {
                         this.state.order ?
                             <a>WhatsAPP Me :
-                    <a onClick={this.getOrder} href={whatAppUrl}><i class="fa fa-envelope-o fa-fw"></i> Itzik Bargig </a> </a> : null
+                    <a onClick={this.getOrder} href={whatAppUrl} target="_blank" rel="noopener noreferrer"><i className="fa fa-envelope-o fa-fw"></i> Itzik Bargig </a> </a> : null
                     }
                     {/* <a className="waves-effect waves-light btn-small" href={whatAppUrl}>WhatsAPP oerder</a> */}
                     <br></br><br></br>

@@ -44,8 +44,8 @@ class Search extends Component {
               <img alt="" className='searchImg' src={c.image}></img>
               <span class="card-title">{c.name}</span>
             </div>
-            <div class="card-content">
-              <p> <a> Price :  </a> {c.price} ₪ </p>
+            <div className="card-content">
+              <p> <a href="#">  Price :  </a> {c.price} ₪ </p>
               <p>{c.description}</p>
             </div>
             <div class="card-action">

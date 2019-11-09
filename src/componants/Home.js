@@ -378,7 +378,7 @@ class Home extends Component {
         : null}
       {!this.props.state.isMobile ?
         <button className="homeButton" >
-          <select class="browser-default" onChange={this.catagorySearch}>
+          <select className="browser-default" onChange={this.catagorySearch}>
             <option value="Catgory" disabled selected>חפש לפי </option>
             <option value="name">שם מוצר</option>
             {this.props.state.isAdmin ? <option value="id">Id</option> : null}

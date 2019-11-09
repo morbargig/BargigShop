@@ -83,7 +83,7 @@ class SignUp extends Component {
           <label>סיסמה</label>
           <input placeholder='סיסמה' value={this.props.state.password} onChange={this.props.handle} type='password' name='password' />
 
-          <button href="/" onClick={this.signup}  >הירשם</button>
+          <button href="/" target="#" onClick={this.signup}  >הירשם</button>
         </div>
       </div>
     </div>

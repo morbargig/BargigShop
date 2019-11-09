@@ -66,7 +66,7 @@ class Test extends Component {
 
             <div class="product-box-wrapper">
 
-                <a href="https://www.purpleilat.co.il/product/%d7%a9%d7%9e%d7%9c%d7%aa-%d7%99%d7%95%d7%91%d7%9c/" class="woocommerce-LoopProduct-link woocommerce-loop-product__link" title="שמלת יובל | צבעים חדשים" aria-label="שמלת יובל | צבעים חדשים">
+                <a href="https://www.purpleilat.co.il/product/%d7%a9%d7%9e%d7%9c%d7%aa-%d7%99%d7%95%d7%91%d7%9c/" target="#" class="woocommerce-LoopProduct-link woocommerce-loop-product__link" title="שמלת יובל | צבעים חדשים" aria-label="שמלת יובל | צבעים חדשים">
 
                     <img width="404" height="604" src="https://www.purpleilat.co.il/wp-content/uploads/2019/04/purple-501-404x604.jpg" class="attachment-prev-product size-prev-product" alt=""></img><img width="404" height="604" src="https://www.purpleilat.co.il/wp-content/uploads/2019/07/IMG_20190715_144642-1-404x604.jpg" data-color-id="154" class="attachment-prev-product size-prev-product"
                         //  style="display: none;"
