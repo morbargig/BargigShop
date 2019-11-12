@@ -1,7 +1,0 @@
- "start": "node server.js",
-   "start": "node scripts/start.js",
-
-
-
-
-"start": "react-scripts start",
