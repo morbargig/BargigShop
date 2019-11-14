@@ -2,7 +2,6 @@
 
 #private stuff
 private
-api.js
 route.js
 firebase.js
 transport.js
