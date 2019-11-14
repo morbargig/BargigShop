@@ -1,4 +1,3 @@
-const { sendMassege } = require("./sendMassege")
 
 const express = require('express')
 const router = express.Router()
@@ -6,7 +5,6 @@ const User = require('../models/User')
 const Items = require('../models/Items')
 const Categories = require('../models/Categories')
 const Order = require('../models/Order')
-// Category
 
 const sendMassege = require("./sendMassege")
 

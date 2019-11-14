@@ -1,11 +1,11 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 #private stuff
-# private
-# route.js
-# firebase.js
-# transport.js
-# sendMassege.js
+private
+route.js
+firebase.js
+transport.js
+sendMassege.js
 
 # dependencies
 /node_modules
