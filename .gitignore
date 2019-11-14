@@ -1,7 +1,10 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 #private stuff
-mor
+private
+api.js
+route.js
+firebase.js
 
 # dependencies
 /node_modules
