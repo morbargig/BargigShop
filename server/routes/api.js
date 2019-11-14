@@ -176,7 +176,7 @@ router.post('/sendEmail', (req, res) => {
         port: 25,
         auth: {
             user: 'bargigshop@gmail.com',
-            pass: 'bargig18765432',
+            pass: 'bargig123456',
         },
         tls: { rejectUnauthorized: false }
     }
@@ -344,13 +344,10 @@ router.post('/sendSms/:from/:to', function (req, res) {
     let to = req.params.to
     let text = req.body.text
     console.log(text)
-    // let text = req.params.text
-    // let text = 'https://api.get-in.com//Rosh_hashana?seller_code=I5TJ2QF2FUJ'
-    // req.params.callback
+  
     let url = req.params.url
     text += url
     nexmo.message.sendSms(from, to, text, { "type": 'unicode', "concat": 'true' }, (err, responseData) => {
-        // nexmo.message.sendSms(from, to, text, { "type": 'unicode', "concat": 'true' }, function (err, res)
         if (err) {
             console.log(err);
         } else {
