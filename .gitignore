@@ -5,6 +5,8 @@ private
 api.js
 route.js
 firebase.js
+transport.js
+sendMassege.js
 
 # dependencies
 /node_modules
