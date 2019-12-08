@@ -37,7 +37,7 @@ class Login extends Component {
                     {/* <input placeholder='Enter email' value={this.state.email} onChange={this.handleChange} type='email' name='email' /> */}
 
                 </div>
-                <form>
+                <form onSubmit={this.login}>
                     <div className="input-group">
                         <input className="form-control" value={this.state.email} onChange={this.handleChange} type='email' name='email' placeholder="אמייל"></input>
                         <span className="input-group-addon"><i className="glyphicon glyphicon-user"></i></span>
@@ -46,10 +46,10 @@ class Login extends Component {
                         <input type="password" className="form-control" value={this.state.password} onChange={this.handleChange} suggested="current-password" name='password' placeholder="סיסמה"></input>
                         <span className="input-group-addon"><i className="glyphicon glyphicon-lock"></i></span>
                     </div>
+                    <button  className='btn btn-primary'>התחבר </button>
                 </form>
                 <div>
                     {/* <input placeholder='Password' value={this.state.password} onChange={this.handleChange} type='password' name='password' /> */}
-                    <button onClick={this.login} className='btn btn-primary'>התחבר </button>
 
                 </div>
                 <h1>  ? אין לך משתמש   </h1>
