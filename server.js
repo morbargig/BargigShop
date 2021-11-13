@@ -23,7 +23,7 @@ app.get('*', function (req, res) {
 port = 8000
 DBname = 'BargigShop'
 
-mongoose.connect('mongodb+srv://mor:M0ng0Adm1n@general-cluster.ozqp8.mongodb.net/BargigShop?retryWrites=true&w=majority' || `mongodb://localhost/${DBname}`, {
+mongoose.connect(process.env.MONGODB_URI || `mongodb://localhost/${DBname}`, {
     useUnifiedTopology: true,
     useNewUrlParser: true
 })
