@@ -6,11 +6,12 @@
     "start": "node server.js",
     "front": "react-scripts start",
     "front:build": "react-scripts build",
+    "heroku-postbuild": "npm install && npm run build",
     "server": "node server.js",
     "push": "git add . && git rm -r build && git commit -m \"`echo \"Auto commit by $(git config user.name) at $(date +%Y-%m-%dT%H:%M%z)\"`\"&& git push origin master",
     "heroku": "heroku local -p 8000",
     "heroku:build": "npm run front:build && npm run heroku:push && npm build:remove",
-    "heroku:push": "git add .&&git commit -m \"automatic commit\"&&git push -f heroku master",
+    "heroku:push": "git add .&&git commit --allow-empty -m \"automatic commit\"&&git push -f heroku master",
     "all": "npm-run-all --parallel server start",
     "build": "react-scripts build",
     "build:remove": "rm -rf ./build",
@@ -42,7 +43,8 @@
     "web-vitals": "^1.1.2"
   },
   "engines": {
-    "node": "14.18.0"
+    "node": "14.18.0",
+    "npm": "6.14.15"
   },
   "eslintConfig": {
     "extends": [
