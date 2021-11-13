@@ -13,7 +13,7 @@
     "heroku:build": "npm run front:build && npm run heroku:push && npm build:remove",
     "heroku:push": "git add .&&git commit --allow-empty -m \"automatic commit\"&&git push -f heroku master",
     "all": "npm-run-all --parallel server start",
-    "build": "react-scripts build",
+    "build": "",
     "build:remove": "rm -rf ./build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
