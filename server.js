@@ -14,15 +14,15 @@ app.use(function (req, res, next) {
 
 app.use(express.static(path.join(__dirname, 'build')));
 
-app.get('/*', (req, res) => {
+app.use('/api/', api)
+
+app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
-app.use('/api', api)
-
 const port = process.env.PORT || 80
 const DBname = 'BargigShop'
-const MongoDBUri = process.env.MONGODB_URI || `mongodb://localhost/${DBname}`
+const MongoDBUri = 'mongodb+srv://mor:M0ng0Adm1n@general-cluster.ozqp8.mongodb.net/BargigShop?retryWrites=true&w=majority' || `mongodb://localhost/${DBname}`
 
 console.log(port, MongoDBUri, process.env)
 
