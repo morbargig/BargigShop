@@ -8,7 +8,7 @@
     "front:build": "GENERATE_SOURCEMAP=false && react-scripts build",
     "heroku-postbuild": "npm install && npm run build",
     "server": "node server.js",
-    "push": "git add . && git rm -r build && git commit -m \"`echo \"Auto commit by $(git config user.name) at $(date +%Y-%m-%dT%H:%M%z)\"`\"&& git push origin master",
+    "push": "git add . && git rm -r build || git commit --allow-empty -m \"`echo \"Auto commit by $(git config user.name) at $(date +%Y-%m-%dT%H:%M%z)\"`\"&& git push origin master",
     "heroku": "heroku local -p 8000",
     "heroku:build": "npm run front:build && npm run heroku:push && npm run build:remove",
     "heroku:push": "git add .&&git commit --allow-empty -m \"automatic commit\"&&git push -f heroku master",
