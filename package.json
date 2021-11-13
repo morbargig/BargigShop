@@ -9,10 +9,11 @@
     "server": "node server.js",
     "push": "git add . && git rm -r build && git commit -m \"`echo \"Auto commit by $(git config user.name) at $(date +%Y-%m-%dT%H:%M%z)\"`\"&& git push origin master",
     "heroku": "heroku local -p 8000",
-    "heroku:build": "npm run front:build && npm run heroku:push && rm -rf ./build",
+    "heroku:build": "npm run front:build && npm run heroku:push && npm build:remove",
     "heroku:push": "git add .&&git commit -m \"automatic commit\"&&git push -f heroku master",
     "all": "npm-run-all --parallel server start",
     "build": "",
+    "build:remove": "rm -rf ./build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
