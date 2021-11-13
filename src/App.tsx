@@ -10,7 +10,7 @@ import Admin from './componants/Admin';
 // import About from './componants/About';
 import route from './config/route'
 import axios from 'axios'
-import Filter, { FilterWarper } from './componants/Filter';
+import { FilterWarper } from './componants/Filter';
 import Item from './componants/Item';
 import ShopingCart from './componants/ShopingCart';
 import Test from './componants/Test';
