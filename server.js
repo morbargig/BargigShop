@@ -12,19 +12,19 @@ app.use(function (req, res, next) {
     next()
 })
 
-app.use(express.static(path.join(__dirname, 'build')))
+app.use(express.static(path.join(__dirname, 'build')));
 
-app.use('/', api)
+app.get('/*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
 
-app.get('*', function (req, res) {
-    res.sendFile(path.join(__dirname, 'build', 'index.html'))
-})
+app.use('/api', api)
 
 const port = process.env.PORT || 80
 const DBname = 'BargigShop'
 const MongoDBUri = process.env.MONGODB_URI || `mongodb://localhost/${DBname}`
 
-console.log(port, MongoDBUri,process.env)
+console.log(port, MongoDBUri, process.env)
 
 mongoose.connect(MongoDBUri, {
     useUnifiedTopology: true,
