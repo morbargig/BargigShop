@@ -22,7 +22,7 @@ app.get('*', (req, res) => {
 
 const port = process.env.PORT || 80
 const DBname = 'BargigShop'
-const MongoDBUri = 'mongodb+srv://mor:M0ng0Adm1n@general-cluster.ozqp8.mongodb.net/BargigShop?retryWrites=true&w=majority' || `mongodb://localhost/${DBname}`
+const MongoDBUri = process.env.MONGODB_URI || `mongodb://localhost/${DBname}`
 
 console.log(port, MongoDBUri, process.env)
 
