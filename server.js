@@ -20,16 +20,17 @@ app.get('*', function (req, res) {
     res.sendFile(path.join(__dirname, 'build', 'index.html'))
 })
 
-port = 80
-DBname = 'BargigShop'
+const port = process.env.PORT || 80
+const DBname = 'BargigShop'
+const MongoDBUri = process.env.PORT || `mongodb://localhost/${DBname}`
 
-console.log(process.env.PORT || port)
+console.log(port, MongoDBUri)
 
-mongoose.connect('mongodb+srv://mor:M0ng0Adm1n@general-cluster.ozqp8.mongodb.net/BargigShop?retryWrites=true&w=majority' || `mongodb://localhost/${DBname}`, {
+mongoose.connect(MongoDBUri, {
     useUnifiedTopology: true,
     useNewUrlParser: true
 })
     .catch(e => { console.log(e); process.exit() })
     .then(() => {
-        app.listen(process.env.PORT || port, () => console.log(`Running server on port ` + port))
+        app.listen(port, () => console.log(`Running server on port ` + port))
     })
