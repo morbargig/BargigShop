@@ -20,11 +20,11 @@ app.get('*', function (req, res) {
     res.sendFile(path.join(__dirname, 'build', 'index.html'))
 })
 
-const port = process.env.PORT || 80
+const port = parseInt(process.env.PORT || 80)
 const DBname = 'BargigShop'
 const MongoDBUri = process.env.PORT || `mongodb://localhost/${DBname}`
 
-console.log(port, MongoDBUri)
+console.log(port, MongoDBUri,process.env)
 
 mongoose.connect(MongoDBUri, {
     useUnifiedTopology: true,
