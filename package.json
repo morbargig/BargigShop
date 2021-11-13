@@ -6,7 +6,7 @@
     "start": "node server.js",
     "front": "react-scripts start",
     "front:build": "react-scripts build",
-    "heroku-postbuild": "rm -rf ./src && rm -rf ./public",
+    "heroku-postbuild": "npm install && npm run front:build",
     "server": "node server.js",
     "push": "git add . && git rm -r build && git commit -m \"`echo \"Auto commit by $(git config user.name) at $(date +%Y-%m-%dT%H:%M%z)\"`\"&& git push origin master",
     "heroku": "heroku local -p 8000",
