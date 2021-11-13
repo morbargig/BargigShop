@@ -30,7 +30,7 @@ class Home extends Component<any> {
   returnCatgories = async () => {
     if (this.state.Catgories === undefined) {
 
-      const res = await axios.get(`${route}Catgories/1`)
+      const res = await axios.get(`${route()}Catgories/1`)
       if (res.data[0] === undefined) {
         this.componentDidMount()
       } else {
@@ -93,7 +93,7 @@ class Home extends Component<any> {
     //     this.componentDidMount()
     // } else {
     console.log(catagorySearch, text, typeof text)
-    let res = await axios.get(`${route}searchByCatagory/${catagorySearch}/${text}`)
+    let res = await axios.get(`${route()}searchByCatagory/${catagorySearch}/${text}`)
     console.log(res.data)
     this.setState({
       resultByCatgory: res.data[0],
@@ -340,7 +340,7 @@ class Home extends Component<any> {
     console.log(id, name)
     let answer = window.confirm(`are you sure you want to delete ${name}?`)
     if (answer === true) {
-      await axios.delete(`${route}deleteItem/${id}`)
+      await axios.delete(`${route()}deleteItem/${id}`)
     }
   }
 
@@ -359,7 +359,7 @@ class Home extends Component<any> {
       console.log(this.props.state.user)
       let email = this.props.state.user.email
       console.log(email)
-      const res = await axios.get(`${route}userByEmail/${email}`)
+      const res = await axios.get(`${route()}userByEmail/${email}`)
       console.log(res)
       this.setState({ loggedInUser: res.data[0] }, function () { console.log(this.state.loggedInUser) })
     }

@@ -30,7 +30,7 @@ class ShopingCart extends Component {
                 let value = this.props.state.user.uid
                 let filed = "_id"
                 let Collection = 'User'
-                const res = await axios.get(`${route}getSomethinPopulateBySomeFiedAndValue/${Collection}/${filed}/${value}`)
+                const res = await axios.get(`${route()}getSomethinPopulateBySomeFiedAndValue/${Collection}/${filed}/${value}`)
                 if (res.data.ShopingCard) {
                     if (res.data.ShopingCard.length > 0) {
                         this.setState({ ItemShopingCard: res.data.ShopingCard })

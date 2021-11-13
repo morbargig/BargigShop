@@ -23,7 +23,7 @@ class Search extends Component {
       this.setState({ Items: undefined })
     } else {
       let filed = "id"
-      const res = await axios.get(`${route}getItem/${filed}/${value}`)
+      const res = await axios.get(`${route()}getItem/${filed}/${value}`)
 
       console.log(res.data)
 

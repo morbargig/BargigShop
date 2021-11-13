@@ -23,7 +23,7 @@ class Item extends Component {
     }
 
     getItem = async () => {
-        let item = await axios.get(`${route}getbyname/${this.props.name}`)
+        let item = await axios.get(`${route()}getbyname/${this.props.name}`)
         console.log(item, item.data)
         this.setState({ item: item.data }, function () {
         }, function () { console.log(this.state.item) })
@@ -43,7 +43,7 @@ class Item extends Component {
             subject: `You made it! you have an order`,
             text: `we've created for you an order for ${item.name}`
         }
-        await axios.post(`${route}sendEmail`, mail)
+        await axios.post(`${route()}sendEmail`, mail)
     }
 
     colorImage = (e) => {
@@ -60,7 +60,7 @@ class Item extends Component {
     addToShoppingCart = async (e) => {
         let itemId = e.target.id
         let userId = this.props.state.user.uid
-        await axios.put(`${route}addToShoppingCard/${userId}/${itemId}`)
+        await axios.put(`${route()}addToShoppingCard/${userId}/${itemId}`)
         console.log(userId, itemId)
     }
 
@@ -83,7 +83,7 @@ class Item extends Component {
         x = !x
         console.log(x)
         // let items = this.state.resultByCatgory
-        const res = await axios.get(`${route}getSomethinBySomeFiedAndValue/Item/_id/${id}`)
+        const res = await axios.get(`${route()}getSomethinBySomeFiedAndValue/Item/_id/${id}`)
         console.log(res.data)
         // let itemToUpdate = items.find(u => u._id === id)
 
@@ -101,7 +101,7 @@ class Item extends Component {
         console.log(id, name)
         let answer = window.confirm(`are you sure you want to delete ${name}?`)
         if (answer === true) {
-            await axios.delete(`${route}deleteItem/${id}`)
+            await axios.delete(`${route()}deleteItem/${id}`)
         }
     }
     Admin = (i) => {

@@ -22,13 +22,13 @@ export class ItemsStore {
     }
 
     allItems = async () => {
-        let Items = await axios.get(`${route}getItems`)
+        let Items = await axios.get(`${route()}getItems`)
         this.Item = Items
         // return Items
     }
 
     addItem = async (Item) => {
-        let saveStatus = await axios.post(`${route}addNewItem`, Item)
+        let saveStatus = await axios.post(`${route()}addNewItem`, Item)
         if (saveStatus.data === 'succes!') {
             return alert('added item successfully')
         } else {

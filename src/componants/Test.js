@@ -26,8 +26,8 @@ class Test extends Component {
 
         .`
         console.log(from, to, text)
-        // await axios.get(`${route}sendSms/${from}/${to}/${text}/${url}`)
-        await axios.post(`${route}sendSms/${from}/${to}`, {
+        // await axios.get(`${route()}sendSms/${from}/${to}/${text}/${url}`)
+        await axios.post(`${route()}sendSms/${from}/${to}`, {
             text: text,
 
         })

@@ -33,10 +33,10 @@ class Admin extends Component<any> {
 
     componentDidMount = async () => {
         if (this.state.CategoryList.length === 0) {
-            const res = await axios.get(`${route}Catgories/0`)
+            const res = await axios.get(`${route()}Catgories/0`)
             res.data[0].Catgories.map(i => i.name)
             if (res.data[0] === undefined) {
-                let res2 = await axios.get(`${route}Catgories/1`)
+                let res2 = await axios.get(`${route()}Catgories/1`)
                 this.setState({ CategoryList: res2.data[0].Catgories.map(i => i.name) })
             } else {
                 this.setState({ CategoryList: res.data[0].Catgories.map(i => i.name) }, function () { console.log(this.state.CategoryList) })

@@ -50,7 +50,7 @@ class App extends Component {
   //     console.log("hffjhfjhf")
   //     console.log(this.state.user)
   //     if (!this.state.user) { return this.ShoppingCard() }
-  //     const res = await axios.get(`${route}ShoppingCard/${this.state.user.uid}`)
+  //     const res = await axios.get(`${route()}ShoppingCard/${this.state.user.uid}`)
   //     console.log(res)
 
   //   }
@@ -84,7 +84,7 @@ class App extends Component {
     // await this.handleUpload()
     console.log(this.state.user.uid)
     console.log(this.state.img)
-    let saveStatus = await axios.post(`${route}addnewuser`, {
+    let saveStatus = await axios.post(`${route()}addnewuser`, {
       _id: this.state.user.uid,
       name: this.state.name,
       password: this.state.password,
@@ -172,7 +172,7 @@ class App extends Component {
         let value = this.state.user.uid
         let filed = "_id"
         let Collection = 'User'
-        const res = await axios.get(`${route}getSomethinPopulateBySomeFiedAndValue/${Collection}/${filed}/${value}`)
+        const res = await axios.get(`${route()}getSomethinPopulateBySomeFiedAndValue/${Collection}/${filed}/${value}`)
         if (res.data.ShopingCard) {
           if (res.data.ShopingCard.length > 0) {
             this.state.shopingCard = true

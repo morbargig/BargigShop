@@ -28,7 +28,7 @@ class Filter extends Component {
 
     getItem = async () => {
         console.log(this.props.name)
-        let items = await axios.get(`${route}getbyfield/${this.props.name}`)
+        let items = await axios.get(`${route()}getbyfield/${this.props.name}`)
         console.log(items.data)
         this.setState({ items: items.data }, function () {
             console.log(this.state)
@@ -64,7 +64,7 @@ class Filter extends Component {
         console.log(id, name)
         let answer = window.confirm(`are you sure you want to delete ${name}?`)
         if (answer === true) {
-            await axios.delete(`${route}deleteItem/${id}`)
+            await axios.delete(`${route()}deleteItem/${id}`)
         }
     }
 

@@ -42,7 +42,7 @@ class SignUp extends Component {
     
     
     .`
-    await axios.get(`${route}sendSms/${from}/${to}/${text}`)
+    await axios.get(`${route()}sendSms/${from}/${to}/${text}`)
   }
 
 
