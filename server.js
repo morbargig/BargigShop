@@ -20,7 +20,7 @@ app.get('*', function (req, res) {
     res.sendFile(path.join(__dirname, 'build', 'index.html'))
 })
 
-const port = parseInt(process.env.PORT || 80)
+const port = process.env.PORT || 80
 const DBname = 'BargigShop'
 const MongoDBUri = process.env.MONGODB_URI || `mongodb://localhost/${DBname}`
 
