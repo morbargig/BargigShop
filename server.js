@@ -23,6 +23,8 @@ app.get('*', function (req, res) {
 port = 80
 DBname = 'BargigShop'
 
+console.log(process.env.PORT || port)
+
 mongoose.connect('mongodb+srv://mor:M0ng0Adm1n@general-cluster.ozqp8.mongodb.net/BargigShop?retryWrites=true&w=majority' || `mongodb://localhost/${DBname}`, {
     useUnifiedTopology: true,
     useNewUrlParser: true
