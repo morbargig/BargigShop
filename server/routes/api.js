@@ -83,18 +83,18 @@ getCatgoties = async function () {
     let id = "5d62ea1f8cf5dc39488c1000"
     let obj = {
         id: id,
-        Catgories: []
+        Catagories: []
     }
     let obj1 = {}
     await Items.find({}).exec(function (err, items) {
         items.forEach(t =>
-            t.Category.forEach(c => obj1[c] = { name: c, img: t.image, Discraption: t.Discraption })
+            t.Category.forEach(c => obj1[c] = { name: c, img: t.image, Description: t.Description })
         )
         for (let i in obj1) {
             // let obj2 =  obj1[i] 
-            obj.Catgories.push(obj1[i])
+            obj.Catagories.push(obj1[i])
         }
-        // console.log(obj.Catgories)
+        // console.log(obj.Catagories)
 
         Categories.findOneAndDelete({ id: id }, function (err, x) {
         })
@@ -135,7 +135,7 @@ router.get('/getbyname/:name', function (req, res) {
 })
 
 
-router.get('/Catgories/:id', function (req, res) {
+router.get('/Catagories/:id', function (req, res) {
     let id = req.params.id
     if (id === '1') {
         getCatgoties()
@@ -176,54 +176,54 @@ router.post('/sendEmail', (req, res) => {
 })
 
 
-router.get('/searchByCatagory/:Catagory/:text', (req, res) => {
+router.get('/searchBycategory/:category/:text', (req, res) => {
     // let a = req.body
-    let Catagory = req.params.Catagory
+    let category = req.params.category
     let text = req.params.text
-    console.log(text, Catagory)
+    console.log(text, category)
 
 
 
-    if (Catagory === "price") {
+    if (category === "price") {
         Items.find({}, function (err, x) {
             let dataList = {}
             let result = []
-            x.map(u => u[Catagory] < parseInt(text) ? result.push(u) && (dataList[u[Catagory]] = null) : console.log(u[Catagory]))
+            x.map(u => u[category] < parseInt(text) ? result.push(u) && (dataList[u[category]] = null) : console.log(u[category]))
             // console.log(result)
             res.send([result, dataList])
         })
-    } else if (Catagory === "price2") {
-        Catagory = "price"
+    } else if (category === "price2") {
+        category = "price"
         Items.find({}, function (err, x) {
             let dataList = {}
             let result = []
-            x.map(u => u[Catagory] > parseInt(text) ? result.push(u) && (dataList[u[Catagory]] = null) : console.log(u[Catagory]))
+            x.map(u => u[category] > parseInt(text) ? result.push(u) && (dataList[u[category]] = null) : console.log(u[category]))
             // console.log(result)
             res.send([result, dataList])
         })
-    } else if (Catagory === 'Category' || Catagory === 'sizes') {
+    } else if (category === 'Category' || category === 'sizes') {
 
         Items.find({}, function (err, x) {
             let dataList = {}
             let result = []
-            x.map(x => x[Catagory].map(c => c.includes(text) || c === text ? result.push(x) && (dataList[c] = null) : null))
+            x.map(x => x[category].map(c => c.includes(text) || c === text ? result.push(x) && (dataList[c] = null) : null))
             // console.log(result)
             res.send([result, dataList])
         })
-    } else if (Catagory === "color") {
+    } else if (category === "color") {
         Items.find({}, function (err, x) {
             let result = []
             let dataList = {}
-            x.map(x => x[Catagory] ? Object.keys(x[Catagory]).map(c => c.includes(text) || c === text ? result.push(x) && (dataList[c] = null) : null) : null)
+            x.map(x => x[category] ? Object.keys(x[category]).map(c => c.includes(text) || c === text ? result.push(x) && (dataList[c] = null) : null) : null)
             // console.log(result)
             res.send([result, dataList])
         })
     } else {
-        console.log(text, Catagory)
+        console.log(text, category)
         Items.find({}, function (err, x) {
             let result = []
             let dataList = {}
-            x.map(u => u[Catagory].includes(text) || u[Catagory] === text ? result.push(u) && (dataList[u[Catagory]] = null) : console.log(u[Catagory]))
+            x.map(u => u[category].includes(text) || u[category] === text ? result.push(u) && (dataList[u[category]] = null) : console.log(u[category]))
             // console.log(result)
             res.send([result, dataList])
         })
@@ -272,7 +272,7 @@ router.get('/getSomethinBySomeFiedAndValue/:Collection/:filed/:value', function 
 })
 
 
-router.get('/getSomethinPopulateBySomeFiedAndValue/:Collection/:filed/:value', function (req, res) {
+router.get('/getSomethingPopulateBySomeFieldAndValue/:Collection/:filed/:value', function (req, res) {
     let Collection = req.params.Collection
     let filed = req.params.filed
     let value = req.params.value

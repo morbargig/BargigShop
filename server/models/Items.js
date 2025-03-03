@@ -8,7 +8,7 @@ const ItemsSchema = new Schema({
     Category: Array,
     sizes: Array,
     Collection: String,
-    Discraption: String,
+    Description: String,
     image: String,
     color: Object
 })

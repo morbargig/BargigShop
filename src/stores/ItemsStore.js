@@ -1,23 +1,23 @@
 // @ts-nocheck
 // import { observable, computed, action } from 'mobx'
-import route from '../config/route'
 import axios from 'axios'
+import route from '../config/route'
 
 
 export class ItemsStore {
     Item = []
-    Catgories = []
+    Catagories = []
     // @observable numPeople
-    get AllCatgories() { //automatically calculates the total reservations
+    get AllCatagories() { //automatically calculates the total reservations
 
-        return this.Catgories
+        return this.Catagories
     }
 
-    getCatgories = (Catgories) => {
-        Catgories.map(i => this.Catgories.push(i))
-        console.log(this.Catgories, Catgories)
+    getCatagories = (Catagories) => {
+        Catagories.map(i => this.Catagories.push(i))
+        console.log(this.Catagories, Catagories)
 
-        // this.Catgories = Catgories
+        // this.Catagories = Catagories
         // return Items
     }
 

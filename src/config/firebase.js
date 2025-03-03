@@ -1,4 +1,4 @@
-import firebase from 'firebase/compat'
+import firebase from 'firebase/compat/app';
 const firebaseConfig = {
   // apiKey: "AIzaSyCMDzCons4EZ1clV02C6HI6HsZL1XJ-Md4",
   apiKey: "AIzaSyB1vBJ_5kg4ZsbQZYd5TO1dxhvNw3Good0",

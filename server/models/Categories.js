@@ -3,7 +3,7 @@ const Schema = mongoose.Schema
 
 const CategorySchema = new Schema({
     id: String,
-    Catgories: Array
+    Catagories: Array
 })
 
 const Category = mongoose.model("Category", CategorySchema)

@@ -4,7 +4,7 @@ class Data extends Component {
     constructor() {
         super()
         this.state = {
-            inputs: ['catgory']
+            inputs: ['Category']
         }
 
     }
